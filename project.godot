@@ -15,6 +15,11 @@ run/main_scene="res://map_root.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
+[layer_names]
+
+2d_physics/layer_1="ground"
+2d_physics/layer_2="terrain"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
