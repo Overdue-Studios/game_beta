@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cktfdk2f1lwm4"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_jmvu1"]
+[ext_resource type="Script" path="res://Player/player.gd" id="1_jmvu1"]
 [ext_resource type="Texture2D" uid="uid://blkri8rlh857j" path="res://Assets/MiniWorldSprites/Characters/Champions/Börg.png" id="2_1i46s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rv3or"]

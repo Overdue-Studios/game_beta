@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bsnh8whuc1w6h" path="res://Assets/Texture/TX Tileset Grass.png" id="1_ptjep"]
 [ext_resource type="Texture2D" uid="uid://bhags3kmgqcon" path="res://Assets/Texture/TX Tileset Wall.png" id="2_jqyp1"]
 [ext_resource type="Texture2D" uid="uid://bhytcrguflrfu" path="res://Assets/MiniWorldSprites/Ground/Water+.png" id="3_ecoa8"]
-[ext_resource type="PackedScene" uid="uid://cktfdk2f1lwm4" path="res://player.tscn" id="4_44x54"]
+[ext_resource type="PackedScene" uid="uid://cktfdk2f1lwm4" path="res://Player/player.tscn" id="4_44x54"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vyqtq"]
 texture = ExtResource("1_ptjep")

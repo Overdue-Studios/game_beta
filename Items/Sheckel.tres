@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=2 format=3 uid="uid://d4eohi7586cy7"]
+
+[ext_resource type="Script" path="res://Item.gd" id="1_r7bno"]
+
+[resource]
+script = ExtResource("1_r7bno")
+name = "Sheckel"
+id = 0
+stackable = true
+max_stack_size = 100
+type = 0
