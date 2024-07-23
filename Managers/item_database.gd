@@ -12,7 +12,7 @@ func _ready():
 			items.append(load("res://Items/%s" % filename))
 		
 		filename = directory.get_next()
-
+		
 func get_item(item_name):
 	for i in items:
 		if i.name == item_name:
@@ -22,5 +22,5 @@ func get_item(item_name):
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
