@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://dcxothlhg0m1a"]
+
+[ext_resource type="Texture2D" uid="uid://ctosjaxq346rq" path="res://Assets/MiniWorldSprites/UI assets pack 2/UI books & more.png" id="1_lmkvr"]
+[ext_resource type="Texture2D" uid="uid://dih1coellhwm8" path="res://addons/dialogic/Editor/Images/Pieces/variable.svg" id="2_21vcg"]
+[ext_resource type="FontFile" uid="uid://86n57y4xr6u1" path="res://Fonts/ComicNeue-Bold.ttf" id="2_enec6"]
+[ext_resource type="Script" path="res://Player/ItemList.gd" id="2_kyr8t"]
+
+[sub_resource type="Theme" id="Theme_b8a2o"]
+
+[node name="Control" type="Control"]
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = -161.0
+offset_top = -107.0
+offset_right = 159.0
+offset_bottom = 99.0
+texture = ExtResource("1_lmkvr")
+region_rect = Rect2(15.5603, 31.8413, 96.3284, 48.0798)
+
+[node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 18.0
+offset_right = 78.0
+offset_bottom = 58.0
+columns = 3
+
+[node name="ItemList" type="ItemList" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 194.0
+offset_top = 17.0
+offset_right = 497.0
+offset_bottom = 454.0
+scale = Vector2(0.3, 0.3)
+theme = SubResource("Theme_b8a2o")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_enec6")
+item_count = 1
+max_columns = 3
+item_0/text = ""
+item_0/icon = ExtResource("2_21vcg")
+script = ExtResource("2_kyr8t")
+
+[node name="MenuBar" type="MenuBar" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 17.0
+offset_right = 128.0
+offset_bottom = 147.0

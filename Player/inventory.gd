@@ -10,6 +10,7 @@ func set_items(new_items):
 	
 func get_items():
 	return _items
+	
 
 func get_item(index):
 	return _items[index]

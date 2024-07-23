@@ -12,6 +12,7 @@ func _ready():
 	
 func _process(_delta):
 	if Input.is_action_just_pressed("interact") and interactable:
+		get_tree().paused = true
 		interactable = false
 		dialogue_window = dialogue.instantiate()
 		add_child(dialogue_window)

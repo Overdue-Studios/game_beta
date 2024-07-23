@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://86n57y4xr6u1" path="res://Fonts/ComicNeue-Bold.ttf" id="4_hx1dh"]
 
 [node name="Dialogue" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

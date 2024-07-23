@@ -9,6 +9,9 @@ signal secondary_action
 var inventory_resource = load("res://Player/inventory.gd")
 var inventory = inventory_resource.new()
 
+var tab_inventory = load("res://Player/TabInventory.tscn")
+var inventory_open = false
+
 func _physics_process(_delta):
 	
 	if Input.is_action_pressed("ui_left") and GameManager.nomove == false:
@@ -29,6 +32,14 @@ func _process(_delta):
 		primary_action.emit()
 	if Input.is_action_pressed("secondary_action"):
 		secondary_action.emit()
+	if Input.is_action_just_pressed("inventory"):
+		get_tree().paused = true
+		inventory_open = true
+		var tab_inventory_ui = tab_inventory.instantiate()
+		add_child(tab_inventory_ui)
+		GameManager.nomove = true
+		
+		
 
 func _on_world_clock_timeout():
 	world_clock_time += 1

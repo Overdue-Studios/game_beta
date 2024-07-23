@@ -13,7 +13,9 @@ func _process(_delta):
 
 
 func _on_button_button_down():
+	get_tree().paused = false
 	_button_down.emit()
 	#self.get_parent().remove_child(self)
 	GameManager.nomove = false
+	get_parent().get_parent().interactable = true
 	get_parent().queue_free()
