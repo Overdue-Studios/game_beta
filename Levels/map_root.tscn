@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dmude8pij5ou3"]
+[gd_scene load_steps=15 format=3 uid="uid://dmude8pij5ou3"]
 
 [ext_resource type="Texture2D" uid="uid://bsnh8whuc1w6h" path="res://Assets/Texture/TX Tileset Grass.png" id="1_c4815"]
 [ext_resource type="Texture2D" uid="uid://bhags3kmgqcon" path="res://Assets/Texture/TX Tileset Wall.png" id="2_pvkiv"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bvjwxmwws0plr" path="res://Assets/MiniWorldSprites/Miscellaneous/Portal.png" id="4_87x1k"]
 [ext_resource type="PackedScene" uid="uid://cktfdk2f1lwm4" path="res://Player/player.tscn" id="4_jt5aw"]
 [ext_resource type="Script" path="res://Levels/CastleDoorDown.gd" id="6_3fqwa"]
+[ext_resource type="Theme" uid="uid://bptyomrvxuk3o" path="res://Levels/theme.tres" id="6_7nfrx"]
+[ext_resource type="PackedScene" uid="uid://dtiteo58pkawc" path="res://Levels/primoz.tscn" id="8_nfi6c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vyqtq"]
 texture = ExtResource("1_c4815")
@@ -2068,9 +2070,11 @@ position = Vector2(445, 507)
 
 [node name="Label" type="Label" parent="Player"]
 offset_left = -111.0
-offset_top = -61.0
-offset_right = -81.0
-offset_bottom = -38.0
+offset_top = -60.0
+offset_right = -98.0
+offset_bottom = -37.0
+scale = Vector2(0.2, 0.2)
+theme = ExtResource("6_7nfrx")
 text = "0"
 
 [node name="WorldClock" type="Timer" parent="."]
@@ -2082,6 +2086,9 @@ script = ExtResource("6_3fqwa")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CastleDoorDown"]
 position = Vector2(559.75, 479.25)
 shape = SubResource("RectangleShape2D_802lp")
+
+[node name="npc1" parent="." instance=ExtResource("8_nfi6c")]
+position = Vector2(486, 485)
 
 [connection signal="primary_action" from="Player" to="Player" method="_on_primary_action"]
 [connection signal="secondary_action" from="Player" to="Player" method="_on_secondary_action"]

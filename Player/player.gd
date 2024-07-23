@@ -11,13 +11,13 @@ var inventory = inventory_resource.new()
 
 func _physics_process(_delta):
 	
-	if Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("ui_left") and GameManager.nomove == false:
 		velocity.x = -speed
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("ui_right") and GameManager.nomove == false:
 		velocity.x = speed
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("ui_up") and GameManager.nomove == false:
 		velocity.y = -speed
-	if Input.is_action_pressed("ui_down"):
+	if Input.is_action_pressed("ui_down") and GameManager.nomove == false:
 		velocity.y = speed
 		
 	move_and_slide()
@@ -36,8 +36,8 @@ func _on_world_clock_timeout():
 
 
 func _on_primary_action():
-	print("left click")
+	pass
 
 
 func _on_secondary_action():
-	print("right click")
+	pass

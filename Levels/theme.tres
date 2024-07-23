@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bptyomrvxuk3o"]
+
+[ext_resource type="FontFile" uid="uid://86n57y4xr6u1" path="res://Fonts/ComicNeue-Bold.ttf" id="1_eb3st"]
+
+[resource]
+default_font = ExtResource("1_eb3st")
+default_font_size = 40

@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=3 uid="uid://eclcfujv7mkw"]
+
+[ext_resource type="Texture2D" uid="uid://ctosjaxq346rq" path="res://Assets/MiniWorldSprites/UI assets pack 2/UI books & more.png" id="1_bl3m2"]
+[ext_resource type="Theme" uid="uid://bptyomrvxuk3o" path="res://Levels/theme.tres" id="2_jb8av"]
+[ext_resource type="Script" path="res://Levels/dialogue.gd" id="2_oxjcb"]
+[ext_resource type="FontFile" uid="uid://86n57y4xr6u1" path="res://Fonts/ComicNeue-Bold.ttf" id="4_hx1dh"]
+
+[node name="Dialogue" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = -26.0
+offset_top = -53.0
+offset_right = 26.0
+offset_bottom = -8.0
+texture = ExtResource("1_bl3m2")
+region_rect = Rect2(656.511, 16.0807, 47.1609, 63.7818)
+script = ExtResource("2_oxjcb")
+
+[node name="Name" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 4.0
+offset_right = 279.0
+offset_bottom = 54.0
+scale = Vector2(0.1, 0.1)
+theme = ExtResource("2_jb8av")
+theme_override_colors/default_color = Color(0.169245, 0.169245, 0.169245, 1)
+theme_override_fonts/normal_font = ExtResource("4_hx1dh")
+text = "Name"
+
+[node name="Text" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 9.0
+offset_right = 344.0
+offset_bottom = 272.0
+scale = Vector2(0.08, 0.08)
+theme = ExtResource("2_jb8av")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "Text"
+
+[node name="Leave" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 36.0
+offset_right = 147.0
+offset_bottom = 86.0
+scale = Vector2(0.08, 0.08)
+theme = ExtResource("2_jb8av")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "Leave"
+
+[node name="Button" type="Button" parent="NinePatchRect/Leave"]
+layout_mode = 0
+offset_left = -12.0
+offset_right = 113.0
+offset_bottom = 50.0
+action_mode = 0
+flat = true
+
+[connection signal="button_down" from="NinePatchRect/Leave/Button" to="NinePatchRect" method="_on_button_button_down"]

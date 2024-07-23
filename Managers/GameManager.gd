@@ -2,6 +2,7 @@ extends Node
 
 signal player_initialised
 var player
+var nomove = false
 func _process(_delta):
 	if not player:
 		initialise_player()
@@ -21,7 +22,7 @@ func initialise_player():
 		player.inventory.set_items(existing_inventory.get_items())
 		player.inventory.add_item("Sheckel", 3)
 	else:
-		player.inventory.add_item("Sheckel", 1)
+		player.inventory.add_item("Cumjar", 1)
 	
 func _on_player_inventory_changed(inventory):
 	ResourceSaver.save(player.inventory, "user://inventory.tres")

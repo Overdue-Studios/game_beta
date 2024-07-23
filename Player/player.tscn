@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cktfdk2f1lwm4"]
+[gd_scene load_steps=13 format=3 uid="uid://cktfdk2f1lwm4"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_jmvu1"]
 [ext_resource type="Texture2D" uid="uid://blkri8rlh857j" path="res://Assets/MiniWorldSprites/Characters/Champions/Börg.png" id="2_1i46s"]
@@ -52,6 +52,8 @@ _data = {
 "spear_attack": SubResource("Animation_4ccgb")
 }
 
+[sub_resource type="Theme" id="Theme_b86o1"]
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 collision_mask = 3
 motion_mode = 1
@@ -90,20 +92,21 @@ libraries = {
 layout_mode = 3
 anchors_preset = 0
 offset_left = -113.0
-offset_top = 33.0
-offset_right = -81.0
-offset_bottom = 62.0
+offset_top = 30.0
+offset_right = -68.0
+offset_bottom = 59.0
 
 [node name="Panel" type="Panel" parent="UI"]
 layout_mode = 0
-offset_right = 32.0
+offset_right = 45.0
 offset_bottom = 29.0
 
 [node name="GridContainer" type="GridContainer" parent="UI/Panel"]
+clip_contents = true
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = 1.0
+offset_right = 1.0
+scale = Vector2(0.5, 0.5)
+theme = SubResource("Theme_b86o1")
 script = ExtResource("5_juguu")
+metadata/_edit_use_anchors_ = true
