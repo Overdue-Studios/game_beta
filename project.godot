@@ -33,6 +33,7 @@ directories/dtl_directory={
 
 window/size/viewport_width=1536
 window/size/viewport_height=864
+window/size/initial_position_type=2
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 

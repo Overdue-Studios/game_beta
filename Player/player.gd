@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var speed = 70
-@onready var world_clock = get_node("./Label")
+@onready var world_clock = get_node("../PhantomCamera2D/UI/Label")
 @onready var world_clock_time = 0
 signal primary_action
 signal secondary_action

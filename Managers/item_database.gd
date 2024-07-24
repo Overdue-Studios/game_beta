@@ -10,6 +10,7 @@ func _ready():
 	while(filename):
 		if not directory.current_is_dir():
 			items.append(load("res://Items/%s" % filename))
+			
 		
 		filename = directory.get_next()
 		

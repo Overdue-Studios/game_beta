@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://dmude8pij5ou3"]
+[gd_scene load_steps=20 format=3 uid="uid://dmude8pij5ou3"]
 
 [ext_resource type="Texture2D" uid="uid://bsnh8whuc1w6h" path="res://Assets/Texture/TX Tileset Grass.png" id="1_c4815"]
 [ext_resource type="Texture2D" uid="uid://bhags3kmgqcon" path="res://Assets/Texture/TX Tileset Wall.png" id="2_pvkiv"]
 [ext_resource type="Texture2D" uid="uid://bhytcrguflrfu" path="res://Assets/MiniWorldSprites/Ground/Water+.png" id="3_lfio6"]
 [ext_resource type="Texture2D" uid="uid://bvjwxmwws0plr" path="res://Assets/MiniWorldSprites/Miscellaneous/Portal.png" id="4_87x1k"]
+[ext_resource type="PackedScene" uid="uid://bjjyu2xu0uecy" path="res://node_2d.tscn" id="4_j534x"]
 [ext_resource type="PackedScene" uid="uid://cktfdk2f1lwm4" path="res://Player/player.tscn" id="4_jt5aw"]
 [ext_resource type="Script" path="res://Levels/CastleDoorDown.gd" id="6_3fqwa"]
 [ext_resource type="Theme" uid="uid://bptyomrvxuk3o" path="res://Levels/theme.tres" id="6_7nfrx"]
@@ -11,15 +12,12 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="6_xkpbe"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_dvhkl"]
 [ext_resource type="PackedScene" uid="uid://dtiteo58pkawc" path="res://Levels/primoz.tscn" id="8_nfi6c"]
-[ext_resource type="Script" path="res://Player/GridContainer.gd" id="9_ctbw1"]
 
 [sub_resource type="Resource" id="Resource_auf8n"]
 script = ExtResource("7_dvhkl")
 duration = 1.0
 transition = 0
 ease = 2
-
-[sub_resource type="Theme" id="Theme_0vlf2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vyqtq"]
 texture = ExtResource("1_c4815")
@@ -2090,22 +2088,17 @@ offset_top = 78.0
 offset_right = -146.0
 offset_bottom = 107.0
 
-[node name="Panel" type="Panel" parent="PhantomCamera2D/UI"]
+[node name="Label" type="Label" parent="PhantomCamera2D/UI"]
 layout_mode = 0
-offset_left = 8.0
-offset_top = -118.0
-offset_right = 53.0
-offset_bottom = -89.0
+offset_left = 2.0
+offset_top = -185.0
+offset_right = 25.0
+offset_bottom = -139.0
+scale = Vector2(0.2, 0.2)
+theme = ExtResource("6_7nfrx")
+text = "0"
 
-[node name="GridContainer" type="GridContainer" parent="PhantomCamera2D/UI/Panel"]
-clip_contents = true
-layout_mode = 1
-offset_left = 1.0
-offset_right = 1.0
-scale = Vector2(0.5, 0.5)
-theme = SubResource("Theme_0vlf2")
-script = ExtResource("9_ctbw1")
-metadata/_edit_use_anchors_ = true
+[node name="Node2D" parent="PhantomCamera2D/UI" instance=ExtResource("4_j534x")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(537, 602)
@@ -2122,15 +2115,6 @@ layer_1/tile_data = PackedInt32Array(327690, 131073, 2, 393226, 131073, 3, 45876
 
 [node name="Player" parent="." instance=ExtResource("4_jt5aw")]
 position = Vector2(537, 602)
-
-[node name="Label" type="Label" parent="Player"]
-offset_left = -189.0
-offset_top = -107.0
-offset_right = -166.0
-offset_bottom = -61.0
-scale = Vector2(0.2, 0.2)
-theme = ExtResource("6_7nfrx")
-text = "0"
 
 [node name="WorldClock" type="Timer" parent="."]
 autostart = true
