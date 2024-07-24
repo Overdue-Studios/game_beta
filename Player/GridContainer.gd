@@ -13,6 +13,7 @@ func _on_player_inventory_changed(inventory):
 		n.queue_free()
 		
 	for item in inventory.get_items():
-		var item_label = Label.new()
-		item_label.text = "%s x%d" % [item.item_reference.name, item.quantity]
-		add_child(item_label)
+		if item != null:
+			var item_label = Label.new()
+			item_label.text = "%s x%d" % [item.item_reference.name, item.quantity]
+			add_child(item_label)

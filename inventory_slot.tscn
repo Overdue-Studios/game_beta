@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnpfehsjk3prt"]
+
+[ext_resource type="Theme" uid="uid://bptyomrvxuk3o" path="res://Levels/theme.tres" id="2_gy00j"]
+
+[node name="InventorySlot" type="Button"]
+custom_minimum_size = Vector2(14, 14)
+icon_alignment = 1
+expand_icon = true
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+
+[node name="Quantity" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -13.0
+offset_top = -6.22
+offset_right = 27.0
+offset_bottom = 39.78
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.135, 0.135)
+theme = ExtResource("2_gy00j")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "0"
+vertical_alignment = 2

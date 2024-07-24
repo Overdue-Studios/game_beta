@@ -21,8 +21,7 @@ func initialise_player():
 	if existing_inventory:
 		player.inventory.set_items(existing_inventory.get_items())
 		player.inventory.add_item("Sheckel", 3)
-	else:
-		player.inventory.add_item("Cumjar", 1)
+	
 	
 func _on_player_inventory_changed(inventory):
 	ResourceSaver.save(player.inventory, "user://inventory.tres")

@@ -1,18 +1,21 @@
 [gd_scene load_steps=6 format=3 uid="uid://dcxothlhg0m1a"]
 
 [ext_resource type="Texture2D" uid="uid://ctosjaxq346rq" path="res://Assets/MiniWorldSprites/UI assets pack 2/UI books & more.png" id="1_lmkvr"]
-[ext_resource type="Texture2D" uid="uid://dih1coellhwm8" path="res://addons/dialogic/Editor/Images/Pieces/variable.svg" id="2_21vcg"]
-[ext_resource type="FontFile" uid="uid://86n57y4xr6u1" path="res://Fonts/ComicNeue-Bold.ttf" id="2_enec6"]
-[ext_resource type="Script" path="res://Player/ItemList.gd" id="2_kyr8t"]
+[ext_resource type="Script" path="res://Player/NinePatchRect.gd" id="2_sws4m"]
+[ext_resource type="Script" path="res://Player/PanelContainerInventory.gd" id="3_28xcx"]
+[ext_resource type="PackedScene" uid="uid://dnpfehsjk3prt" path="res://inventory_slot.tscn" id="4_ma2xq"]
 
-[sub_resource type="Theme" id="Theme_b8a2o"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fll7f"]
 
 [node name="Control" type="Control"]
+process_mode = 3
 z_index = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 7.22
+offset_bottom = 7.21997
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -24,30 +27,7 @@ offset_right = 159.0
 offset_bottom = 99.0
 texture = ExtResource("1_lmkvr")
 region_rect = Rect2(15.5603, 31.8413, 96.3284, 48.0798)
-
-[node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
-layout_mode = 0
-offset_left = 38.0
-offset_top = 18.0
-offset_right = 78.0
-offset_bottom = 58.0
-columns = 3
-
-[node name="ItemList" type="ItemList" parent="NinePatchRect"]
-layout_mode = 0
-offset_left = 194.0
-offset_top = 17.0
-offset_right = 497.0
-offset_bottom = 454.0
-scale = Vector2(0.3, 0.3)
-theme = SubResource("Theme_b8a2o")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_enec6")
-item_count = 1
-max_columns = 3
-item_0/text = ""
-item_0/icon = ExtResource("2_21vcg")
-script = ExtResource("2_kyr8t")
+script = ExtResource("2_sws4m")
 
 [node name="MenuBar" type="MenuBar" parent="NinePatchRect"]
 layout_mode = 0
@@ -55,3 +35,140 @@ offset_left = 38.0
 offset_top = 17.0
 offset_right = 128.0
 offset_bottom = 147.0
+
+[node name="ExitButton" type="Button" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 284.0
+offset_top = 153.0
+offset_right = 303.0
+offset_bottom = 171.0
+action_mode = 0
+flat = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect/ExitButton"]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 19.0
+offset_bottom = 18.0
+texture = ExtResource("1_lmkvr")
+region_rect = Rect2(785.781, 210.702, 12.7023, 12.0266)
+
+[node name="PanelContainer" type="PanelContainer" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 196.0
+offset_top = 20.0
+offset_right = 282.0
+offset_bottom = 145.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_fll7f")
+script = ExtResource("3_28xcx")
+
+[node name="SlotContainer" type="GridContainer" parent="NinePatchRect/PanelContainer"]
+layout_mode = 2
+columns = 5
+
+[node name="InventorySlot1" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+layout_mode = 2
+
+[node name="InventorySlot2" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+layout_mode = 2
+
+[node name="InventorySlot3" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+layout_mode = 2
+
+[node name="InventorySlot4" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+layout_mode = 2
+
+[node name="InventorySlot5" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+layout_mode = 2
+
+[node name="InventorySlot6" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+layout_mode = 2
+
+[node name="InventorySlot7" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+layout_mode = 2
+
+[node name="InventorySlot8" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+layout_mode = 2
+
+[node name="InventorySlot9" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+layout_mode = 2
+
+[node name="InventorySlot10" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+layout_mode = 2
+
+[node name="InventorySlot11" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+layout_mode = 2
+
+[node name="InventorySlot12" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+layout_mode = 2
+
+[node name="InventorySlot13" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+layout_mode = 2
+
+[node name="InventorySlot14" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+layout_mode = 2
+
+[node name="InventorySlot15" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+layout_mode = 2
+
+[node name="InventorySlot16" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+layout_mode = 2
+
+[node name="InventorySlot17" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+layout_mode = 2
+
+[node name="InventorySlot18" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+layout_mode = 2
+
+[node name="InventorySlot19" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+layout_mode = 2
+
+[node name="InventorySlot20" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+layout_mode = 2
+
+[node name="InventorySlot21" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+layout_mode = 2
+
+[node name="InventorySlot22" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+layout_mode = 2
+
+[node name="InventorySlot23" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+layout_mode = 2
+
+[node name="InventorySlot24" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+layout_mode = 2
+
+[node name="InventorySlot25" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+layout_mode = 2
+
+[node name="InventorySlot26" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+layout_mode = 2
+
+[node name="InventorySlot27" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+layout_mode = 2
+
+[node name="InventorySlot28" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+layout_mode = 2
+
+[node name="InventorySlot29" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+layout_mode = 2
+
+[node name="InventorySlot30" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+layout_mode = 2
+
+[node name="InventorySlot31" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+layout_mode = 2
+
+[node name="InventorySlot32" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+layout_mode = 2
+
+[node name="InventorySlot33" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+layout_mode = 2
+
+[node name="InventorySlot34" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+layout_mode = 2
+
+[node name="InventorySlot35" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+layout_mode = 2
+
+[connection signal="button_down" from="NinePatchRect/ExitButton" to="NinePatchRect" method="_on_button_button_down"]

@@ -13,6 +13,9 @@ func _process(_delta):
 
 
 func _on_button_button_down():
+	close()
+
+func close():
 	get_tree().paused = false
 	_button_down.emit()
 	#self.get_parent().remove_child(self)

@@ -38,6 +38,8 @@ func _process(_delta):
 		var tab_inventory_ui = tab_inventory.instantiate()
 		add_child(tab_inventory_ui)
 		GameManager.nomove = true
+	if Input.is_action_just_pressed("interact2"):
+		inventory.add_item("Sheckel", 2)
 		
 		
 

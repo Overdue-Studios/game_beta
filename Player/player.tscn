@@ -1,10 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://cktfdk2f1lwm4"]
+[gd_scene load_steps=11 format=3 uid="uid://cktfdk2f1lwm4"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_jmvu1"]
 [ext_resource type="Texture2D" uid="uid://blkri8rlh857j" path="res://Assets/MiniWorldSprites/Characters/Champions/Börg.png" id="2_1i46s"]
 [ext_resource type="Texture2D" uid="uid://dkkadqtboeoh8" path="res://Assets/MiniWorldSprites/Objects/Spear.png" id="3_djhxf"]
 [ext_resource type="Script" path="res://Player/Weapon.gd" id="4_57ycb"]
-[ext_resource type="Script" path="res://Player/GridContainer.gd" id="5_juguu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rv3or"]
 size = Vector2(12, 8)
@@ -52,8 +51,6 @@ _data = {
 "spear_attack": SubResource("Animation_4ccgb")
 }
 
-[sub_resource type="Theme" id="Theme_b86o1"]
-
 [node name="CharacterBody2D" type="CharacterBody2D"]
 collision_mask = 3
 motion_mode = 1
@@ -69,11 +66,6 @@ sprite_frames = SubResource("SpriteFrames_lvf4y")
 frame = 1
 frame_progress = 0.795552
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(4, 4)
-position_smoothing_enabled = true
-position_smoothing_speed = 100.0
-
 [node name="Weapon" type="Sprite2D" parent="."]
 position = Vector2(3, -4)
 rotation = 1.18682
@@ -87,26 +79,3 @@ script = ExtResource("4_57ycb")
 libraries = {
 "": SubResource("AnimationLibrary_1m8d2")
 }
-
-[node name="UI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -113.0
-offset_top = 30.0
-offset_right = -68.0
-offset_bottom = 59.0
-
-[node name="Panel" type="Panel" parent="UI"]
-layout_mode = 0
-offset_right = 45.0
-offset_bottom = 29.0
-
-[node name="GridContainer" type="GridContainer" parent="UI/Panel"]
-clip_contents = true
-layout_mode = 1
-offset_left = 1.0
-offset_right = 1.0
-scale = Vector2(0.5, 0.5)
-theme = SubResource("Theme_b86o1")
-script = ExtResource("5_juguu")
-metadata/_edit_use_anchors_ = true
