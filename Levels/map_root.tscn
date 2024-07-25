@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bhags3kmgqcon" path="res://Assets/Texture/TX Tileset Wall.png" id="2_pvkiv"]
 [ext_resource type="Texture2D" uid="uid://bhytcrguflrfu" path="res://Assets/MiniWorldSprites/Ground/Water+.png" id="3_lfio6"]
 [ext_resource type="Texture2D" uid="uid://bvjwxmwws0plr" path="res://Assets/MiniWorldSprites/Miscellaneous/Portal.png" id="4_87x1k"]
-[ext_resource type="PackedScene" uid="uid://bjjyu2xu0uecy" path="res://node_2d.tscn" id="4_j534x"]
 [ext_resource type="PackedScene" uid="uid://cktfdk2f1lwm4" path="res://Player/player.tscn" id="4_jt5aw"]
+[ext_resource type="PackedScene" uid="uid://dql0vmiwur6sn" path="res://GameConsole.tscn" id="5_nq8nm"]
 [ext_resource type="Script" path="res://Levels/CastleDoorDown.gd" id="6_3fqwa"]
 [ext_resource type="Theme" uid="uid://bptyomrvxuk3o" path="res://Levels/theme.tres" id="6_7nfrx"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="6_ljt7u"]
@@ -2098,9 +2098,17 @@ scale = Vector2(0.2, 0.2)
 theme = ExtResource("6_7nfrx")
 text = "0"
 
-[node name="Node2D" parent="PhantomCamera2D/UI" instance=ExtResource("4_j534x")]
+[node name="Panel" parent="PhantomCamera2D/UI" instance=ExtResource("5_nq8nm")]
+visible = false
+layout_mode = 0
+offset_left = 2.0
+offset_top = -64.0
+offset_right = 407.0
+offset_bottom = 164.0
+scale = Vector2(0.4, 0.4)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+z_index = 1
 position = Vector2(537, 602)
 zoom = Vector2(4, 4)
 

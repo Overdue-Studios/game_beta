@@ -11,6 +11,11 @@ var inventory = inventory_resource.new()
 
 var tab_inventory = load("res://Player/TabInventory.tscn")
 var inventory_open = false
+func _ready():
+	pass
+
+
+
 
 func _physics_process(_delta):
 	
@@ -38,6 +43,7 @@ func _process(_delta):
 		var tab_inventory_ui = tab_inventory.instantiate()
 		add_child(tab_inventory_ui)
 		GameManager.nomove = true
+		
 	if Input.is_action_just_pressed("interact2"):
 		inventory.add_item("Sheckel", 2)
 		

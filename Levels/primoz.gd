@@ -17,7 +17,6 @@ func _process(_delta):
 		dialogue_window = dialogue.instantiate()
 		add_child(dialogue_window)
 		dialogue_text = get_node("Dialogue/NinePatchRect/Text")
-		print(dialogue_text)
 		dialogue_text.text = "skibidi"
 		GameManager.nomove = true
 	

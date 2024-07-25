@@ -1,77 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://dnpfehsjk3prt"]
+[gd_scene load_steps=3 format=3 uid="uid://dnpfehsjk3prt"]
 
 [ext_resource type="Script" path="res://inventory_slot.gd" id="1_rjda8"]
-[ext_resource type="Theme" uid="uid://bptyomrvxuk3o" path="res://Levels/theme.tres" id="2_gy00j"]
-[ext_resource type="Texture2D" uid="uid://ctosjaxq346rq" path="res://Assets/MiniWorldSprites/UI assets pack 2/UI books & more.png" id="3_481sd"]
+[ext_resource type="Texture2D" uid="uid://di12dtsf55hh8" path="res://Assets/pixil-frame-0.png" id="1_roala"]
 
-[node name="InventorySlot" type="Button"]
+[node name="InventorySlot" type="TextureRect"]
 custom_minimum_size = Vector2(14, 14)
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("1_rjda8")
-
-[node name="Icon" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-expand_mode = 1
-
-[node name="Quantity" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -13.0
-offset_top = -6.22
-offset_right = 27.0
-offset_bottom = 39.78
-grow_horizontal = 0
-grow_vertical = 0
-scale = Vector2(0.135, 0.135)
-mouse_filter = 1
-theme = ExtResource("2_gy00j")
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-vertical_alignment = 2
-
-[node name="Background" type="NinePatchRect" parent="."]
-visible = false
-z_index = 2
-layout_mode = 0
-offset_left = -27.0
-offset_top = -22.0
 offset_right = 40.0
-offset_bottom = -1.0
-texture = ExtResource("3_481sd")
-region_rect = Rect2(223.81, 272.486, 32.2962, 15.2697)
-
-[node name="Name" type="Label" parent="Background"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -25.5
-offset_top = -6.0
-offset_right = 170.5
 offset_bottom = 40.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.26, 0.26)
-theme = ExtResource("2_gy00j")
+texture = ExtResource("1_roala")
+expand_mode = 2
+script = ExtResource("1_rjda8")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
-[connection signal="pressed" from="." to="." method="_on_pressed"]

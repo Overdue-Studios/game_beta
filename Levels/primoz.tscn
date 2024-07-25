@@ -47,23 +47,23 @@ size = Vector2(11, 5)
 
 [node name="primoz" type="Node2D"]
 
-[node name="Marjan" type="CharacterBody2D" parent="."]
+[node name="Primoz" type="CharacterBody2D" parent="."]
 script = ExtResource("1_ixye3")
 
-[node name="Area2D" type="Area2D" parent="Marjan"]
+[node name="Area2D" type="Area2D" parent="Primoz"]
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Marjan/Area2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Primoz/Area2D"]
 position = Vector2(0, 6.25)
 shape = SubResource("RectangleShape2D_v0xk1")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Marjan"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Primoz"]
 sprite_frames = SubResource("SpriteFrames_eotns")
 frame_progress = 0.762902
 speed_scale = 0.7
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Marjan"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Primoz"]
 position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_21art")
 
-[connection signal="body_entered" from="Marjan/Area2D" to="Marjan" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Marjan/Area2D" to="Marjan" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Primoz/Area2D" to="Primoz" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Primoz/Area2D" to="Primoz" method="_on_area_2d_body_exited"]
