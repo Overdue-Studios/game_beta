@@ -57,7 +57,7 @@ func remove_item(item_name, quantity):
 	emit_signal("inventory_changed", self)
 	
 func add_item(item_name, quantity):
-	_items.resize(35)
+	_items.resize(44)
 	if quantity <= 0:
 		print("Can't add negative number of items")
 		return
@@ -98,7 +98,7 @@ func add_item(item_name, quantity):
 			item_reference = item,
 			quantity = min(remaining_quantity, max_stack_size)
 		}
-		_items.insert(index_num, new_item)
+		_items[index_num] = new_item
 		remaining_quantity -= new_item.quantity
 		
 	emit_signal("inventory_changed", self)

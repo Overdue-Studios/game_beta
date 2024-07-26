@@ -1,11 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dcxothlhg0m1a"]
+[gd_scene load_steps=5 format=3 uid="uid://dcxothlhg0m1a"]
 
 [ext_resource type="Texture2D" uid="uid://ctosjaxq346rq" path="res://Assets/MiniWorldSprites/UI assets pack 2/UI books & more.png" id="1_lmkvr"]
 [ext_resource type="Script" path="res://Player/NinePatchRect.gd" id="2_sws4m"]
-[ext_resource type="Script" path="res://Player/PanelContainerInventory.gd" id="3_28xcx"]
+[ext_resource type="Script" path="res://Player/InvControl.gd" id="3_3pov6"]
 [ext_resource type="PackedScene" uid="uid://dnpfehsjk3prt" path="res://inventory_slot.tscn" id="4_ma2xq"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fll7f"]
 
 [node name="Control" type="Control"]
 process_mode = 3
@@ -52,122 +50,320 @@ offset_bottom = 18.0
 texture = ExtResource("1_lmkvr")
 region_rect = Rect2(785.781, 210.702, 12.7023, 12.0266)
 
-[node name="PanelContainer" type="PanelContainer" parent="NinePatchRect"]
-layout_mode = 0
-offset_left = 196.0
-offset_top = 20.0
-offset_right = 282.0
-offset_bottom = 145.0
-theme_override_styles/panel = SubResource("StyleBoxEmpty_fll7f")
-script = ExtResource("3_28xcx")
+[node name="Control" type="Control" parent="NinePatchRect"]
+anchors_preset = 0
+offset_left = 38.0
+offset_top = 18.0
+offset_right = 284.0
+offset_bottom = 146.0
+script = ExtResource("3_3pov6")
 
-[node name="SlotContainer" type="GridContainer" parent="NinePatchRect/PanelContainer"]
+[node name="InventorySlot1" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
 layout_mode = 2
-columns = 5
+offset_left = 158.0
+offset_top = 2.78
+offset_right = 172.0
+offset_bottom = 16.78
 
-[node name="InventorySlot1" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+[node name="InventorySlot2" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
 layout_mode = 2
+offset_left = 176.0
+offset_top = 2.78
+offset_right = 190.0
+offset_bottom = 16.78
 
-[node name="InventorySlot2" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+[node name="InventorySlot3" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
 layout_mode = 2
+offset_left = 194.0
+offset_top = 2.78
+offset_right = 208.0
+offset_bottom = 16.78
 
-[node name="InventorySlot3" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+[node name="InventorySlot4" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
 layout_mode = 2
+offset_left = 212.0
+offset_top = 2.78
+offset_right = 226.0
+offset_bottom = 16.78
 
-[node name="InventorySlot4" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+[node name="InventorySlot5" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
 layout_mode = 2
+offset_left = 230.0
+offset_top = 2.78
+offset_right = 244.0
+offset_bottom = 16.78
 
-[node name="InventorySlot5" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+[node name="InventorySlot6" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
 layout_mode = 2
+offset_left = 158.0
+offset_top = 20.78
+offset_right = 172.0
+offset_bottom = 34.78
 
-[node name="InventorySlot6" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+[node name="InventorySlot7" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
 layout_mode = 2
+offset_left = 176.0
+offset_top = 20.78
+offset_right = 190.0
+offset_bottom = 34.78
 
-[node name="InventorySlot7" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+[node name="InventorySlot8" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
 layout_mode = 2
+offset_left = 194.0
+offset_top = 20.78
+offset_right = 208.0
+offset_bottom = 34.78
 
-[node name="InventorySlot8" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+[node name="InventorySlot9" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
 layout_mode = 2
+offset_left = 212.0
+offset_top = 20.78
+offset_right = 226.0
+offset_bottom = 34.78
 
-[node name="InventorySlot9" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+[node name="InventorySlot10" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
 layout_mode = 2
+offset_left = 230.0
+offset_top = 20.78
+offset_right = 244.0
+offset_bottom = 34.78
 
-[node name="InventorySlot10" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+[node name="InventorySlot11" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
 layout_mode = 2
+offset_left = 158.0
+offset_top = 38.78
+offset_right = 172.0
+offset_bottom = 52.78
 
-[node name="InventorySlot11" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+[node name="InventorySlot12" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
 layout_mode = 2
+offset_left = 176.0
+offset_top = 38.78
+offset_right = 190.0
+offset_bottom = 52.78
 
-[node name="InventorySlot12" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+[node name="InventorySlot13" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
 layout_mode = 2
+offset_left = 194.0
+offset_top = 38.78
+offset_right = 208.0
+offset_bottom = 52.78
 
-[node name="InventorySlot13" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+[node name="InventorySlot14" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
 layout_mode = 2
+offset_left = 212.0
+offset_top = 38.78
+offset_right = 226.0
+offset_bottom = 52.78
 
-[node name="InventorySlot14" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+[node name="InventorySlot15" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
 layout_mode = 2
+offset_left = 230.0
+offset_top = 38.78
+offset_right = 244.0
+offset_bottom = 52.78
 
-[node name="InventorySlot15" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+[node name="InventorySlot16" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
 layout_mode = 2
+offset_left = 158.0
+offset_top = 56.78
+offset_right = 172.0
+offset_bottom = 70.78
 
-[node name="InventorySlot16" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+[node name="InventorySlot17" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
 layout_mode = 2
+offset_left = 176.0
+offset_top = 56.78
+offset_right = 190.0
+offset_bottom = 70.78
 
-[node name="InventorySlot17" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+[node name="InventorySlot18" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
 layout_mode = 2
+offset_left = 194.0
+offset_top = 56.78
+offset_right = 208.0
+offset_bottom = 70.78
 
-[node name="InventorySlot18" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+[node name="InventorySlot19" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
 layout_mode = 2
+offset_left = 212.0
+offset_top = 56.78
+offset_right = 226.0
+offset_bottom = 70.78
 
-[node name="InventorySlot19" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+[node name="InventorySlot20" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
 layout_mode = 2
+offset_left = 230.0
+offset_top = 56.78
+offset_right = 244.0
+offset_bottom = 70.78
 
-[node name="InventorySlot20" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+[node name="InventorySlot21" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
 layout_mode = 2
+offset_left = 158.0
+offset_top = 74.78
+offset_right = 172.0
+offset_bottom = 88.78
 
-[node name="InventorySlot21" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+[node name="InventorySlot22" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
 layout_mode = 2
+offset_left = 176.0
+offset_top = 74.78
+offset_right = 190.0
+offset_bottom = 88.78
 
-[node name="InventorySlot22" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+[node name="InventorySlot23" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
 layout_mode = 2
+offset_left = 194.0
+offset_top = 74.78
+offset_right = 208.0
+offset_bottom = 88.78
 
-[node name="InventorySlot23" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+[node name="InventorySlot24" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
 layout_mode = 2
+offset_left = 212.0
+offset_top = 74.78
+offset_right = 226.0
+offset_bottom = 88.78
 
-[node name="InventorySlot24" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+[node name="InventorySlot25" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
 layout_mode = 2
+offset_left = 230.0
+offset_top = 74.78
+offset_right = 244.0
+offset_bottom = 88.78
 
-[node name="InventorySlot25" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+[node name="InventorySlot26" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
 layout_mode = 2
+offset_left = 158.0
+offset_top = 92.78
+offset_right = 172.0
+offset_bottom = 106.78
 
-[node name="InventorySlot26" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+[node name="InventorySlot27" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
 layout_mode = 2
+offset_left = 176.0
+offset_top = 92.78
+offset_right = 190.0
+offset_bottom = 106.78
 
-[node name="InventorySlot27" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+[node name="InventorySlot28" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
 layout_mode = 2
+offset_left = 194.0
+offset_top = 92.78
+offset_right = 208.0
+offset_bottom = 106.78
 
-[node name="InventorySlot28" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+[node name="InventorySlot29" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
 layout_mode = 2
+offset_left = 212.0
+offset_top = 92.78
+offset_right = 226.0
+offset_bottom = 106.78
 
-[node name="InventorySlot29" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+[node name="InventorySlot30" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
 layout_mode = 2
+offset_left = 230.0
+offset_top = 92.78
+offset_right = 244.0
+offset_bottom = 106.78
 
-[node name="InventorySlot30" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+[node name="InventorySlot31" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
 layout_mode = 2
+offset_left = 158.0
+offset_top = 110.78
+offset_right = 172.0
+offset_bottom = 124.78
 
-[node name="InventorySlot31" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+[node name="InventorySlot32" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
 layout_mode = 2
+offset_left = 176.0
+offset_top = 110.78
+offset_right = 190.0
+offset_bottom = 124.78
 
-[node name="InventorySlot32" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+[node name="InventorySlot33" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
 layout_mode = 2
+offset_left = 194.0
+offset_top = 110.78
+offset_right = 208.0
+offset_bottom = 124.78
 
-[node name="InventorySlot33" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+[node name="InventorySlot34" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
 layout_mode = 2
+offset_left = 212.0
+offset_top = 110.78
+offset_right = 226.0
+offset_bottom = 124.78
 
-[node name="InventorySlot34" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+[node name="InventorySlot35" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
 layout_mode = 2
+offset_left = 230.0
+offset_top = 110.78
+offset_right = 244.0
+offset_bottom = 124.78
 
-[node name="InventorySlot35" parent="NinePatchRect/PanelContainer/SlotContainer" instance=ExtResource("4_ma2xq")]
+[node name="InventorySlot36" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
 layout_mode = 2
+offset_left = 3.0
+offset_top = 2.78
+offset_right = 17.0
+offset_bottom = 16.78
+
+[node name="InventorySlot37" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
+layout_mode = 2
+offset_left = 3.0
+offset_top = 20.78
+offset_right = 17.0
+offset_bottom = 34.78
+
+[node name="InventorySlot38" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
+layout_mode = 2
+offset_left = 3.0
+offset_top = 38.78
+offset_right = 17.0
+offset_bottom = 52.78
+
+[node name="InventorySlot39" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
+layout_mode = 2
+offset_left = 3.0
+offset_top = 56.78
+offset_right = 17.0
+offset_bottom = 70.78
+
+[node name="InventorySlot40" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
+layout_mode = 2
+offset_left = 3.0
+offset_top = 74.78
+offset_right = 17.0
+offset_bottom = 88.78
+
+[node name="InventorySlot41" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
+layout_mode = 2
+offset_left = 3.0
+offset_top = 92.78
+offset_right = 17.0
+offset_bottom = 106.78
+
+[node name="InventorySlot42" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
+layout_mode = 2
+offset_left = 3.0
+offset_top = 110.78
+offset_right = 17.0
+offset_bottom = 124.78
+
+[node name="InventorySlot43" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
+layout_mode = 2
+offset_left = 72.0
+offset_top = 2.78
+offset_right = 86.0
+offset_bottom = 16.78
+
+[node name="InventorySlot44" parent="NinePatchRect/Control" instance=ExtResource("4_ma2xq")]
+layout_mode = 2
+offset_left = 72.0
+offset_top = 20.78
+offset_right = 86.0
+offset_bottom = 34.78
 
 [connection signal="button_down" from="NinePatchRect/ExitButton" to="NinePatchRect" method="_on_button_button_down"]

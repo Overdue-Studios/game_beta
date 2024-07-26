@@ -14,12 +14,12 @@ func _process(delta):
 
 
 func _on_mouse_entered():
-	emit_signal("start_hover", extract_number_from_node_name(str(self)))
-	#print(extract_number_from_node_name(str(self)))
+	emit_signal("start_hover",self)
+	print(extract_number_from_node_name(str(self)))
 
 
 func _on_mouse_exited():
-	emit_signal("stop_hover", extract_number_from_node_name(str(self)))
+	emit_signal("stop_hover", self)
 
 
 func _on_pressed():

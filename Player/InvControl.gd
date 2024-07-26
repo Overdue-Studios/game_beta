@@ -1,6 +1,6 @@
-extends PanelContainer
+extends Control
 
-@onready var InvSlots = get_node("SlotContainer").get_children()
+@onready var InvSlots = get_children()
 @onready var ItemSlot = load("res://item.tscn")
 # Called when the node enters the scene tree for the first time.
 @onready var hovered_slot
@@ -11,19 +11,19 @@ extends PanelContainer
 @onready var item_storage
 @onready var drag_start_slot
 func _ready():
-	#print(InvSlots)
 	var player = get_tree().get_root().get_node("/root/map_root/Player")
 	GameManager.connect("player_initialised", Callable(self,"_on_player_initialised"))
 	
 	Inv = player.inventory.get_items()
+	print(InvSlots)
 	player.inventory.connect("inventory_changed", Callable(self, "_on_player_inventory_changed"))
 	for i in range(Inv.size()-1):
 		if Inv[i] != null:
 			var item = ItemSlot.instantiate()
 			item.texture = Inv[i].item_reference.texture
 			item.get_children()[0].text = str(Inv[i].quantity)
-			#InvSlots[i].z_index = 0  # Ensure slots are below items
-			#InvSlots[i].add_child(item)
+			InvSlots[i].z_index = 0  # Ensure slots are below items
+			InvSlots[i].add_child(item)
 	
 	connect_to_signal_in_tree("InvSlots" ,"start_hover", "_hover_start")
 	connect_to_signal_in_tree("InvSlots" ,"stop_hover", "_hover_stop")

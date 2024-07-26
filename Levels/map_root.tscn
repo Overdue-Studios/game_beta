@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://dmude8pij5ou3"]
+[gd_scene load_steps=24 format=3 uid="uid://dmude8pij5ou3"]
 
 [ext_resource type="Texture2D" uid="uid://bsnh8whuc1w6h" path="res://Assets/Texture/TX Tileset Grass.png" id="1_c4815"]
+[ext_resource type="Shader" path="res://Levels/map_root.gdshader" id="1_knfq7"]
 [ext_resource type="Texture2D" uid="uid://bhags3kmgqcon" path="res://Assets/Texture/TX Tileset Wall.png" id="2_pvkiv"]
 [ext_resource type="Texture2D" uid="uid://bhytcrguflrfu" path="res://Assets/MiniWorldSprites/Ground/Water+.png" id="3_lfio6"]
 [ext_resource type="Texture2D" uid="uid://bvjwxmwws0plr" path="res://Assets/MiniWorldSprites/Miscellaneous/Portal.png" id="4_87x1k"]
@@ -12,12 +13,17 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="6_xkpbe"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_dvhkl"]
 [ext_resource type="PackedScene" uid="uid://dtiteo58pkawc" path="res://Levels/primoz.tscn" id="8_nfi6c"]
+[ext_resource type="Script" path="res://Levels/DayNight.gd" id="14_s86km"]
+[ext_resource type="Texture2D" uid="uid://cke4soyv244p8" path="res://Player/daynightcycle.tres" id="15_lxnud"]
 
 [sub_resource type="Resource" id="Resource_auf8n"]
 script = ExtResource("7_dvhkl")
 duration = 1.0
 transition = 0
 ease = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xqjah"]
+shader = ExtResource("1_knfq7")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vyqtq"]
 texture = ExtResource("1_c4815")
@@ -2109,6 +2115,7 @@ scale = Vector2(0.4, 0.4)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 z_index = 1
+material = SubResource("ShaderMaterial_xqjah")
 position = Vector2(537, 602)
 zoom = Vector2(4, 4)
 
@@ -2136,6 +2143,14 @@ shape = SubResource("RectangleShape2D_802lp")
 
 [node name="npc1" parent="." instance=ExtResource("8_nfi6c")]
 position = Vector2(486, 485)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+position = Vector2(3.05176e-05, 6.10352e-05)
+scale = Vector2(1, 1)
+script = ExtResource("14_s86km")
+gradient = ExtResource("15_lxnud")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [connection signal="primary_action" from="Player" to="Player" method="_on_primary_action"]
 [connection signal="secondary_action" from="Player" to="Player" method="_on_secondary_action"]
