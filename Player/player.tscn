@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Player/Weapon.gd" id="4_57ycb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rv3or"]
-size = Vector2(12, 8)
+size = Vector2(12, 9)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bc1uf"]
 atlas = ExtResource("2_1i46s")
@@ -57,7 +57,7 @@ motion_mode = 1
 script = ExtResource("1_jmvu1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
+position = Vector2(0, -3.5)
 shape = SubResource("RectangleShape2D_rv3or")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 @export var speed = 70
+@export var jump_speed = 1800
+@export var gravity = 4000
 @export var hp : int
 @onready var world_clock = get_node("../PhantomCamera2D/UI/Label")
 @onready var world_clock_time = 0
@@ -19,19 +21,17 @@ func _ready():
 
 
 func _physics_process(_delta):
+	velocity.y += gravity * _delta
 	
-	if Input.is_action_pressed("ui_left") and GameManager.nomove == false:
-		velocity.x = -speed
-	if Input.is_action_pressed("ui_right") and GameManager.nomove == false:
-		velocity.x = speed
-	if Input.is_action_pressed("ui_up") and GameManager.nomove == false:
-		velocity.y = -speed
-	if Input.is_action_pressed("ui_down") and GameManager.nomove == false:
-		velocity.y = speed
+	if GameManager.nomove == false:
+		velocity.x = Input.get_axis("ui_left", "ui_right") * speed
+	else:
+		velocity.x = 0
 		
 	move_and_slide()
 	
-	velocity = Vector2.ZERO
+	if Input.is_action_just_pressed("ui_up") and GameManager.nomove == false and is_on_floor() == true:
+		velocity.y = -jump_speed
 	
 func _process(_delta):
 	if Input.is_action_pressed("primary_action"):

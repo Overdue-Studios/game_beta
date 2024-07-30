@@ -2,7 +2,7 @@ extends TextureRect
 
 signal start_hover
 signal stop_hover
-
+@export var test_var : String
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	add_to_group("InvSlots")
