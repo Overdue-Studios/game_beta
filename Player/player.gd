@@ -6,11 +6,15 @@ extends CharacterBody2D
 @export var hp : int
 @onready var world_clock = get_node("../PhantomCamera2D/UI/Label")
 @onready var world_clock_time = 0
+@onready var weapon_primary = get_node("Weapon") 
+@onready var animationplayer = get_node("Weapon/AnimationPlayer")
 signal primary_action
 signal secondary_action
+signal damage_dealt
 
 var inventory_resource = load("res://Player/inventory.gd")
 var inventory = inventory_resource.new()
+var weapon_damage = 1
 
 var tab_inventory = load("res://Player/TabInventory.tscn")
 var inventory_open = false
@@ -56,8 +60,17 @@ func _on_world_clock_timeout():
 
 
 func _on_primary_action():
-	pass
+	weapon_damage = 15
+	weapon_primary.look_at(get_global_mouse_position())
+	
+	if Input.is_action_pressed("primary_action"):
+		animationplayer.play("spear_attack")
 
 
 func _on_secondary_action():
-	pass
+	weapon_damage = 10
+
+
+func _on_weapon_hitbox_body_entered(body):
+	print("Hit something", body)
+	emit_signal("damage_dealt", body, weapon_damage)
