@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://dmude8pij5ou3"]
+[gd_scene load_steps=32 format=4 uid="uid://dmude8pij5ou3"]
 
 [ext_resource type="Texture2D" uid="uid://bsnh8whuc1w6h" path="res://Assets/Texture/TX Tileset Grass.png" id="1_c4815"]
 [ext_resource type="Shader" path="res://Levels/dreamworld.gdshader" id="1_knfq7"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://Levels/DayNight.gd" id="14_s86km"]
 [ext_resource type="Texture2D" uid="uid://cke4soyv244p8" path="res://Player/daynightcycle.tres" id="15_lxnud"]
 [ext_resource type="PackedScene" uid="uid://c455gilqpf84o" path="res://item_drop.tscn" id="16_hh4ov"]
+[ext_resource type="PackedScene" uid="uid://crewj4mxpwxtr" path="res://dragon.tscn" id="17_aud3f"]
 [ext_resource type="PackedScene" uid="uid://d2gvt3xabve8u" path="res://test_boss.tscn" id="17_nf76e"]
 [ext_resource type="Script" path="res://Levels/cameracontrol.gd" id="19_cddin"]
 
@@ -1162,6 +1163,10 @@ script = ExtResource("14_s86km")
 gradient = ExtResource("15_lxnud")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Dragon" parent="." instance=ExtResource("17_aud3f")]
+position = Vector2(21, 339)
+health = 100
 
 [node name="ItemDrop" parent="." instance=ExtResource("16_hh4ov")]
 position = Vector2(309, 341)
