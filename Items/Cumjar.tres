@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=2 format=3 uid="uid://bada0d1gk4lqn"]
+
+[ext_resource type="Script" path="res://Player/Inventory/Item.gd" id="1_k7lmp"]
+
+[resource]
+script = ExtResource("1_k7lmp")
+name = "Cumjar"
+id = 1
+stackable = false
+max_stack_size = 1
+type = 0
