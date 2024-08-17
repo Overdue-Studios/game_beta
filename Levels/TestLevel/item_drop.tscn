@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://c455gilqpf84o"]
 
 [ext_resource type="Texture2D" uid="uid://777mmwbjfurg" path="res://Assets/MiniWorldSprites/Objects/FireballProjectile.png" id="1_r7big"]
-[ext_resource type="Script" path="res://item_drop.gd" id="1_s2il1"]
+[ext_resource type="Script" path="res://Levels/TestLevel/item_drop.gd" id="1_s2il1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ucror"]
 atlas = ExtResource("1_r7big")

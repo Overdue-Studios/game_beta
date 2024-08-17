@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://c8vv6xcwiwcyt"]
 
 [ext_resource type="Texture2D" uid="uid://baqyl53hohpwr" path="res://icon.svg" id="1_gg5pf"]
-[ext_resource type="Script" path="res://Icon.gd" id="1_widdv"]
-[ext_resource type="Theme" uid="uid://bptyomrvxuk3o" path="res://Levels/theme.tres" id="3_6uij4"]
+[ext_resource type="Script" path="res://Player/Inventory/Icon.gd" id="1_widdv"]
+[ext_resource type="Theme" uid="uid://bptyomrvxuk3o" path="res://Assets/ShadersThemesFonts/theme.tres" id="3_6uij4"]
 [ext_resource type="FontFile" uid="uid://86n57y4xr6u1" path="res://Fonts/ComicNeue-Bold.ttf" id="4_y367r"]
 
 [node name="Icon" type="TextureRect"]

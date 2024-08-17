@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://br41ybdqhw1iu"]
 
 [ext_resource type="Texture2D" uid="uid://ctosjaxq346rq" path="res://Assets/MiniWorldSprites/UI assets pack 2/UI books & more.png" id="1_l7jo4"]
-[ext_resource type="Theme" uid="uid://bptyomrvxuk3o" path="res://Levels/theme.tres" id="2_i6p7q"]
+[ext_resource type="Theme" uid="uid://bptyomrvxuk3o" path="res://Assets/ShadersThemesFonts/theme.tres" id="2_i6p7q"]
 [ext_resource type="FontFile" uid="uid://86n57y4xr6u1" path="res://Fonts/ComicNeue-Bold.ttf" id="3_kr2ih"]
 
 [node name="Interact_Popup" type="Control"]

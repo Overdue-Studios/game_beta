@@ -16,7 +16,7 @@ func connect_to_signal_in_tree(tree: String, signal_name: String, method_name: S
 		if node.has_signal(signal_name):
 			node.connect(signal_name, Callable(self, method_name))
 
-func _took_damage(body, damage):
+func _took_damage(damage, body):
 	#print("Self: ", self.get_node("Dragon"))
 	#print("Body: ", body)
 	if self.get_node("Dragon") == body:

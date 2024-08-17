@@ -1,7 +1,7 @@
 extends Control
 
 @onready var InvSlots = get_children()
-@onready var ItemSlot = load("res://item.tscn")
+@onready var ItemSlot = load("res://Player/Inventory/item.tscn")
 # Called when the node enters the scene tree for the first time.
 @onready var hovered_slot
 @onready var hovered_slot_index

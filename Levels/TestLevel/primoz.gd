@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 @onready var player = get_node("/root/map_root/Player")
-@onready var dialogue = preload("res://Levels/dialogue.tscn")
-@onready var interact_popup = preload("res://Levels/interact_popup.tscn")
+@onready var dialogue = preload("res://NPCs/dialogue.tscn")
+@onready var interact_popup = preload("res://NPCs/interact_popup.tscn")
 @onready var instance
 @onready var interactable = false
 @onready var dialogue_window

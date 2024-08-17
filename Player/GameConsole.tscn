@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dql0vmiwur6sn"]
 
-[ext_resource type="Theme" uid="uid://bptyomrvxuk3o" path="res://Levels/theme.tres" id="1_3bb0f"]
-[ext_resource type="Script" path="res://GameConsole.gd" id="1_hk0my"]
+[ext_resource type="Theme" uid="uid://bptyomrvxuk3o" path="res://Assets/ShadersThemesFonts/theme.tres" id="1_3bb0f"]
+[ext_resource type="Script" path="res://Player/GameConsole.gd" id="1_hk0my"]
 
 [node name="Panel" type="Panel"]
 offset_right = 405.0

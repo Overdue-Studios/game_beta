@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://dcxothlhg0m1a"]
 
 [ext_resource type="Texture2D" uid="uid://ctosjaxq346rq" path="res://Assets/MiniWorldSprites/UI assets pack 2/UI books & more.png" id="1_lmkvr"]
-[ext_resource type="Script" path="res://Player/NinePatchRect.gd" id="2_sws4m"]
-[ext_resource type="Script" path="res://Player/InvControl.gd" id="3_3pov6"]
-[ext_resource type="PackedScene" uid="uid://dnpfehsjk3prt" path="res://inventory_slot.tscn" id="4_ma2xq"]
+[ext_resource type="Script" path="res://Player/Inventory/TabInventoryControl.gd" id="2_sws4m"]
+[ext_resource type="Script" path="res://Player/Inventory/InvSlotControl.gd" id="3_3pov6"]
+[ext_resource type="PackedScene" uid="uid://dnpfehsjk3prt" path="res://Player/Inventory/inventory_slot.tscn" id="4_ma2xq"]
 
 [node name="Control" type="Control"]
 process_mode = 3

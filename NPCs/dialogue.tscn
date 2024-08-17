@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://eclcfujv7mkw"]
 
 [ext_resource type="Texture2D" uid="uid://ctosjaxq346rq" path="res://Assets/MiniWorldSprites/UI assets pack 2/UI books & more.png" id="1_bl3m2"]
-[ext_resource type="Theme" uid="uid://bptyomrvxuk3o" path="res://Levels/theme.tres" id="2_jb8av"]
-[ext_resource type="Script" path="res://Levels/dialogue.gd" id="2_oxjcb"]
+[ext_resource type="Theme" uid="uid://bptyomrvxuk3o" path="res://Assets/ShadersThemesFonts/theme.tres" id="2_jb8av"]
+[ext_resource type="Script" path="res://NPCs/dialogue.gd" id="2_oxjcb"]
 [ext_resource type="FontFile" uid="uid://86n57y4xr6u1" path="res://Fonts/ComicNeue-Bold.ttf" id="4_hx1dh"]
 
 [node name="Dialogue" type="Control"]

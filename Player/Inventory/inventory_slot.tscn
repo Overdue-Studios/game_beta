@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dnpfehsjk3prt"]
 
-[ext_resource type="Script" path="res://inventory_slot.gd" id="1_rjda8"]
+[ext_resource type="Script" path="res://Player/Inventory/inventory_slot.gd" id="1_rjda8"]
 [ext_resource type="Texture2D" uid="uid://di12dtsf55hh8" path="res://Assets/pixil-frame-0.png" id="1_roala"]
 
 [node name="InventorySlot" type="TextureRect"]
