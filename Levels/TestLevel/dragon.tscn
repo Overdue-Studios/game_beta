@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://crewj4mxpwxtr"]
+[gd_scene load_steps=11 format=3 uid="uid://crewj4mxpwxtr"]
 
 [ext_resource type="Script" path="res://Levels/TestLevel/dragon.gd" id="1_cfj7f"]
 [ext_resource type="Texture2D" uid="uid://c0ke7jbfm8dle" path="res://Assets/MiniWorldSprites/Characters/Monsters/Dragons/RedDragon.png" id="1_pswmp"]
+[ext_resource type="Texture2D" uid="uid://d1kkwrpiw011v" path="res://Assets/MiniWorldSprites/Health Bar Asset Pack 2 by Adwit Rahman/04.png" id="3_5pr4y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_86to2"]
 atlas = ExtResource("1_pswmp")
@@ -30,6 +31,15 @@ size = Vector2(50, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bg66a"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_smarq"]
+atlas = ExtResource("3_5pr4y")
+region = Rect2(2.9074, 66.8872, 42.1963, 11.2012)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ilrg"]
+atlas = ExtResource("3_5pr4y")
+region = Rect2(54.8802, 66.8644, 34.1495, 11.351)
+margin = Rect2(4.22, 0, 4.91, 0)
+
 [node name="RedDragon" type="Node2D"]
 script = ExtResource("1_cfj7f")
 
@@ -49,6 +59,17 @@ shape = SubResource("RectangleShape2D_8eq04")
 
 [node name="BodyCollision2D" type="CollisionShape2D" parent="Dragon"]
 shape = SubResource("RectangleShape2D_bg66a")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_left = -12.0
+offset_top = -23.0
+offset_right = 30.0
+offset_bottom = -12.0
+scale = Vector2(0.565, 0.565)
+max_value = 200.0
+value = 200.0
+texture_under = SubResource("AtlasTexture_smarq")
+texture_progress = SubResource("AtlasTexture_6ilrg")
 
 [connection signal="body_entered" from="Dragon/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Dragon/Area2D" to="." method="_on_area_2d_body_exited"]

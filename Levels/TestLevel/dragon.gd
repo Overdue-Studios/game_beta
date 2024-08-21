@@ -1,8 +1,10 @@
 extends Node2D
 
 @export var health = 100
+@onready var hp_bar = $TextureProgressBar
 
 func _ready():
+	hp_bar.max_value = health
 	var weapon = get_parent().get_node("Player")
 	weapon.connect("damage_dealt", Callable(self, "_took_damage"))
 
@@ -22,7 +24,12 @@ func _took_damage(damage, body):
 	if self.get_node("Dragon") == body:
 		print("Took damage")
 		health -= damage
-		print(self, health)
+		hp_bar.value = health
+		$Dragon/AnimatedSprite2D.modulate = Color.RED
+		await get_tree().create_timer(0.1).timeout
+		$Dragon/AnimatedSprite2D.modulate = Color.WHITE
+		if hp_bar.value <= 0:
+			self.queue_free()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	print("Alert")
