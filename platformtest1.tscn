@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://diwwdbxwtmdvs"]
+
+[ext_resource type="Texture2D" uid="uid://bxwo688crtp2j" path="res://Assets/MiniWorldSprites/Buildings/platform_1.png" id="1_fjlj5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hkwar"]
+size = Vector2(97, 10)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2.5, -1)
+shape = SubResource("RectangleShape2D_hkwar")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-5, 17)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("1_fjlj5")

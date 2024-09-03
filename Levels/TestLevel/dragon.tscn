@@ -1,35 +1,94 @@
-[gd_scene load_steps=11 format=3 uid="uid://crewj4mxpwxtr"]
+[gd_scene load_steps=22 format=3 uid="uid://crewj4mxpwxtr"]
 
 [ext_resource type="Script" path="res://Levels/TestLevel/dragon.gd" id="1_cfj7f"]
-[ext_resource type="Texture2D" uid="uid://c0ke7jbfm8dle" path="res://Assets/MiniWorldSprites/Characters/Monsters/Dragons/RedDragon.png" id="1_pswmp"]
+[ext_resource type="Texture2D" uid="uid://dd37da421pdu0" path="res://Assets/Baumi_custom/ballguy.png" id="2_ebb1b"]
 [ext_resource type="Texture2D" uid="uid://d1kkwrpiw011v" path="res://Assets/MiniWorldSprites/Health Bar Asset Pack 2 by Adwit Rahman/04.png" id="3_5pr4y"]
+[ext_resource type="Texture2D" uid="uid://ijav0s07o3re" path="res://Assets/Baumi_custom/ballguy3.png" id="4_ysbi2"]
+[ext_resource type="Texture2D" uid="uid://cxddie26uhf4y" path="res://Assets/Baumi_custom/ballguy3_n.png" id="5_ww685"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_86to2"]
-atlas = ExtResource("1_pswmp")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_eh1a2"]
+atlas = ExtResource("2_ebb1b")
+region = Rect2(0, 0, 2048, 2048)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_e1fjv"]
-atlas = ExtResource("1_pswmp")
-region = Rect2(32, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_1l5ji"]
+atlas = ExtResource("2_ebb1b")
+region = Rect2(2048, 0, 2048, 2048)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_io5x3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bt0r8"]
+atlas = ExtResource("2_ebb1b")
+region = Rect2(4096, 0, 2048, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xlo37"]
+atlas = ExtResource("2_ebb1b")
+region = Rect2(6144, 0, 2048, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4jbn"]
+atlas = ExtResource("2_ebb1b")
+region = Rect2(0, 2048, 2048, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3bf2f"]
+atlas = ExtResource("2_ebb1b")
+region = Rect2(2048, 2048, 2048, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2kl5c"]
+atlas = ExtResource("2_ebb1b")
+region = Rect2(4096, 2048, 2048, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5nsx3"]
+atlas = ExtResource("2_ebb1b")
+region = Rect2(6144, 2048, 2048, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwnye"]
+atlas = ExtResource("2_ebb1b")
+region = Rect2(0, 4096, 2048, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jdst"]
+atlas = ExtResource("2_ebb1b")
+region = Rect2(2048, 4096, 2048, 2048)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dx3mg"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_86to2")
+"texture": SubResource("AtlasTexture_eh1a2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_e1fjv")
+"texture": SubResource("AtlasTexture_1l5ji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bt0r8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xlo37")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4jbn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3bf2f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2kl5c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5nsx3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwnye")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jdst")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8eq04"]
 size = Vector2(50, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bg66a"]
+size = Vector2(28, 21)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_smarq"]
 atlas = ExtResource("3_5pr4y")
@@ -40,13 +99,21 @@ atlas = ExtResource("3_5pr4y")
 region = Rect2(54.8802, 66.8644, 34.1495, 11.351)
 margin = Rect2(4.22, 0, 4.91, 0)
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_6o1e7"]
+diffuse_texture = ExtResource("4_ysbi2")
+normal_texture = ExtResource("5_ww685")
+
 [node name="RedDragon" type="Node2D"]
+scale = Vector2(2.2, 2.2)
 script = ExtResource("1_cfj7f")
 
 [node name="Dragon" type="CharacterBody2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Dragon"]
-sprite_frames = SubResource("SpriteFrames_io5x3")
+visible = false
+scale = Vector2(0.026, 0.026)
+sprite_frames = SubResource("SpriteFrames_dx3mg")
+frame_progress = 0.512925
 
 [node name="Area2D" type="Area2D" parent="Dragon"]
 position = Vector2(0, 2)
@@ -58,6 +125,7 @@ position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_8eq04")
 
 [node name="BodyCollision2D" type="CollisionShape2D" parent="Dragon"]
+position = Vector2(0, -3.5)
 shape = SubResource("RectangleShape2D_bg66a")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
@@ -70,6 +138,13 @@ max_value = 200.0
 value = 200.0
 texture_under = SubResource("AtlasTexture_smarq")
 texture_progress = SubResource("AtlasTexture_6ilrg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.085, 0.085)
+texture = SubResource("CanvasTexture_6o1e7")
+hframes = 4
+vframes = 3
+frame = 1
 
 [connection signal="body_entered" from="Dragon/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Dragon/Area2D" to="." method="_on_area_2d_body_exited"]

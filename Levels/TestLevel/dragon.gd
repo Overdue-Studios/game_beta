@@ -2,11 +2,12 @@ extends Node2D
 
 @export var health = 100
 @onready var hp_bar = $TextureProgressBar
-
+@onready var animation_player = get_node("Dragon/AnimatedSprite2D")
 func _ready():
 	hp_bar.max_value = health
 	var weapon = get_parent().get_node("Player")
 	weapon.connect("damage_dealt", Callable(self, "_took_damage"))
+	animation_player.play("default")
 
 func _process(delta):
 	pass

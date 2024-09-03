@@ -121,13 +121,13 @@ region = Rect2(408, 0, 136, 96)
 atlas = ExtResource("4_o4jfb")
 region = Rect2(544, 0, 136, 96)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7e6mw"]
-atlas = ExtResource("4_o4jfb")
-region = Rect2(816, 0, 136, 96)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_au1x8"]
 atlas = ExtResource("4_o4jfb")
 region = Rect2(680, 0, 136, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7e6mw"]
+atlas = ExtResource("4_o4jfb")
+region = Rect2(816, 0, 136, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cd3be"]
 atlas = ExtResource("4_o4jfb")
@@ -203,7 +203,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pd4ud")
 }],
-"loop": false,
+"loop": true,
 "name": &"primary_attack",
 "speed": 12.0
 }, {
@@ -253,10 +253,10 @@ animations = [{
 "texture": SubResource("AtlasTexture_lcgai")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7e6mw")
+"texture": SubResource("AtlasTexture_au1x8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_au1x8")
+"texture": SubResource("AtlasTexture_7e6mw")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cd3be")
@@ -291,7 +291,8 @@ shape = SubResource("RectangleShape2D_rv3or")
 position = Vector2(5.96046e-08, -5.5625)
 scale = Vector2(0.308824, 0.300781)
 sprite_frames = SubResource("SpriteFrames_lvf4y")
-animation = &"fall"
+animation = &"jump"
+frame = 3
 
 [node name="PrimaryAttack" type="Area2D" parent="."]
 monitoring = false

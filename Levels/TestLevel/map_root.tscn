@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://dmude8pij5ou3"]
+[gd_scene load_steps=32 format=4 uid="uid://dmude8pij5ou3"]
 
 [ext_resource type="Texture2D" uid="uid://bsnh8whuc1w6h" path="res://Assets/Texture/TX Tileset Grass.png" id="1_c4815"]
 [ext_resource type="Shader" path="res://Assets/ShadersThemesFonts/dreamworld.gdshader" id="1_knfq7"]
@@ -16,6 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://cke4soyv244p8" path="res://Levels/TestLevel/daynightcycle.tres" id="15_lxnud"]
 [ext_resource type="PackedScene" uid="uid://c455gilqpf84o" path="res://Levels/TestLevel/item_drop.tscn" id="16_hh4ov"]
 [ext_resource type="PackedScene" uid="uid://crewj4mxpwxtr" path="res://Levels/TestLevel/dragon.tscn" id="17_aud3f"]
+[ext_resource type="PackedScene" uid="uid://diwwdbxwtmdvs" path="res://platformtest1.tscn" id="18_qxi70"]
+[ext_resource type="Texture2D" uid="uid://be370dy3eejgy" path="res://Assets/Baumi_custom/light.png" id="19_6j2ki"]
 [ext_resource type="Script" path="res://Levels/TestLevel/cameracontrol.gd" id="19_cddin"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xqjah"]
@@ -23,11 +25,10 @@ shader = ExtResource("1_knfq7")
 shader_parameter/corrupt_strength = 0.5
 shader_parameter/darken_amount = 0.5
 
-[sub_resource type="Environment" id="Environment_2gd5b"]
-background_mode = 3
-glow_blend_mode = 1
-adjustment_enabled = true
-adjustment_contrast = 1.5
+[sub_resource type="Environment" id="Environment_6x7x4"]
+background_mode = 1
+ambient_light_source = 1
+reflected_light_source = 1
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vyqtq"]
 texture = ExtResource("1_c4815")
@@ -1079,7 +1080,7 @@ size = Vector2(2, 16)
 [node name="map_root" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-physics_interpolation_mode = 2
+physics_interpolation_mode = 1
 z_index = 1
 material = SubResource("ShaderMaterial_xqjah")
 position = Vector2(260, 311)
@@ -1089,7 +1090,7 @@ zoom = Vector2(4, 4)
 script = ExtResource("6_xkpbe")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_2gd5b")
+environment = SubResource("Environment_6x7x4")
 
 [node name="background" type="TileMapLayer" parent="."]
 use_parent_material = true
@@ -1148,17 +1149,22 @@ speed = 120
 jump_speed = 300
 gravity = 1200
 
+[node name="PointLight2D" type="PointLight2D" parent="Player"]
+position = Vector2(2, -7)
+texture = ExtResource("19_6j2ki")
+
 [node name="primoz" parent="." instance=ExtResource("8_nfi6c")]
 position = Vector2(354, 348)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 position = Vector2(3.05176e-05, 6.10352e-05)
+color = Color(0.20871, 0.20871, 0.20871, 1)
 script = ExtResource("14_s86km")
 gradient = ExtResource("15_lxnud")
 
 [node name="Dragon" parent="." instance=ExtResource("17_aud3f")]
-position = Vector2(727, 340)
+position = Vector2(720, 334)
+scale = Vector2(1, 1)
 
 [node name="ItemDrop" parent="." instance=ExtResource("16_hh4ov")]
 position = Vector2(267, 247)
@@ -1177,6 +1183,10 @@ script = ExtResource("19_cddin")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="door_right"]
 shape = SubResource("RectangleShape2D_at2fs")
+
+[node name="Node2D" parent="." instance=ExtResource("18_qxi70")]
+position = Vector2(353, 331)
+scale = Vector2(0.52, 0.559995)
 
 [connection signal="primary_action" from="Player" to="Player" method="_on_primary_action"]
 [connection signal="secondary_action" from="Player" to="Player" method="_on_secondary_action"]
