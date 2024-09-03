@@ -35,8 +35,13 @@ func _took_damage(damage, body):
 		if hp_bar.value <= 0:
 			self.queue_free()
 
+func _throw_fireball():
+	var player_position = get_parent().get_node("Player").global_position
+	print(player_position)
+
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	print("Alert")
+	_throw_fireball()
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
