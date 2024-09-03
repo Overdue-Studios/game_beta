@@ -3,6 +3,9 @@ extends Node2D
 @export var health = 100
 @onready var hp_bar = $TextureProgressBar
 @onready var animation_player = get_node("Dragon/AnimatedSprite2D")
+
+enum states { IDLE, ATTACK_MELEE, ATTACK_RANGED }
+
 func _ready():
 	hp_bar.max_value = health
 	var weapon = get_parent().get_node("Player")

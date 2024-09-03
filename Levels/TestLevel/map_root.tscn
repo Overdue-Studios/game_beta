@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cke4soyv244p8" path="res://Levels/TestLevel/daynightcycle.tres" id="15_lxnud"]
 [ext_resource type="PackedScene" uid="uid://c455gilqpf84o" path="res://Levels/TestLevel/item_drop.tscn" id="16_hh4ov"]
 [ext_resource type="PackedScene" uid="uid://crewj4mxpwxtr" path="res://Levels/TestLevel/dragon.tscn" id="17_aud3f"]
-[ext_resource type="PackedScene" uid="uid://diwwdbxwtmdvs" path="res://platformtest1.tscn" id="18_qxi70"]
+[ext_resource type="PackedScene" uid="uid://diwwdbxwtmdvs" path="res://Levels/TestLevel/platformtest1.tscn" id="18_qxi70"]
 [ext_resource type="Texture2D" uid="uid://be370dy3eejgy" path="res://Assets/Baumi_custom/light.png" id="19_6j2ki"]
 [ext_resource type="Script" path="res://Levels/TestLevel/cameracontrol.gd" id="19_cddin"]
 
@@ -1080,7 +1080,7 @@ size = Vector2(2, 16)
 [node name="map_root" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-physics_interpolation_mode = 1
+physics_interpolation_mode = 2
 z_index = 1
 material = SubResource("ShaderMaterial_xqjah")
 position = Vector2(260, 311)
@@ -1139,6 +1139,12 @@ offset_right = 407.0
 offset_bottom = 164.0
 scale = Vector2(0.4, 0.4)
 
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(466, 130)
+energy = 0.71
+texture = ExtResource("19_6j2ki")
+texture_scale = 50.0
+
 [node name="Player" parent="." instance=ExtResource("4_jt5aw")]
 position = Vector2(260, 351)
 collision_layer = 4
@@ -1148,10 +1154,6 @@ slide_on_ceiling = false
 speed = 120
 jump_speed = 300
 gravity = 1200
-
-[node name="PointLight2D" type="PointLight2D" parent="Player"]
-position = Vector2(2, -7)
-texture = ExtResource("19_6j2ki")
 
 [node name="primoz" parent="." instance=ExtResource("8_nfi6c")]
 position = Vector2(354, 348)
@@ -1185,7 +1187,7 @@ script = ExtResource("19_cddin")
 shape = SubResource("RectangleShape2D_at2fs")
 
 [node name="Node2D" parent="." instance=ExtResource("18_qxi70")]
-position = Vector2(353, 331)
+position = Vector2(355, 330)
 scale = Vector2(0.52, 0.559995)
 
 [connection signal="primary_action" from="Player" to="Player" method="_on_primary_action"]

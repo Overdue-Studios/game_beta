@@ -23,11 +23,9 @@ var tab_inventory = load("res://Player/Inventory/TabInventory.tscn")
 var inventory_open = false
 
 func _ready():
-	pass
-
-
-
-
+	primary_hitbox.position.x = 13.5
+	secondary_hitbox.position.x = 10.5
+	
 func _physics_process(_delta):
 	velocity.y += gravity * _delta
 	if GameManager.nomove == false:
@@ -45,8 +43,12 @@ func _physics_process(_delta):
 			State.RUNNING:
 				if velocity.x > 0:
 					animation_player.flip_h = false
+					primary_hitbox.position.x = 13.5
+					secondary_hitbox.position.x = 10.5
 				elif velocity.x < 0:
 					animation_player.flip_h = true
+					primary_hitbox.position.x = -13.5
+					secondary_hitbox.position.x = -10.5
 				if velocity.x == 0:
 					transition_to(State.IDLE)
 				if !is_on_floor():
@@ -58,8 +60,12 @@ func _physics_process(_delta):
 			State.JUMPING:
 				if velocity.x > 0:
 					animation_player.flip_h = false
+					primary_hitbox.position.x = 13.5
+					secondary_hitbox.position.x = 10.5
 				elif velocity.x < 0:
 					animation_player.flip_h = true
+					primary_hitbox.position.x = -13.5
+					secondary_hitbox.position.x = -10.5
 				if is_on_floor():
 					transition_to(State.IDLE)
 				elif Input.is_action_just_pressed("primary_action"):
@@ -69,8 +75,12 @@ func _physics_process(_delta):
 			State.FALLING:
 				if velocity.x > 0:
 					animation_player.flip_h = false
+					primary_hitbox.position.x = 13.5
+					secondary_hitbox.position.x = 10.5
 				elif velocity.x < 0:
 					animation_player.flip_h = true
+					primary_hitbox.position.x = -13.5
+					secondary_hitbox.position.x = -10.5
 				if is_on_floor():
 					transition_to(State.IDLE)
 				elif Input.is_action_just_pressed("primary_action"):
