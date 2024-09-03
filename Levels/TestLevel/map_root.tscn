@@ -1165,8 +1165,7 @@ script = ExtResource("14_s86km")
 gradient = ExtResource("15_lxnud")
 
 [node name="Dragon" parent="." instance=ExtResource("17_aud3f")]
-position = Vector2(720, 334)
-scale = Vector2(1, 1)
+position = Vector2(723, 315)
 
 [node name="ItemDrop" parent="." instance=ExtResource("16_hh4ov")]
 position = Vector2(267, 247)

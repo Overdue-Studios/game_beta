@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://crewj4mxpwxtr"]
 
-[ext_resource type="Script" path="res://Levels/TestLevel/dragon.gd" id="1_cfj7f"]
+[ext_resource type="Script" path="res://Levels/TestLevel/testboss.gd" id="1_3dxp0"]
 [ext_resource type="Texture2D" uid="uid://dd37da421pdu0" path="res://Assets/Baumi_custom/ballguy.png" id="2_ebb1b"]
 [ext_resource type="Texture2D" uid="uid://d1kkwrpiw011v" path="res://Assets/MiniWorldSprites/Health Bar Asset Pack 2 by Adwit Rahman/04.png" id="3_5pr4y"]
 [ext_resource type="Texture2D" uid="uid://ijav0s07o3re" path="res://Assets/Baumi_custom/ballguy3.png" id="4_ysbi2"]
@@ -103,36 +103,33 @@ margin = Rect2(4.22, 0, 4.91, 0)
 diffuse_texture = ExtResource("4_ysbi2")
 normal_texture = ExtResource("5_ww685")
 
-[node name="RedDragon" type="Node2D"]
-scale = Vector2(2.2, 2.2)
-script = ExtResource("1_cfj7f")
+[node name="TestBoss" type="CharacterBody2D"]
+script = ExtResource("1_3dxp0")
 
-[node name="Dragon" type="CharacterBody2D" parent="."]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Dragon"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
-scale = Vector2(0.026, 0.026)
+scale = Vector2(0.015, 0.015)
 sprite_frames = SubResource("SpriteFrames_dx3mg")
 frame_progress = 0.512925
 
-[node name="Area2D" type="Area2D" parent="Dragon"]
+[node name="Area2D" type="Area2D" parent="."]
 position = Vector2(0, 2)
 collision_layer = 5
 collision_mask = 5
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Dragon/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_8eq04")
 
-[node name="BodyCollision2D" type="CollisionShape2D" parent="Dragon"]
+[node name="BodyCollision2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3.5)
 shape = SubResource("RectangleShape2D_bg66a")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
-offset_left = -12.0
-offset_top = -23.0
-offset_right = 30.0
-offset_bottom = -12.0
+offset_left = -26.4
+offset_top = -50.6
+offset_right = 15.6
+offset_bottom = -39.6
 scale = Vector2(0.565, 0.565)
 max_value = 200.0
 value = 200.0
@@ -140,11 +137,12 @@ texture_under = SubResource("AtlasTexture_smarq")
 texture_progress = SubResource("AtlasTexture_6ilrg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.085, 0.085)
+scale = Vector2(0.187, 0.187)
 texture = SubResource("CanvasTexture_6o1e7")
 hframes = 4
 vframes = 3
 frame = 1
 
-[connection signal="body_entered" from="Dragon/Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Dragon/Area2D" to="." method="_on_area_2d_body_exited"]
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(-5, 0)
+collision_mask = 5
