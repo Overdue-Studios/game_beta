@@ -6,20 +6,22 @@ extends CharacterBody2D
 @onready var nametxt = get_parent().get_node("BossCam/Label")
 @onready var animation_player = $AnimatedSprite2D
 @onready var ray = $RayCast2D
+@onready var camera = %Camera2D
 @onready var state = State.IDLE
 @onready var player = get_parent().get_node("Player")
+@onready var stagger_count = 0
 
-enum State { IDLE, ATTACK_MELEE, AGGRO, HIT, DEATH }
+enum State { IDLE, ATTACK_MELEE, AGGRO, HIT, DEATH, FLEE }
 
 func _ready():#
 	animation_player.play("idle")
 	hp_bar.max_value = health
 	hp_bar.value = health
 	player.connect("damage_dealt", Callable(self, "_took_damage"))
-	animation_player.play("default")
 
 func _physics_process(_delta):
 	velocity.y += gravity * _delta
+		
 	if Engine.get_frames_drawn() % 1 == 0:
 		ray.target_position = get_parent().get_node("Player").global_position - self.global_position
 		
@@ -44,6 +46,9 @@ func _physics_process(_delta):
 					transition_to(State.ATTACK_MELEE)
 					
 			State.ATTACK_MELEE:
+				if animation_player.frame == 9:
+					GameManager.hit_stop(0.18)
+					camera.shake(1, 0.1)
 				if animation_player.frame == 14:
 					transition_to(State.AGGRO)
 			State.DEATH:
@@ -54,13 +59,23 @@ func _physics_process(_delta):
 			State.HIT:
 				if animation_player.frame == 4:
 					transition_to(State.AGGRO)
+			State.FLEE:
+				if ray.get_collider() == get_parent().get_node("Player") and ray.target_position.length() < 60:
+					if self.global_position.direction_to(get_parent().get_node("Player").global_position).x < 0:
+						velocity.x = speed *3
+						animation_player.flip_h = false
+					else: 
+						velocity.x = -speed *3
+						animation_player.flip_h = true
+				if animation_player.frame == 11:
+					stagger_count = 0
+					transition_to(State.AGGRO)
 					
 	move_and_slide()
 	if is_on_floor():
 		velocity = Vector2(0,0)
 				
 func connect_to_signal_in_tree(tree: String, signal_name: String, method_name: String):
-	print("Connected")
 	var nodes = get_tree().get_nodes_in_group(tree)
 	for node in nodes:
 		if node.has_signal(signal_name):
@@ -68,9 +83,13 @@ func connect_to_signal_in_tree(tree: String, signal_name: String, method_name: S
 
 func _took_damage(damage, body):
 	if self == body and state != State.DEATH:
-		transition_to(State.HIT)
-		health -= damage
-		hp_bar.value = health
+		if stagger_count < 2:
+			stagger_count += 1
+			health -= damage
+			hp_bar.value = health
+			transition_to(State.HIT)
+		else:
+			transition_to(State.FLEE)
 		
 		if hp_bar.value <= 0:
 			transition_to(State.DEATH)
@@ -88,3 +107,5 @@ func transition_to(new_state):
 			animation_player.play("death")
 		State.HIT:
 			animation_player.play("hit")
+		State.FLEE:
+			animation_player.play("flee")

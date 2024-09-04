@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://crewj4mxpwxtr"]
+[gd_scene load_steps=77 format=3 uid="uid://crewj4mxpwxtr"]
 
 [ext_resource type="Script" path="res://Levels/TestLevel/testboss.gd" id="1_3dxp0"]
 [ext_resource type="Texture2D" uid="uid://bb4b7jp50fw2d" path="res://Assets/Baumi_custom/demon_slime_FREE_v1.0_288x160_spritesheet.png" id="2_claq5"]
@@ -150,6 +150,54 @@ region = Rect2(5760, 640, 288, 160)
 [sub_resource type="AtlasTexture" id="AtlasTexture_lsv37"]
 atlas = ExtResource("2_claq5")
 region = Rect2(6048, 640, 288, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddisf"]
+atlas = ExtResource("2_claq5")
+region = Rect2(3168, 160, 288, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0gb8p"]
+atlas = ExtResource("2_claq5")
+region = Rect2(2880, 160, 288, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oh8l5"]
+atlas = ExtResource("2_claq5")
+region = Rect2(2592, 160, 288, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vdytb"]
+atlas = ExtResource("2_claq5")
+region = Rect2(2304, 160, 288, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_flk0e"]
+atlas = ExtResource("2_claq5")
+region = Rect2(2016, 160, 288, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_33kem"]
+atlas = ExtResource("2_claq5")
+region = Rect2(1728, 160, 288, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sj6bu"]
+atlas = ExtResource("2_claq5")
+region = Rect2(1440, 160, 288, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0w7hn"]
+atlas = ExtResource("2_claq5")
+region = Rect2(1152, 160, 288, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2t2ws"]
+atlas = ExtResource("2_claq5")
+region = Rect2(864, 160, 288, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1lk8p"]
+atlas = ExtResource("2_claq5")
+region = Rect2(576, 160, 288, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yomjx"]
+atlas = ExtResource("2_claq5")
+region = Rect2(288, 160, 288, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bitkg"]
+atlas = ExtResource("2_claq5")
+region = Rect2(0, 160, 288, 160)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lbwbv"]
 atlas = ExtResource("2_claq5")
@@ -368,6 +416,47 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ddisf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0gb8p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oh8l5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vdytb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_flk0e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_33kem")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sj6bu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0w7hn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2t2ws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1lk8p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yomjx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bitkg")
+}],
+"loop": true,
+"name": &"flee",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_lbwbv")
 }, {
 "duration": 1.0,
@@ -465,8 +554,9 @@ speed = 60
 position = Vector2(-2, -26)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_dx3mg")
-animation = &"walk"
-frame_progress = 0.453488
+animation = &"flee"
+frame = 7
+frame_progress = 0.57202
 
 [node name="BodyCollision2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 0)

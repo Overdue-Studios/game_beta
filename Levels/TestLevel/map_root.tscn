@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://dmude8pij5ou3"]
+[gd_scene load_steps=44 format=4 uid="uid://dmude8pij5ou3"]
 
 [ext_resource type="Texture2D" uid="uid://bsnh8whuc1w6h" path="res://Assets/Texture/TX Tileset Grass.png" id="1_c4815"]
 [ext_resource type="Shader" path="res://Assets/ShadersThemesFonts/dreamworld.gdshader" id="1_knfq7"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="6_ljt7u"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="6_xkpbe"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_dvhkl"]
+[ext_resource type="Script" path="res://Levels/TestLevel/camera_2d.gd" id="8_8u0k2"]
 [ext_resource type="PackedScene" uid="uid://dtiteo58pkawc" path="res://Levels/TestLevel/primoz.tscn" id="8_nfi6c"]
 [ext_resource type="Texture2D" uid="uid://d1kkwrpiw011v" path="res://Assets/MiniWorldSprites/Health Bar Asset Pack 2 by Adwit Rahman/04.png" id="10_3wrah"]
 [ext_resource type="Texture2D" uid="uid://c2a6rcjg74d36" path="res://Assets/Texture/TX Struct.png" id="11_6tmit"]
@@ -37,7 +38,11 @@ shader_parameter/darken_amount = 0.5
 [sub_resource type="Environment" id="Environment_6x7x4"]
 background_mode = 1
 ambient_light_source = 1
+ambient_light_sky_contribution = 0.0
+ambient_light_energy = 10.61
 reflected_light_source = 1
+glow_normalized = true
+glow_intensity = 8.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vyqtq"]
 texture = ExtResource("1_c4815")
@@ -1138,11 +1143,13 @@ position = Vector2(283, 294)
 texture = ExtResource("3_6is6o")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-physics_interpolation_mode = 1
+unique_name_in_owner = true
+physics_interpolation_mode = 2
 z_index = 1
 material = SubResource("ShaderMaterial_xqjah")
 position = Vector2(438, 309)
 zoom = Vector2(5, 5)
+script = ExtResource("8_8u0k2")
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 script = ExtResource("6_xkpbe")
@@ -1156,12 +1163,14 @@ tile_map_data = PackedByteArray("AAD9/xYAAQACAAwAAAD9/xcAAQACAA0AAAD9/xgAAQACAA4
 tile_set = SubResource("TileSet_c8fid")
 
 [node name="BossCam" type="Node2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(624, 284)
 script = ExtResource("6_ljt7u")
 priority = 1
 follow_mode = 1
 zoom = Vector2(5, 5)
 tween_resource = SubResource("Resource_q4vc0")
+draw_limits = true
 
 [node name="BossHP" type="TextureProgressBar" parent="BossCam"]
 visible = false
@@ -1197,6 +1206,7 @@ zoom = Vector2(5, 5)
 tween_resource = SubResource("Resource_auf8n")
 follow_offset = Vector2(0, -40)
 follow_damping = true
+draw_limits = true
 
 [node name="UI" type="Control" parent="PhantomCamera2D"]
 layout_mode = 3
@@ -1216,8 +1226,7 @@ offset_bottom = 164.0
 scale = Vector2(0.4, 0.4)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(508, 142)
-energy = 0.71
+position = Vector2(435, 29)
 texture = ExtResource("19_6j2ki")
 texture_scale = 50.0
 

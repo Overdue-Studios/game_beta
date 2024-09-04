@@ -88,12 +88,14 @@ func _physics_process(_delta):
 				elif Input.is_action_just_pressed("secondary_action"):
 					transition_to(State.ATTACKING_2)
 			State.ATTACKING_1:
-				primary_hitbox.monitoring = true
+				if animation_player.frame == 2:
+					primary_hitbox.monitoring = true
 				if animation_player.frame == 4:
 					primary_hitbox.monitoring = false
 					transition_to(State.IDLE)
 			State.ATTACKING_2:
-				secondary_hitbox.monitoring = true
+				if animation_player.frame == 2:
+					secondary_hitbox.monitoring = true
 				if animation_player.frame == 8:
 					secondary_hitbox.monitoring = false
 					transition_to(State.IDLE)
@@ -137,8 +139,10 @@ func transition_to(new_state):
 
 func _on_primary_attack_body_entered(body: Node2D) -> void:
 	if body != self:
+		GameManager.hit_stop(0.12)
 		print("hit with primary:", body)
 		emit_signal("damage_dealt", 15, body)
+		
 
 
 func _on_secondary_attack_body_entered(body: Node2D) -> void:
