@@ -9,9 +9,10 @@ extends CharacterBody2D
 @onready var camera = %Camera2D
 @onready var state = State.IDLE
 @onready var player = get_parent().get_node("Player")
+@onready var fireball = preload("res://Levels/TestLevel/fireball.tscn")
 @onready var stagger_count = 0
 
-enum State { IDLE, ATTACK_MELEE, AGGRO, HIT, DEATH, FLEE }
+enum State { IDLE, ATTACK_MELEE, ATTACK_RANGED, AGGRO, HIT, DEATH, FLEE }
 
 func _ready():#
 	animation_player.play("idle")
@@ -35,7 +36,9 @@ func _physics_process(_delta):
 				nametxt.visible = true
 				print("AGGRO")
 				print(ray.target_position.length())
-				if ray.get_collider() == get_parent().get_node("Player") and ray.target_position.length() > 50:
+				if ray.get_collider() == get_parent().get_node("Player") and ray.target_position.length() > 100:
+					transition_to(State.ATTACK_RANGED)
+				elif ray.get_collider() == get_parent().get_node("Player") and ray.target_position.length() > 50:
 					if self.global_position.direction_to(get_parent().get_node("Player").global_position).x < 0:
 						velocity.x = -speed
 						animation_player.flip_h = false
@@ -44,7 +47,11 @@ func _physics_process(_delta):
 						animation_player.flip_h = true
 				else:
 					transition_to(State.ATTACK_MELEE)
-					
+			State.ATTACK_RANGED:
+				if not get_parent().get_node("Fireball"):
+					_cast_fireball()
+				#await get_tree().create_timer(2).timeout
+				transition_to(State.AGGRO)		
 			State.ATTACK_MELEE:
 				if animation_player.frame == 9:
 					GameManager.hit_stop(0.18)
@@ -87,13 +94,22 @@ func _took_damage(damage, body):
 			stagger_count += 1
 			health -= damage
 			hp_bar.value = health
-			transition_to(State.HIT)
+			if state != State.ATTACK_RANGED:
+				transition_to(State.HIT)
 		else:
 			transition_to(State.FLEE)
 		
 		if hp_bar.value <= 0:
 			transition_to(State.DEATH)
 			
+func _cast_fireball():
+	var fireball_position = self.global_position
+	fireball_position.y -= 25
+	var fire_b = fireball.instantiate()
+	get_parent().add_child(fire_b)
+	fire_b.global_position = fireball_position
+	fire_b._init_node(player)
+
 func transition_to(new_state):
 	state = new_state
 	match new_state:

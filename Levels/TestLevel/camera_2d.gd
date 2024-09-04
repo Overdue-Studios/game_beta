@@ -10,7 +10,6 @@ var shake_amt : Vector2 = Vector2.ZERO
 
 func _process(delta: float) -> void:
 	if shaking and Engine.get_frames_drawn() < (start_frame + time*60):
-		print("shaking")
 		shake_amt = Vector2(randf_range(-1, 1), randf_range(-1,1)) * magnitude
 		bosscam.global_position += shake_amt
 	else:
@@ -22,5 +21,4 @@ func shake(shake_magnitude : float, shake_time : float):
 	start_frame = Engine.get_frames_drawn()
 	magnitude = shake_magnitude
 	time = shake_time
-	print(start_frame)
 	
