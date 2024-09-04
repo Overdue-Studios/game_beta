@@ -1,26 +1,27 @@
 extends CharacterBody2D
-
+@export var gravity = 2500
 @export var health = 100
 @export var speed = 50
-@onready var hp_bar = $TextureProgressBar
-@onready var animation_player = get_node("AnimatedSprite2D")
+@onready var hp_bar = get_parent().get_node("BossCam/BossHP")
+@onready var nametxt = get_parent().get_node("BossCam/Label")
+@onready var animation_player = $AnimatedSprite2D
 @onready var ray = $RayCast2D
 @onready var state = State.IDLE
+@onready var player = get_parent().get_node("Player")
 
-enum State { IDLE, ATTACK_MELEE, ATTACK_RANGED, AOE_STOMP, AGGRO }
+enum State { IDLE, ATTACK_MELEE, AGGRO, HIT, DEATH }
 
-func _ready():
+func _ready():#
+	animation_player.play("idle")
 	hp_bar.max_value = health
-	var weapon = get_parent().get_node("Player")
-	weapon.connect("damage_dealt", Callable(self, "_took_damage"))
+	hp_bar.value = health
+	player.connect("damage_dealt", Callable(self, "_took_damage"))
 	animation_player.play("default")
 
-func _physics_process(delta):
+func _physics_process(_delta):
+	velocity.y += gravity * _delta
 	if Engine.get_frames_drawn() % 1 == 0:
 		ray.target_position = get_parent().get_node("Player").global_position - self.global_position
-		
-		if ray.get_collider() == get_parent().get_node("Player") and ray.target_position.length() < 160:
-			print("gayyyyy")
 		
 		match state:
 			State.IDLE:
@@ -28,26 +29,35 @@ func _physics_process(delta):
 					print("IDLE")
 					transition_to(State.AGGRO)
 			State.AGGRO:
+				hp_bar.visible = true
+				nametxt.visible = true
 				print("AGGRO")
-				if ray.get_collider() == get_parent().get_node("Player") and ray.target_position.length() < 30:
-					transition_to(State.AOE_STOMP)
-				elif ray.get_collider() == get_parent().get_node("Player") and ray.target_position.length() < 50:
+				print(ray.target_position.length())
+				if ray.get_collider() == get_parent().get_node("Player") and ray.target_position.length() > 50:
+					if self.global_position.direction_to(get_parent().get_node("Player").global_position).x < 0:
+						velocity.x = -speed
+						animation_player.flip_h = false
+					else: 
+						velocity.x = speed
+						animation_player.flip_h = true
+				else:
 					transition_to(State.ATTACK_MELEE)
-				elif ray.get_collider() == get_parent().get_node("Player") and ray.target_position.length() < 140:
-					transition_to(State.ATTACK_RANGED)
-			State.AOE_STOMP:
-				print("STOMP")
-				transition_to(State.AGGRO)
+					
 			State.ATTACK_MELEE:
-				print("MELEE")
-				velocity.x =  speed
-				print(self.global_position.direction_to(get_parent().get_node("Player").global_position))
-
-			State.ATTACK_RANGED:
-				print("RANGED")
-				transition_to(State.AGGRO)
+				if animation_player.frame == 14:
+					transition_to(State.AGGRO)
+			State.DEATH:
+				if animation_player.frame == 21:
+					hp_bar.visible = false
+					nametxt.visible = false
+					self.queue_free()
+			State.HIT:
+				if animation_player.frame == 4:
+					transition_to(State.AGGRO)
+					
 	move_and_slide()
-	velocity = Vector2(0,0)
+	if is_on_floor():
+		velocity = Vector2(0,0)
 				
 func connect_to_signal_in_tree(tree: String, signal_name: String, method_name: String):
 	print("Connected")
@@ -57,15 +67,24 @@ func connect_to_signal_in_tree(tree: String, signal_name: String, method_name: S
 			node.connect(signal_name, Callable(self, method_name))
 
 func _took_damage(damage, body):
-	if self.get_node("Dragon") == body:
-		print("Took damage")
+	if self == body and state != State.DEATH:
+		transition_to(State.HIT)
 		health -= damage
 		hp_bar.value = health
-		$Dragon/AnimatedSprite2D.modulate = Color.RED
-		await get_tree().create_timer(0.1).timeout
-		$Dragon/AnimatedSprite2D.modulate = Color.WHITE
+		
 		if hp_bar.value <= 0:
-			self.queue_free()
+			transition_to(State.DEATH)
 			
 func transition_to(new_state):
 	state = new_state
+	match new_state:
+		State.IDLE:
+			animation_player.play("idle")
+		State.AGGRO:
+			animation_player.play("walk")
+		State.ATTACK_MELEE:
+			animation_player.play("attack")
+		State.DEATH:
+			animation_player.play("death")
+		State.HIT:
+			animation_player.play("hit")
