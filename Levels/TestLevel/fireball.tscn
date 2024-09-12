@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://cprmsp2hhqtxg"]
+[gd_scene load_steps=14 format=3 uid="uid://cprmsp2hhqtxg"]
 
 [ext_resource type="Script" path="res://Levels/TestLevel/fireball.gd" id="1_pp3bu"]
 [ext_resource type="Texture2D" uid="uid://d37801kavrfsk" path="res://Assets/MiniWorldSprites/fire_fx_v1.0/png/orange/loops/burning_loop_2.png" id="2_chxtt"]
+[ext_resource type="Texture2D" uid="uid://be370dy3eejgy" path="res://Assets/Baumi_custom/light.png" id="3_7h5c4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c7edu"]
 atlas = ExtResource("2_chxtt")
@@ -68,6 +69,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m7erw"]
+radius = 6.0
 
 [node name="Fireball" type="StaticBody2D"]
 script = ExtResource("1_pp3bu")
@@ -79,8 +81,16 @@ sprite_frames = SubResource("SpriteFrames_erytr")
 frame_progress = 0.684509
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 3
+input_pickable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_m7erw")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 2.15
+texture = ExtResource("3_7h5c4")
+texture_scale = 0.03
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

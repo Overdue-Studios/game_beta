@@ -10,7 +10,7 @@ extends CharacterBody2D
 @onready var secondary_hitbox = $SecondaryAttack
 @onready var state = State.IDLE
 
-enum State { IDLE, RUNNING, JUMPING, FALLING, ATTACKING_1, ATTACKING_2 }
+enum State { IDLE, RUNNING, JUMPING, FALLING, ATTACKING_1, ATTACKING_2, ROLL }
 
 signal primary_action
 signal secondary_action
@@ -40,6 +40,8 @@ func _physics_process(_delta):
 					transition_to(State.ATTACKING_1)
 				elif Input.is_action_just_pressed("secondary_action"):
 					transition_to(State.ATTACKING_2)
+				elif Input.is_action_just_pressed("roll"):
+					transition_to(State.ROLL)
 			State.RUNNING:
 				if velocity.x > 0:
 					animation_player.flip_h = false
@@ -57,6 +59,8 @@ func _physics_process(_delta):
 					transition_to(State.ATTACKING_1)
 				elif Input.is_action_just_pressed("secondary_action"):
 					transition_to(State.ATTACKING_2)
+				elif Input.is_action_just_pressed("roll"):
+					transition_to(State.ROLL)
 			State.JUMPING:
 				if velocity.x > 0:
 					animation_player.flip_h = false
@@ -72,6 +76,8 @@ func _physics_process(_delta):
 					transition_to(State.ATTACKING_1)
 				elif Input.is_action_just_pressed("secondary_action"):
 					transition_to(State.ATTACKING_2)
+				elif Input.is_action_just_pressed("roll"):
+					transition_to(State.ROLL)
 			State.FALLING:
 				if velocity.x > 0:
 					animation_player.flip_h = false
@@ -87,21 +93,46 @@ func _physics_process(_delta):
 					transition_to(State.ATTACKING_1)
 				elif Input.is_action_just_pressed("secondary_action"):
 					transition_to(State.ATTACKING_2)
+				elif Input.is_action_just_pressed("roll"):
+					transition_to(State.ROLL)
 			State.ATTACKING_1:
-				if animation_player.frame == 2:
+				if Input.is_action_just_pressed("roll"):
+					transition_to(State.ROLL)
+				if animation_player.frame == 3:
 					primary_hitbox.monitoring = true
 				if animation_player.frame == 4:
 					primary_hitbox.monitoring = false
+				if animation_player.frame == 7:
 					transition_to(State.IDLE)
 			State.ATTACKING_2:
-				if animation_player.frame == 2:
+				if Input.is_action_just_pressed("roll"):
+					transition_to(State.ROLL)
+				if animation_player.frame == 3:
 					secondary_hitbox.monitoring = true
-				if animation_player.frame == 8:
+				if animation_player.frame == 9:
 					secondary_hitbox.monitoring = false
+				if animation_player.frame == 11:
+					transition_to(State.IDLE)
+			State.ROLL:
+				velocity.y = 0
+				if animation_player.flip_h == true:
+					velocity.x = -200
+				else:
+					velocity.x = 200
+				if animation_player.frame == 5:
 					transition_to(State.IDLE)
 					
 	move_and_slide()
-	
+	"""if Input.is_action_just_pressed("interact"):
+		var dream = get_tree().get_nodes_in_group("dream")
+		for i in dream:
+			if i.visible == false:
+				i.process_mode = Node.PROCESS_MODE_INHERIT
+				i.visible = true
+			else:
+				i.process_mode = Node.PROCESS_MODE_DISABLED
+				i.visible = false"""
+		
 	if Input.is_action_just_pressed("ui_up") and GameManager.nomove == false and is_on_floor() == true:
 		velocity.y = -jump_speed
 		transition_to(State.JUMPING)
@@ -136,6 +167,8 @@ func transition_to(new_state):
 			animation_player.play("primary_attack")
 		State.ATTACKING_2:
 			animation_player.play("secondary_attack")
+		State.ROLL:
+			animation_player.play("roll")
 
 func _on_primary_attack_body_entered(body: Node2D) -> void:
 	if body != self:

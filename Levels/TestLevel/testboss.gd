@@ -51,7 +51,7 @@ func _physics_process(_delta):
 				if not get_parent().get_node("Fireball"):
 					_cast_fireball()
 				#await get_tree().create_timer(2).timeout
-				transition_to(State.AGGRO)		
+				transition_to(State.AGGRO)
 			State.ATTACK_MELEE:
 				if animation_player.frame == 9:
 					GameManager.hit_stop(0.18)
@@ -79,6 +79,7 @@ func _physics_process(_delta):
 					transition_to(State.AGGRO)
 					
 	move_and_slide()
+
 	if is_on_floor():
 		velocity = Vector2(0,0)
 				
