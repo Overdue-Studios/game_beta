@@ -168,8 +168,6 @@ func _physics_process(_delta):
 	
 func _process(_delta):
 	if Input.is_action_just_pressed("primary_action") and stam >= 25:
-		hp -= 20
-		hp_bar.value = hp
 		primary_action.emit()
 		
 	if Input.is_action_just_pressed("secondary_action") and stam >= 45:
