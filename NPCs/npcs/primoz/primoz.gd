@@ -1,34 +1,19 @@
-extends CharacterBody2D
+extends Area2D
 
-@onready var player = get_node("/root/map_root/Player")
-@onready var dialogue = preload("res://NPCs/dialogue.tscn")
-@onready var interact_popup = preload("res://NPCs/interact_popup.tscn")
-@onready var instance
-@onready var interactable = false
-@onready var dialogue_window
-@onready var dialogue_text
+var active = false
+# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
-	
-func _process(_delta):
-	if Input.is_action_just_pressed("interact") and interactable:
-		get_tree().paused = true
-		interactable = false
-		dialogue_window = dialogue.instantiate()
-		add_child(dialogue_window)
-		dialogue_text = get_node("Dialogue/NinePatchRect/Text")
-		dialogue_text.text = "jou"
-		GameManager.nomove = true
-	
-	
+	connect("body_entered", self._on_npc_body_entered)
+	connect("body_exited", self._on_npc_body_exited)
 
-func _on_area_2d_body_entered(body):
-	if body == player:
-		instance = interact_popup.instantiate()
-		add_child(instance)
-		interactable = true
-
-func _on_area_2d_body_exited(body):
-	if body == player:
-		instance.free()
-		interactable = false
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	$Popup.visible = active
+	
+func _on_npc_body_entered(body: CharacterBody2D):
+	print("hi")
+	active = true
+			
+func _on_npc_body_exited(body: CharacterBody2D):
+	print("bye")
+	active = false

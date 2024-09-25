@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=4 uid="uid://dmude8pij5ou3"]
+[gd_scene load_steps=48 format=4 uid="uid://dmude8pij5ou3"]
 
 [ext_resource type="Texture2D" uid="uid://bsnh8whuc1w6h" path="res://Assets/Texture/TX Tileset Grass.png" id="1_c4815"]
 [ext_resource type="Shader" path="res://Assets/ShadersThemesFonts/dreamworld.gdshader" id="1_knfq7"]
@@ -15,7 +15,6 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="6_xkpbe"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_dvhkl"]
 [ext_resource type="Script" path="res://Levels/TestLevel/camera_2d.gd" id="8_8u0k2"]
-[ext_resource type="PackedScene" uid="uid://dtiteo58pkawc" path="res://Levels/TestLevel/primoz.tscn" id="8_nfi6c"]
 [ext_resource type="Texture2D" uid="uid://d1kkwrpiw011v" path="res://Assets/MiniWorldSprites/Health Bar Asset Pack 2 by Adwit Rahman/04.png" id="10_3wrah"]
 [ext_resource type="Texture2D" uid="uid://c2a6rcjg74d36" path="res://Assets/Texture/TX Struct.png" id="11_6tmit"]
 [ext_resource type="FontFile" uid="uid://phqgh6w0aycf" path="res://Assets/MiniWorldSprites/AldotheApache.ttf" id="11_85sy3"]
@@ -23,10 +22,10 @@
 [ext_resource type="Texture2D" uid="uid://cke4soyv244p8" path="res://Levels/TestLevel/daynightcycle.tres" id="15_lxnud"]
 [ext_resource type="PackedScene" uid="uid://c455gilqpf84o" path="res://Levels/TestLevel/item_drop.tscn" id="16_hh4ov"]
 [ext_resource type="PackedScene" uid="uid://crewj4mxpwxtr" path="res://Levels/TestLevel/dragon.tscn" id="17_aud3f"]
-[ext_resource type="PackedScene" uid="uid://diwwdbxwtmdvs" path="res://Levels/TestLevel/platformtest1.tscn" id="18_qxi70"]
 [ext_resource type="Texture2D" uid="uid://be370dy3eejgy" path="res://Assets/Baumi_custom/light.png" id="19_6j2ki"]
 [ext_resource type="Script" path="res://Levels/TestLevel/cameracontrol.gd" id="19_cddin"]
 [ext_resource type="PackedScene" uid="uid://cvpfrlcwsk360" path="res://Levels/TestLevel/HedgehogMob.tscn" id="27_jts7y"]
+[ext_resource type="PackedScene" uid="uid://dtiteo58pkawc" path="res://NPCs/npcs/primoz/primoz.tscn" id="27_o3k3i"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xqjah"]
 shader = ExtResource("1_knfq7")
@@ -1284,7 +1283,7 @@ offset_bottom = 164.0
 scale = Vector2(0.4, 0.4)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(557, 48)
+position = Vector2(765, 23)
 energy = 0.79
 texture = ExtResource("19_6j2ki")
 texture_scale = 50.0
@@ -1298,9 +1297,6 @@ slide_on_ceiling = false
 speed = 120
 jump_speed = 300
 gravity = 1200
-
-[node name="primoz" parent="." groups=["dream"] instance=ExtResource("8_nfi6c")]
-position = Vector2(305, 347)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 material = SubResource("ShaderMaterial_paxrj")
@@ -1330,16 +1326,12 @@ script = ExtResource("19_cddin")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="door_right"]
 shape = SubResource("RectangleShape2D_at2fs")
 
-[node name="Platform" parent="." groups=["dream"] instance=ExtResource("18_qxi70")]
-process_mode = 4
-position = Vector2(355, 330)
-scale = Vector2(0.52, 0.559995)
-
 [node name="CharacterBody2D" parent="." instance=ExtResource("27_jts7y")]
 position = Vector2(186, 271)
 scale = Vector2(0.225, 0.225)
 
-[connection signal="primary_action" from="Player" to="Player" method="_on_primary_action"]
-[connection signal="secondary_action" from="Player" to="Player" method="_on_secondary_action"]
+[node name="Primoz" parent="." instance=ExtResource("27_o3k3i")]
+position = Vector2(352, 345)
+
 [connection signal="body_entered" from="door_left" to="door_right" method="_on_area_2d_2_body_entered"]
 [connection signal="body_entered" from="door_right" to="door_right" method="_on_body_entered"]
