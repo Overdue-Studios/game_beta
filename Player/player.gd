@@ -19,6 +19,7 @@ extends CharacterBody2D
 @onready var stam_bar = %PlayerSTAM
 
 #stamina variables
+var timer = Timer.new()
 var can_regen = false
 var can_start_stimer = true
 
@@ -43,6 +44,10 @@ func _ready():
 	stam_bar.value = stam
 	primary_hitbox.position.x = 13.5
 	secondary_hitbox.position.x = 10.5
+	timer.one_shot = true
+	timer.autostart = false
+	timer.connect("timeout", self._on_stimer_timeout)
+	add_child(timer)
 	
 func _physics_process(_delta):
 	velocity.y += gravity * _delta
@@ -127,7 +132,6 @@ func _physics_process(_delta):
 				if animation_player.frame == 3:
 					stam -= 25
 					stam_bar.value = stam
-					$StaminaTimer.stop()
 					primary_hitbox.monitoring = true
 				if animation_player.frame == 4:
 					primary_hitbox.monitoring = false
@@ -139,7 +143,6 @@ func _physics_process(_delta):
 				if animation_player.frame == 3:
 					stam -= 45
 					stam_bar.value = stam
-					$StaminaTimer.stop()
 					secondary_hitbox.monitoring = true
 				if animation_player.frame == 9:
 					secondary_hitbox.monitoring = false
@@ -168,13 +171,17 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("ui_up") and GameManager.nomove == false and is_on_floor() == true:
 		velocity.y = -jump_speed
 		transition_to(State.JUMPING)
+
 	
 func _process(_delta):
-	_stamina_regen(_delta)
-	if Input.is_action_just_pressed("primary_action") and stam >= 25:
+	if Input.is_action_pressed("primary_action") and stam >= 25:
+		timer.stop()
+		timer.start(2)
 		primary_action.emit()
-		
-	if Input.is_action_just_pressed("secondary_action") and stam >= 45:
+
+	if Input.is_action_pressed("secondary_action") and stam >= 45:
+		timer.stop()
+		timer.start(2)
 		secondary_action.emit()
 	
 	#Inventory opener, spawna novga otroka UI scene
@@ -211,16 +218,13 @@ func _on_primary_attack_body_entered(body: Node2D) -> void:
 		print("hit with primary:", body)
 		emit_signal("damage_dealt", 15, body)
 		
-
-
 func _on_secondary_attack_body_entered(body: Node2D) -> void:
 	if body != self:
 		print("hit with 2ndary:", body)
 		emit_signal("damage_dealt", 30, body)
-		
-func _stamina_regen(_delta):
-	$StaminaTimer.start(2)
 
-func _on_stamina_timer_timeout() -> void:
-	stam += 3
-	stam_bar.value = stam
+func _on_stimer_timeout():
+	if stam < max_stam:
+		while timer.is_stopped() && stam < max_stam:
+			stam += 3
+			stam_bar.value = stam
