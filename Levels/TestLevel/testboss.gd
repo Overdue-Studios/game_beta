@@ -42,9 +42,11 @@ func _physics_process(_delta):
 					if self.global_position.direction_to(get_parent().get_node("Player").global_position).x < 0:
 						velocity.x = -speed
 						animation_player.flip_h = false
+						$Area2D.scale = Vector2(1,1)
 					else: 
 						velocity.x = speed
 						animation_player.flip_h = true
+						$Area2D.scale = Vector2(-1,1)
 				else:
 					transition_to(State.ATTACK_MELEE)
 			State.ATTACK_RANGED:
@@ -56,6 +58,10 @@ func _physics_process(_delta):
 				if animation_player.frame == 9:
 					GameManager.hit_stop(0.18)
 					camera.shake(1, 0.1)
+				if animation_player.frame == 9:
+					$Area2D.monitoring = true
+				if animation_player.frame == 10:
+					$Area2D.monitoring = false
 				if animation_player.frame == 14:
 					transition_to(State.AGGRO)
 			State.DEATH:
@@ -126,3 +132,10 @@ func transition_to(new_state):
 			animation_player.play("hit")
 		State.FLEE:
 			animation_player.play("flee")
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	print(body)
+	print(player)
+	if body == player:
+		player.damage(30)

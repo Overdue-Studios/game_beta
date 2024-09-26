@@ -24,5 +24,7 @@ func _process(delta: float) -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print(body)
+	print(player)
+	if body == player:
+		player.damage(30)
 	queue_free()

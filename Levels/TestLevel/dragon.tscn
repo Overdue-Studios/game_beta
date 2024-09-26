@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://crewj4mxpwxtr"]
+[gd_scene load_steps=79 format=3 uid="uid://crewj4mxpwxtr"]
 
 [ext_resource type="Script" path="res://Levels/TestLevel/testboss.gd" id="1_3dxp0"]
 [ext_resource type="Texture2D" uid="uid://bb4b7jp50fw2d" path="res://Assets/Baumi_custom/demon_slime_FREE_v1.0_288x160_spritesheet.png" id="2_claq5"]
@@ -544,8 +544,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bg66a"]
 size = Vector2(22, 23.75)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ato8k"]
+size = Vector2(44, 39)
+
 [node name="TestBoss" type="CharacterBody2D"]
-disable_mode = 1
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_3dxp0")
@@ -557,9 +559,8 @@ speed = 60
 position = Vector2(-2, -26)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_dx3mg")
-animation = &"flee"
-frame = 7
-frame_progress = 0.57202
+animation = &"attack"
+frame = 14
 
 [node name="BodyCollision2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 0)
@@ -586,3 +587,14 @@ position = Vector2(5, -25)
 energy = 2.65
 texture = ExtResource("3_mf3u8")
 texture_scale = 0.01
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 14
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-37, -6.5)
+shape = SubResource("RectangleShape2D_ato8k")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

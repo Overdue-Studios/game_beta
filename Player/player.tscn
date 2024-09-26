@@ -8,8 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://b8ttrka8as603" path="res://Assets/MiniWorldSprites/Characters/knight/Jump.png" id="4_jecpc"]
 [ext_resource type="Texture2D" uid="uid://di17ebky67oqh" path="res://Assets/MiniWorldSprites/Characters/knight/Roll.png" id="6_7aoml"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rv3or"]
-size = Vector2(12, 9)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ovj6"]
+radius = 3.06
+height = 11.56
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mg2ox"]
 atlas = ExtResource("2_5rplv")
@@ -454,20 +455,22 @@ size = Vector2(16, 19)
 collision_layer = 2
 collision_mask = 15
 script = ExtResource("1_jmvu1")
+stamina_regen_time = 1.5
+stamina_regen_speed = 1.5
 speed = 50
 jump_speed = 1500
 gravity = 3000
+max_stam = 100
 
 [node name="PlayerModelCollision" type="CollisionShape2D" parent="."]
-position = Vector2(0, -3)
-shape = SubResource("RectangleShape2D_rv3or")
+position = Vector2(0, -4.405)
+shape = SubResource("CapsuleShape2D_4ovj6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
 scale = Vector2(0.439, 0.423)
 sprite_frames = SubResource("SpriteFrames_lvf4y")
-animation = &"die"
-frame_progress = 0.0233376
+animation = &"secondary_attack"
 
 [node name="PrimaryAttack" type="Area2D" parent="."]
 collision_layer = 8
