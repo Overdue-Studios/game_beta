@@ -18,6 +18,10 @@ extends CharacterBody2D
 @onready var fp_bar = %PlayerFP
 @onready var stam_bar = %PlayerSTAM
 
+#stamina variables
+var can_regen = false
+var can_start_stimer = true
+
 enum State { IDLE, RUNNING, JUMPING, FALLING, ATTACKING_1, ATTACKING_2, ROLL, DIE }
 
 signal primary_action
@@ -41,9 +45,6 @@ func _ready():
 	secondary_hitbox.position.x = 10.5
 	
 func _physics_process(_delta):
-	if stam < max_stam:
-		stam += 1 
-		stam_bar.value = stam
 	velocity.y += gravity * _delta
 	if hp <= 0:
 		transition_to(State.DIE)
@@ -126,6 +127,7 @@ func _physics_process(_delta):
 				if animation_player.frame == 3:
 					stam -= 25
 					stam_bar.value = stam
+					$StaminaTimer.stop()
 					primary_hitbox.monitoring = true
 				if animation_player.frame == 4:
 					primary_hitbox.monitoring = false
@@ -137,6 +139,7 @@ func _physics_process(_delta):
 				if animation_player.frame == 3:
 					stam -= 45
 					stam_bar.value = stam
+					$StaminaTimer.stop()
 					secondary_hitbox.monitoring = true
 				if animation_player.frame == 9:
 					secondary_hitbox.monitoring = false
@@ -167,6 +170,7 @@ func _physics_process(_delta):
 		transition_to(State.JUMPING)
 	
 func _process(_delta):
+	_stamina_regen(_delta)
 	if Input.is_action_just_pressed("primary_action") and stam >= 25:
 		primary_action.emit()
 		
@@ -213,3 +217,10 @@ func _on_secondary_attack_body_entered(body: Node2D) -> void:
 	if body != self:
 		print("hit with 2ndary:", body)
 		emit_signal("damage_dealt", 30, body)
+		
+func _stamina_regen(_delta):
+	$StaminaTimer.start(2)
+
+func _on_stamina_timer_timeout() -> void:
+	stam += 3
+	stam_bar.value = stam
