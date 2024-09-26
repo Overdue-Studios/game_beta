@@ -1,19 +1,21 @@
-extends Area2D
+extends StaticBody2D
 
-var active = false
+@onready var player = get_parent().get_node("Player")
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	connect("body_entered", self._on_npc_body_entered)
-	connect("body_exited", self._on_npc_body_exited)
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$Popup.visible = active
-	
-func _on_npc_body_entered(body: CharacterBody2D):
-	print("hi")
-	active = true
-			
-func _on_npc_body_exited(body: CharacterBody2D):
-	print("bye")
-	active = false
+	if Input.is_action_just_pressed("interact") && $Popup.visible == true:
+		Dialogic.start("timeline")
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if body == player:
+		$Popup.visible = true
+
+
+func _on_body_exited(body: Node2D) -> void:
+	if body == player:
+		$Popup.visible = false

@@ -36,8 +36,6 @@ func _physics_process(delta: float) -> void:
 		turning = false
 	
 	if ($RayCast2D.get_collider() == null or $RayCast2D2.get_collider() == null) and not turning:
-		print($RayCast2D.get_collider())
-		print($RayCast2D2.get_collider())
 		turning = true
 		direction *= -1
 		
