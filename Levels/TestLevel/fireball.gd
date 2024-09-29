@@ -9,13 +9,11 @@ var vertical_speed = 1
 func _init_node(pl):
 	player = pl
 	player_direction = self.global_position.direction_to(player.global_position)
+	player_direction.y += -0.1
 	
 
 func _ready() -> void:
 	$AnimatedSprite2D.play("default")
-	print("Fireball player: ", player)
-	print("Horizontal speed :", horizontal_speed)
-	print("Vertical speed :", vertical_speed)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -24,7 +22,6 @@ func _process(delta: float) -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print(player)
 	if body == player:
 		player.damage(30)
 	queue_free()

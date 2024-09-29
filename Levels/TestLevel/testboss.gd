@@ -29,13 +29,10 @@ func _physics_process(_delta):
 		match state:
 			State.IDLE:
 				if ray.get_collider() == get_parent().get_node("Player") and ray.target_position.length() < 160:
-					print("IDLE")
 					transition_to(State.AGGRO)
 			State.AGGRO:
 				hp_bar.visible = true
 				nametxt.visible = true
-				print("AGGRO")
-				print(ray.target_position.length())
 				if ray.get_collider() == get_parent().get_node("Player") and ray.target_position.length() > 100:
 					transition_to(State.ATTACK_RANGED)
 				elif ray.get_collider() == get_parent().get_node("Player") and ray.target_position.length() > 50:
@@ -88,6 +85,8 @@ func _physics_process(_delta):
 
 	if is_on_floor():
 		velocity = Vector2(0,0)
+
+					
 				
 func connect_to_signal_in_tree(tree: String, signal_name: String, method_name: String):
 	var nodes = get_tree().get_nodes_in_group(tree)
@@ -135,7 +134,11 @@ func transition_to(new_state):
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print(body)
-	print(player)
 	if body == player:
 		player.damage(30)
+
+
+func _on_area_2d_2_body_entered(body: Node2D) -> void:
+	if body == player:
+		player.damage(30)
+		player.knocked = true

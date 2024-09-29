@@ -9,8 +9,8 @@ var turning = false
 
 func _physics_process(delta: float) -> void:
 	
-	
-	#velocity.y +=  200
+	#if not is_on_floor():
+	#	velocity.y +=  2
 		
 	if is_on_wall():
 		print("Wall")
@@ -31,6 +31,9 @@ func _physics_process(delta: float) -> void:
 	#	velocity.y +=  200
 	#else:
 	#	velocity.y = 0
+	
+	#if $RayCast2D.get_collider() == null and $RayCast2D2.get_collider() == null:
+	#	velocity.y += 100
 	
 	if $RayCast2D.get_collider() != null and $RayCast2D2.get_collider() != null:
 		turning = false

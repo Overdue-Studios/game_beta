@@ -36,8 +36,8 @@ scale = Vector2(0.135, 0.135)
 sprite_frames = SubResource("SpriteFrames_bbr3b")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(82, 73)
-target_position = Vector2(0, 13)
+position = Vector2(82, 71)
+target_position = Vector2(0, 14)
 
 [node name="RayCast2D2" type="RayCast2D" parent="."]
 position = Vector2(22, 71)

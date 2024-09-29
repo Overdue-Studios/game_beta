@@ -11,6 +11,7 @@ extends CharacterBody2D
 @export var max_fp : int = 100
 @export var max_stam : int = 300
 
+@onready var knocked = false
 @onready var animation_player = $AnimatedSprite2D
 @onready var primary_hitbox = $PrimaryAttack
 @onready var secondary_hitbox = $SecondaryAttack
@@ -21,7 +22,7 @@ extends CharacterBody2D
 @onready var stam_cd = 0
 @onready var stam_used = false
 
-enum State { IDLE, RUNNING, JUMPING, FALLING, ATTACKING_1, ATTACKING_2, ROLL, DIE }
+enum State { IDLE, RUNNING, JUMPING, FALLING, ATTACKING_1, ATTACKING_2, ROLL, DIE, KNOCKBACK }
 
 signal primary_action
 signal secondary_action
@@ -44,6 +45,14 @@ func _ready():
 	secondary_hitbox.position.x = 10.5
 	
 func _physics_process(_delta):
+	if knocked == true:
+		if self.global_position.direction_to(get_parent().get_node("Dragon").global_position).x < 0:
+			velocity.x += 200
+		else:
+			velocity.x -= 200
+		knocked = false
+		transition_to(State.KNOCKBACK)
+		
 	velocity.y += gravity * _delta
 	if stam_cd > 0:
 		stam_cd -= _delta
@@ -53,10 +62,16 @@ func _physics_process(_delta):
 	if hp <= 0:
 		transition_to(State.DIE)
 	if GameManager.nomove == false:
-		velocity.x = Input.get_axis("ui_left", "ui_right") * speed
+		if state != State.KNOCKBACK:
+			velocity.x = Input.get_axis("ui_left", "ui_right") * speed
 		match state:
-			State.DIE:
+			State.KNOCKBACK:
 				if animation_player.frame == 3:
+					velocity.x = 0
+					transition_to(State.IDLE)
+					
+			State.DIE:
+				if animation_player.frame == 2:
 					animation_player.pause()
 					await get_tree().create_timer(1).timeout
 					self.visible = false
@@ -213,6 +228,8 @@ func transition_to(new_state):
 			animation_player.play("secondary_attack")
 		State.ROLL:
 			animation_player.play("roll")
+		State.KNOCKBACK:
+			animation_player.play("die")
 
 func _on_primary_attack_body_entered(body: Node2D) -> void:
 	if body != self:
