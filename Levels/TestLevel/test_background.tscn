@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://byh4q2fmblsxp"]
+
+[ext_resource type="Texture2D" uid="uid://bobn7u6lhxmof" path="res://Assets/MiniWorldSprites/Miscellaneous/Bridge.png" id="1_66hyc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fljuo"]
+atlas = ExtResource("1_66hyc")
+region = Rect2(5.44109, 5.28688, 21.0925, 31.0665)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_72q7t"]
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.560784)
+position = Vector2(-2.08616e-07, 0)
+scale = Vector2(0.952381, 0.645161)
+texture = SubResource("AtlasTexture_fljuo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_72q7t")
