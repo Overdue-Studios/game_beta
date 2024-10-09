@@ -9,8 +9,15 @@ var turning = false
 
 func _physics_process(delta: float) -> void:
 	
-	#if not is_on_floor():
-	#	velocity.y +=  2
+	$RayCast2D.force_raycast_update()
+	$RayCast2D2.force_raycast_update()
+	
+	if not is_on_floor():
+		print("Not floor")
+		velocity.y +=  2
+		
+	if is_on_floor():
+		velocity.y = 0 
 		
 	if is_on_wall():
 		print("Wall")
