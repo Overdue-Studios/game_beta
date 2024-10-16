@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=4 uid="uid://csauhih1fd2bm"]
+[gd_scene load_steps=57 format=4 uid="uid://csauhih1fd2bm"]
 
 [ext_resource type="Texture2D" uid="uid://bsnh8whuc1w6h" path="res://Assets/Texture/TX Tileset Grass.png" id="1_c4815"]
 [ext_resource type="Shader" path="res://Assets/ShadersThemesFonts/dreamworld.gdshader" id="1_knfq7"]
@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://cvpfrlcwsk360" path="res://Levels/TestLevel/HedgehogMob.tscn" id="27_jts7y"]
 [ext_resource type="PackedScene" uid="uid://dtiteo58pkawc" path="res://NPCs/npcs/primoz/primoz.tscn" id="27_o3k3i"]
 [ext_resource type="Script" path="res://NPCs/npcs/primoz/primoz2.gd" id="28_207mk"]
+[ext_resource type="Script" path="res://Levels/TestLevel/static_body_2d.gd" id="29_npbit"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xqjah"]
 shader = ExtResource("1_knfq7")
@@ -1128,6 +1129,102 @@ size = Vector2(2, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_at2fs"]
 size = Vector2(2, 16)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_46bnc"]
+
+[sub_resource type="Animation" id="Animation_1i803"]
+resource_name = "new_animation"
+
+[sub_resource type="Animation" id="Animation_2nd0s"]
+resource_name = "up"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.0333333, 0.466667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(489, 344), Vector2(489, 335.885)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-0.0333333, 0.466667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.695, 0.845), Vector2(0.695, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7qsnh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(489, 344)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.695, 0.845)]
+}
+
+[sub_resource type="Animation" id="Animation_mtdq2"]
+resource_name = "down"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.466667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(489, 335.885), Vector2(489, 344)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.466667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.695, 0), Vector2(0.695, 0.845)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pdjmr"]
+_data = {
+"RESET": SubResource("Animation_7qsnh"),
+"down": SubResource("Animation_mtdq2"),
+"new_animation": SubResource("Animation_1i803"),
+"up": SubResource("Animation_2nd0s")
+}
+
 [node name="map_root" type="Node2D"]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
@@ -1176,10 +1273,10 @@ texture = ExtResource("5_wynfn")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 unique_name_in_owner = true
-physics_interpolation_mode = 1
+physics_interpolation_mode = 2
 z_index = 1
 material = SubResource("ShaderMaterial_xqjah")
-position = Vector2(229, 310)
+position = Vector2(423, 310)
 zoom = Vector2(5, 5)
 script = ExtResource("8_8u0k2")
 
@@ -1264,7 +1361,7 @@ text = "Demon King"
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 z_index = 1
-position = Vector2(229, 310)
+position = Vector2(423, 310)
 script = ExtResource("6_ljt7u")
 priority = 2
 follow_mode = 2
@@ -1293,14 +1390,14 @@ offset_bottom = 164.0
 scale = Vector2(0.4, 0.4)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(839, 254)
+position = Vector2(876, 295)
 energy = 0.79
 texture = ExtResource("19_6j2ki")
 texture_scale = 50.0
 
 [node name="Player" parent="." instance=ExtResource("4_jt5aw")]
 unique_name_in_owner = true
-position = Vector2(229, 350)
+position = Vector2(423, 350)
 collision_layer = 4
 collision_mask = 1
 slide_on_ceiling = false
@@ -1316,6 +1413,7 @@ script = ExtResource("14_s86km")
 gradient = ExtResource("15_lxnud")
 
 [node name="Dragon" parent="." instance=ExtResource("17_aud3f")]
+unique_name_in_owner = true
 position = Vector2(725, 340)
 
 [node name="ItemDrop" parent="." instance=ExtResource("16_hh4ov")]
@@ -1346,6 +1444,24 @@ position = Vector2(352, 345)
 [node name="Primoz2" parent="." instance=ExtResource("27_o3k3i")]
 position = Vector2(21, 345)
 script = ExtResource("28_207mk")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(489, 344)
+scale = Vector2(0.695, 0.845)
+script = ExtResource("29_npbit")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("5_wynfn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(4.39102e-05, -0.582014)
+shape = SubResource("RectangleShape2D_46bnc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StaticBody2D"]
+libraries = {
+"": SubResource("AnimationLibrary_pdjmr")
+}
 
 [connection signal="body_entered" from="door_left" to="door_right" method="_on_area_2d_2_body_entered"]
 [connection signal="body_entered" from="door_right" to="door_right" method="_on_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dj3qbmfwi0piy"]
+[gd_scene load_steps=22 format=3 uid="uid://dj3qbmfwi0piy"]
 
 [ext_resource type="PackedScene" uid="uid://cktfdk2f1lwm4" path="res://Player/player.tscn" id="1_yqg73"]
 [ext_resource type="PackedScene" uid="uid://diwwdbxwtmdvs" path="res://Levels/TestLevel/test_platform.tscn" id="2_h0wx4"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="7_b400l"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="8_30y6w"]
 [ext_resource type="PackedScene" uid="uid://dql0vmiwur6sn" path="res://Player/GameConsole.tscn" id="9_oe2bd"]
+[ext_resource type="FontFile" uid="uid://phqgh6w0aycf" path="res://Assets/MiniWorldSprites/AldotheApache.ttf" id="10_pghlq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iqc1g"]
 shader = ExtResource("3_2hent")
@@ -46,6 +47,20 @@ duration = 1.0
 transition = 0
 ease = 2
 
+[sub_resource type="Resource" id="Resource_xknub"]
+script = ExtResource("8_30y6w")
+duration = 0.5
+transition = 6
+ease = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihjg8"]
+atlas = ExtResource("6_n60hd")
+region = Rect2(297.679, 133.672, 30.7269, 3.83597)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_faelr"]
+atlas = ExtResource("6_n60hd")
+region = Rect2(57.946, 133.961, 30.0777, 3.06021)
+
 [node name="gmayna" type="Node2D"]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_yqg73")]
@@ -53,14 +68,14 @@ position = Vector2(13, -8)
 
 [node name="StaticBody2D" parent="." instance=ExtResource("2_h0wx4")]
 position = Vector2(19, 4)
-scale = Vector2(7.13, 1)
+scale = Vector2(45.015, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 unique_name_in_owner = true
 physics_interpolation_mode = 1
 z_index = 1
 material = SubResource("ShaderMaterial_iqc1g")
-position = Vector2(229, 310)
+position = Vector2(13, -48)
 zoom = Vector2(5, 5)
 script = ExtResource("4_owrym")
 
@@ -104,11 +119,11 @@ texture_progress_offset = Vector2(1.08, 1.34)
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 z_index = 1
-position = Vector2(229, 310)
+position = Vector2(13, -48)
 script = ExtResource("7_b400l")
 priority = 2
 follow_mode = 2
-follow_target = NodePath("")
+follow_target = NodePath("../CharacterBody2D")
 zoom = Vector2(5, 5)
 tween_resource = SubResource("Resource_pliph")
 follow_offset = Vector2(0, -40)
@@ -131,3 +146,40 @@ offset_top = -64.0
 offset_right = 407.0
 offset_bottom = 164.0
 scale = Vector2(0.4, 0.4)
+
+[node name="BossCam" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(624, 284)
+script = ExtResource("7_b400l")
+priority = 1
+follow_mode = 1
+zoom = Vector2(5, 5)
+tween_resource = SubResource("Resource_xknub")
+draw_limits = true
+
+[node name="BossHP" type="TextureProgressBar" parent="BossCam"]
+visible = false
+offset_left = -102.0
+offset_top = 77.0
+offset_right = -71.0
+offset_bottom = 81.0
+scale = Vector2(6.8, 1.145)
+value = 1.0
+texture_under = SubResource("AtlasTexture_ihjg8")
+texture_progress = SubResource("AtlasTexture_faelr")
+texture_progress_offset = Vector2(0.345, 0.355)
+
+[node name="Label" type="Label" parent="BossCam"]
+visible = false
+offset_left = -102.0
+offset_top = 72.0
+offset_right = 116.0
+offset_bottom = 120.0
+scale = Vector2(0.12, 0.12)
+theme_override_fonts/font = ExtResource("10_pghlq")
+theme_override_font_sizes/font_size = 40
+text = "Demon King"
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("2_h0wx4")]
+position = Vector2(-186, -141)
+scale = Vector2(4.425, 29.995)
