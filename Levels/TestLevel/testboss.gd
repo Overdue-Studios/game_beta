@@ -12,6 +12,9 @@ extends CharacterBody2D
 @onready var fireball = preload("res://Levels/TestLevel/fireball.tscn")
 @onready var stagger_count = 0
 
+signal aggro
+signal dead
+
 enum State { IDLE, ATTACK_MELEE, ATTACK_RANGED, AGGRO, HIT, DEATH, FLEE }
 
 func _ready():#
@@ -29,6 +32,7 @@ func _physics_process(_delta):
 		match state:
 			State.IDLE:
 				if ray.get_collider() == get_parent().get_node("Player") and ray.target_position.length() < 160:
+					emit_signal("aggro")
 					transition_to(State.AGGRO)
 			State.AGGRO:
 				hp_bar.visible = true
@@ -65,6 +69,7 @@ func _physics_process(_delta):
 				if animation_player.frame == 21:
 					hp_bar.visible = false
 					nametxt.visible = false
+					emit_signal("dead")
 					self.queue_free()
 			State.HIT:
 				if animation_player.frame == 4:

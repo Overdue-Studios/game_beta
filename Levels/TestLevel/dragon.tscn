@@ -553,7 +553,7 @@ size = Vector2(44, 39)
 [node name="TestBoss" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_3dxp0")
-health = 300
+health = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2, -26)
@@ -596,8 +596,8 @@ texture = ExtResource("3_mf3u8")
 texture_scale = 0.01
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 8
-collision_mask = 2
+collision_layer = 4
+collision_mask = 4
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
