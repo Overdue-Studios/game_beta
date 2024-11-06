@@ -70,7 +70,11 @@ movie_writer/movie_file="C:/Users/baumg/Documents/GodotVids/GodotVid.avi"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
+
+[global_group]
+
+Dream=""
 
 [input]
 
