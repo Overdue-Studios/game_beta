@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="game_beta"
-run/main_scene="res://Levels/TestLevel/map_root.tscn"
+run/main_scene="res://Levels/ui.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
@@ -21,6 +21,7 @@ ItemDatabase="*res://Managers/item_database.gd"
 GameManager="*res://Managers/GameManager.gd"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+SceneSwap="*res://Managers/scene_swap.tscn"
 
 [dialogic]
 

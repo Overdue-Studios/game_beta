@@ -1,6 +1,6 @@
-extends Area2D
+extends CanvasLayer
 
-@onready var player = get_tree().get_root().get_node("/root/map_root/Player")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -10,9 +10,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
-func _on_body_entered(body: Node2D) -> void:
-	print(player)
-	print(body)
-	if body == player:
-		SceneSwap.change_scene("res://Levels/Gmayna/gmayna.tscn")
+func change_scene(target: String):
+	$AnimationPlayer.play("dissolve")
+	await $AnimationPlayer.animation_finished
+	get_tree().change_scene_to_file(target)
+	$AnimationPlayer.play_backwards("dissolve")
