@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=4 uid="uid://csauhih1fd2bm"]
+[gd_scene load_steps=59 format=4 uid="uid://csauhih1fd2bm"]
 
 [ext_resource type="Texture2D" uid="uid://bsnh8whuc1w6h" path="res://Assets/Texture/TX Tileset Grass.png" id="1_c4815"]
 [ext_resource type="Shader" path="res://Assets/ShadersThemesFonts/dreamworld.gdshader" id="1_knfq7"]
@@ -29,6 +29,8 @@
 [ext_resource type="PackedScene" uid="uid://dtiteo58pkawc" path="res://NPCs/npcs/primoz/primoz.tscn" id="27_o3k3i"]
 [ext_resource type="Script" path="res://NPCs/npcs/primoz/primoz2.gd" id="28_207mk"]
 [ext_resource type="Script" path="res://Levels/TestLevel/static_body_2d.gd" id="29_npbit"]
+[ext_resource type="PackedScene" uid="uid://byptqpd3h6nor" path="res://Levels/level_swapper.tscn" id="30_ak56r"]
+[ext_resource type="Script" path="res://Levels/level_swapper.gd" id="31_kkwhl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xqjah"]
 shader = ExtResource("1_knfq7")
@@ -1131,37 +1133,6 @@ size = Vector2(2, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_46bnc"]
 
-[sub_resource type="Animation" id="Animation_1i803"]
-resource_name = "new_animation"
-
-[sub_resource type="Animation" id="Animation_2nd0s"]
-resource_name = "up"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(-0.0333333, 0.466667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(489, 344), Vector2(489, 335.885)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(-0.0333333, 0.466667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0.695, 0.845), Vector2(0.695, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_7qsnh"]
 length = 0.001
 tracks/0/type = "value"
@@ -1215,6 +1186,37 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0.695, 0), Vector2(0.695, 0.845)]
+}
+
+[sub_resource type="Animation" id="Animation_1i803"]
+resource_name = "new_animation"
+
+[sub_resource type="Animation" id="Animation_2nd0s"]
+resource_name = "up"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.0333333, 0.466667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(489, 344), Vector2(489, 335.885)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-0.0333333, 0.466667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.695, 0.845), Vector2(0.695, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pdjmr"]
@@ -1276,7 +1278,7 @@ unique_name_in_owner = true
 physics_interpolation_mode = 2
 z_index = 1
 material = SubResource("ShaderMaterial_xqjah")
-position = Vector2(423, 310)
+position = Vector2(206, 311)
 zoom = Vector2(5, 5)
 script = ExtResource("8_8u0k2")
 
@@ -1361,7 +1363,7 @@ text = "Demon King"
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 z_index = 1
-position = Vector2(423, 310)
+position = Vector2(206, 311)
 script = ExtResource("6_ljt7u")
 priority = 2
 follow_mode = 2
@@ -1397,7 +1399,7 @@ texture_scale = 50.0
 
 [node name="Player" parent="." instance=ExtResource("4_jt5aw")]
 unique_name_in_owner = true
-position = Vector2(423, 350)
+position = Vector2(206, 351)
 collision_layer = 4
 collision_mask = 1
 slide_on_ceiling = false
@@ -1463,5 +1465,11 @@ libraries = {
 "": SubResource("AnimationLibrary_pdjmr")
 }
 
+[node name="LevelSwap" parent="." instance=ExtResource("30_ak56r")]
+position = Vector2(306, 342)
+collision_mask = 4
+script = ExtResource("31_kkwhl")
+
 [connection signal="body_entered" from="door_left" to="door_right" method="_on_area_2d_2_body_entered"]
 [connection signal="body_entered" from="door_right" to="door_right" method="_on_body_entered"]
+[connection signal="body_entered" from="LevelSwap" to="LevelSwap" method="_on_body_entered"]

@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://vioeqkx1g7ux"]
+
+[ext_resource type="Texture2D" uid="uid://c00sc4kvchvgd" path="res://Assets/MiniWorldSprites/UI assets pack 2/UI cooking.png" id="1_wr6wy"]
+[ext_resource type="Texture2D" uid="uid://ctosjaxq346rq" path="res://Assets/MiniWorldSprites/UI assets pack 2/UI books & more.png" id="2_1ujdl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnbc8"]
+atlas = ExtResource("1_wr6wy")
+region = Rect2(384.044, 240.201, 48.4763, 39.517)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kvjn"]
+atlas = ExtResource("2_1ujdl")
+region = Rect2(224.101, 272.069, 31.7878, 15.8912)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1537.0
+offset_bottom = 864.0
+texture = SubResource("AtlasTexture_hnbc8")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 606.0
+offset_top = 298.0
+offset_right = 647.0
+offset_bottom = 329.0
+text = "play"
+icon = SubResource("AtlasTexture_5kvjn")

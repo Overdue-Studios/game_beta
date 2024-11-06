@@ -13,14 +13,12 @@ func _physics_process(delta: float) -> void:
 	$RayCast2D2.force_raycast_update()
 	
 	if not is_on_floor():
-		print("Not floor")
 		velocity.y +=  2
 		
 	if is_on_floor():
 		velocity.y = 0 
 		
 	if is_on_wall():
-		print("Wall")
 		direction *= -1
 
 	if direction == -1:

@@ -22,3 +22,7 @@ func shake(shake_magnitude : float, shake_time : float):
 	magnitude = shake_magnitude
 	time = shake_time
 	
+
+
+func _on_node_2d_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.
