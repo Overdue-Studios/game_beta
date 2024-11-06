@@ -1,7 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://dj3qbmfwi0piy"]
+[gd_scene load_steps=24 format=3 uid="uid://dj3qbmfwi0piy"]
 
 [ext_resource type="PackedScene" uid="uid://cktfdk2f1lwm4" path="res://Player/player.tscn" id="1_yqg73"]
-[ext_resource type="PackedScene" uid="uid://diwwdbxwtmdvs" path="res://Levels/TestLevel/test_platform.tscn" id="2_h0wx4"]
+[ext_resource type="PackedScene" uid="uid://diwwdbxwtmdvs" path="res://Levels/Gmayna/test_platform.tscn" id="2_7bxsv"]
 [ext_resource type="Shader" path="res://Assets/ShadersThemesFonts/dreamworld.gdshader" id="3_2hent"]
 [ext_resource type="Script" path="res://Levels/TestLevel/camera_2d.gd" id="4_owrym"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_kke6x"]
@@ -9,58 +9,78 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="7_b400l"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="8_30y6w"]
 [ext_resource type="PackedScene" uid="uid://dql0vmiwur6sn" path="res://Player/GameConsole.tscn" id="9_oe2bd"]
+[ext_resource type="PackedScene" uid="uid://dtiteo58pkawc" path="res://NPCs/npcs/primoz/primoz.tscn" id="10_e14a0"]
+[ext_resource type="FontFile" uid="uid://phqgh6w0aycf" path="res://Assets/MiniWorldSprites/AldotheApache.ttf" id="11_jaxdv"]
+[ext_resource type="PackedScene" uid="uid://byh4q2fmblsxp" path="res://Levels/Gmayna/test_background.tscn" id="12_fy56i"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_iqc1g"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4srb8"]
 shader = ExtResource("3_2hent")
 shader_parameter/corrupt_strength = 0.5
 shader_parameter/darken_amount = 0.5
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ajkb6"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0seu"]
 atlas = ExtResource("6_n60hd")
 region = Rect2(296.955, 133.149, 32.0851, 4.98328)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3e337"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_doqxy"]
 atlas = ExtResource("6_n60hd")
 region = Rect2(58.001, 134.005, 29.9876, 2.99651)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_o4v67"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqsag"]
 atlas = ExtResource("6_n60hd")
 region = Rect2(296.955, 133.149, 32.0851, 4.98328)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ydtsw"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ikngw"]
 atlas = ExtResource("6_n60hd")
 region = Rect2(57.9892, 150.075, 30.0525, 2.97043)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6m06x"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4utxc"]
 atlas = ExtResource("6_n60hd")
 region = Rect2(296.955, 133.149, 32.0851, 4.98328)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_euivl"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_o0sb6"]
 atlas = ExtResource("6_n60hd")
 region = Rect2(58.0048, 182.012, 30.0223, 3.01398)
 margin = Rect2(0, 0, 0, -0.105)
 
-[sub_resource type="Resource" id="Resource_pliph"]
+[sub_resource type="Resource" id="Resource_eayvb"]
 script = ExtResource("8_30y6w")
 duration = 1.0
 transition = 0
 ease = 2
 
+[sub_resource type="Resource" id="Resource_cleo3"]
+script = ExtResource("8_30y6w")
+duration = 0.5
+transition = 6
+ease = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yg3sr"]
+atlas = ExtResource("6_n60hd")
+region = Rect2(297.679, 133.672, 30.7269, 3.83597)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfllo"]
+atlas = ExtResource("6_n60hd")
+region = Rect2(57.946, 133.961, 30.0777, 3.06021)
+
 [node name="gmayna" type="Node2D"]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_yqg73")]
-position = Vector2(13, -8)
+position = Vector2(409, -26)
+speed = 120
+jump_speed = 300
+gravity = 1200
 
-[node name="StaticBody2D" parent="." instance=ExtResource("2_h0wx4")]
-position = Vector2(19, 4)
-scale = Vector2(7.13, 1)
+[node name="StaticBody2D" parent="." instance=ExtResource("2_7bxsv")]
+position = Vector2(-5, 23)
+scale = Vector2(41.925, 5.79)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 unique_name_in_owner = true
 physics_interpolation_mode = 1
 z_index = 1
-material = SubResource("ShaderMaterial_iqc1g")
-position = Vector2(229, 310)
+material = SubResource("ShaderMaterial_4srb8")
+position = Vector2(409, -66)
 zoom = Vector2(5, 5)
 script = ExtResource("4_owrym")
 
@@ -75,8 +95,8 @@ offset_right = -109.0
 offset_bottom = -42.0
 scale = Vector2(2.03, 1)
 value = 50.0
-texture_under = SubResource("AtlasTexture_ajkb6")
-texture_progress = SubResource("AtlasTexture_3e337")
+texture_under = SubResource("AtlasTexture_k0seu")
+texture_progress = SubResource("AtlasTexture_doqxy")
 texture_progress_offset = Vector2(1.08, 1.34)
 
 [node name="PlayerFP" type="TextureProgressBar" parent="Camera2D"]
@@ -86,8 +106,8 @@ offset_top = -76.0
 offset_right = -109.0
 offset_bottom = -36.0
 value = 50.0
-texture_under = SubResource("AtlasTexture_o4v67")
-texture_progress = SubResource("AtlasTexture_ydtsw")
+texture_under = SubResource("AtlasTexture_tqsag")
+texture_progress = SubResource("AtlasTexture_ikngw")
 texture_progress_offset = Vector2(1.08, 1.34)
 
 [node name="PlayerSTAM" type="TextureProgressBar" parent="Camera2D"]
@@ -98,19 +118,19 @@ offset_right = -109.0
 offset_bottom = -30.0
 scale = Vector2(1.345, 1)
 value = 50.0
-texture_under = SubResource("AtlasTexture_6m06x")
-texture_progress = SubResource("AtlasTexture_euivl")
+texture_under = SubResource("AtlasTexture_4utxc")
+texture_progress = SubResource("AtlasTexture_o0sb6")
 texture_progress_offset = Vector2(1.08, 1.34)
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 z_index = 1
-position = Vector2(229, 310)
+position = Vector2(409, -66)
 script = ExtResource("7_b400l")
 priority = 2
 follow_mode = 2
-follow_target = NodePath("")
+follow_target = NodePath("../CharacterBody2D")
 zoom = Vector2(5, 5)
-tween_resource = SubResource("Resource_pliph")
+tween_resource = SubResource("Resource_eayvb")
 follow_offset = Vector2(0, -40)
 follow_damping = true
 draw_limits = true
@@ -131,3 +151,147 @@ offset_top = -64.0
 offset_right = 407.0
 offset_bottom = 164.0
 scale = Vector2(0.4, 0.4)
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("2_7bxsv")]
+position = Vector2(-252, -93)
+scale = Vector2(7.455, 29.355)
+
+[node name="Primoz" parent="." instance=ExtResource("10_e14a0")]
+position = Vector2(50, -14)
+
+[node name="BossCam" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(624, 284)
+script = ExtResource("7_b400l")
+priority = 1
+follow_mode = 1
+zoom = Vector2(5, 5)
+tween_resource = SubResource("Resource_cleo3")
+draw_limits = true
+
+[node name="BossHP" type="TextureProgressBar" parent="BossCam"]
+visible = false
+offset_left = -102.0
+offset_top = 77.0
+offset_right = -71.0
+offset_bottom = 81.0
+scale = Vector2(6.8, 1.145)
+value = 1.0
+texture_under = SubResource("AtlasTexture_yg3sr")
+texture_progress = SubResource("AtlasTexture_mfllo")
+texture_progress_offset = Vector2(0.345, 0.355)
+
+[node name="Label" type="Label" parent="BossCam"]
+visible = false
+offset_left = -102.0
+offset_top = 72.0
+offset_right = 116.0
+offset_bottom = 120.0
+scale = Vector2(0.12, 0.12)
+theme_override_fonts/font = ExtResource("11_jaxdv")
+theme_override_font_sizes/font_size = 40
+text = "Demon King"
+
+[node name="StaticBody2D3" parent="." instance=ExtResource("2_7bxsv")]
+position = Vector2(496, 22)
+scale = Vector2(26.555, 5.16)
+
+[node name="StaticBody2D4" parent="." instance=ExtResource("2_7bxsv")]
+position = Vector2(799, 53)
+scale = Vector2(34, 5.79)
+
+[node name="StaticBody2D5" parent="." instance=ExtResource("2_7bxsv")]
+position = Vector2(1020, 11)
+scale = Vector2(9.98, 6.735)
+
+[node name="StaticBody2D6" parent="." instance=ExtResource("2_7bxsv")]
+position = Vector2(601, -17)
+scale = Vector2(2.08, 2.53)
+
+[node name="StaticBody2D7" parent="." instance=ExtResource("2_7bxsv")]
+position = Vector2(697, -44)
+scale = Vector2(6.525, 0.83)
+
+[node name="StaticBody2D8" parent="." instance=ExtResource("2_7bxsv")]
+position = Vector2(805, -68)
+scale = Vector2(6.525, 0.83)
+
+[node name="StaticBody2D9" parent="." instance=ExtResource("2_7bxsv")]
+position = Vector2(913, -42)
+scale = Vector2(3.82, 3.82)
+
+[node name="StaticBody2D10" parent="." instance=ExtResource("2_7bxsv")]
+position = Vector2(999, -83)
+scale = Vector2(7.265, 0.78)
+
+[node name="StaticBody2D10" parent="StaticBody2D10" instance=ExtResource("2_7bxsv")]
+position = Vector2(999, -83)
+scale = Vector2(7.265, 0.78)
+
+[node name="StaticBody2D11" parent="." instance=ExtResource("2_7bxsv")]
+position = Vector2(716, 22)
+scale = Vector2(17.44, 0.43)
+
+[node name="StaticBody2D12" parent="." instance=ExtResource("12_fy56i")]
+position = Vector2(912, -17)
+scale = Vector2(1, 4.125)
+
+[node name="StaticBody2D13" parent="." instance=ExtResource("2_7bxsv")]
+position = Vector2(1575, 194)
+scale = Vector2(79.66, 7.145)
+
+[node name="StaticBody2D14" parent="." instance=ExtResource("2_7bxsv")]
+position = Vector2(1170, 55)
+scale = Vector2(1, 35.895)
+
+[node name="StaticBody2D15" parent="." instance=ExtResource("2_7bxsv")]
+position = Vector2(1212, -13)
+scale = Vector2(7.265, 0.78)
+
+[node name="StaticBody2D10" parent="StaticBody2D15" instance=ExtResource("2_7bxsv")]
+position = Vector2(999, -83)
+scale = Vector2(7.265, 0.78)
+
+[node name="StaticBody2D16" parent="." instance=ExtResource("2_7bxsv")]
+position = Vector2(1319, -28)
+scale = Vector2(5.58, 0.68)
+
+[node name="StaticBody2D17" parent="." instance=ExtResource("2_7bxsv")]
+position = Vector2(1412, 13)
+scale = Vector2(12.605, 0.69)
+
+[node name="StaticBody2D18" parent="." instance=ExtResource("2_7bxsv")]
+position = Vector2(1425, -49)
+scale = Vector2(5.58, 0.68)
+
+[node name="StaticBody2D19" parent="." instance=ExtResource("2_7bxsv")]
+position = Vector2(1529, -20)
+scale = Vector2(5.58, 0.68)
+
+[node name="StaticBody2D20" parent="." instance=ExtResource("2_7bxsv")]
+position = Vector2(1614, 30)
+scale = Vector2(12.585, 1.03)
+
+[node name="StaticBody2D21" parent="." instance=ExtResource("2_7bxsv")]
+position = Vector2(1705, 83)
+scale = Vector2(5.215, 15.01)
+
+[node name="StaticBody2D22" parent="." instance=ExtResource("2_7bxsv")]
+position = Vector2(1720, -5)
+scale = Vector2(1.89, 2.555)
+
+[node name="StaticBody2D23" parent="." instance=ExtResource("12_fy56i")]
+position = Vector2(1720, -70)
+scale = Vector2(1, 5.17)
+
+[node name="StaticBody2D24" parent="." instance=ExtResource("2_7bxsv")]
+position = Vector2(1746, -127)
+scale = Vector2(7.265, 0.78)
+
+[node name="StaticBody2D10" parent="StaticBody2D24" instance=ExtResource("2_7bxsv")]
+position = Vector2(999, -83)
+scale = Vector2(7.265, 0.78)
+
+[node name="StaticBody2D25" parent="." instance=ExtResource("2_7bxsv")]
+position = Vector2(1799, -15)
+scale = Vector2(2.63, 34.595)
