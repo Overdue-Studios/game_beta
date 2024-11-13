@@ -1,8 +1,11 @@
-[gd_scene load_steps=24 format=3 uid="uid://dj3qbmfwi0piy"]
+[gd_scene load_steps=29 format=3 uid="uid://dj3qbmfwi0piy"]
 
 [ext_resource type="PackedScene" uid="uid://cktfdk2f1lwm4" path="res://Player/player.tscn" id="1_yqg73"]
+[ext_resource type="Texture2D" uid="uid://dk5v863h7hwwa" path="res://Assets/Level 1/Lvl 1 Foreground/Door .png" id="2_1dryh"]
 [ext_resource type="PackedScene" uid="uid://diwwdbxwtmdvs" path="res://Levels/Gmayna/test_platform.tscn" id="2_7bxsv"]
 [ext_resource type="Shader" path="res://Assets/ShadersThemesFonts/dreamworld.gdshader" id="3_2hent"]
+[ext_resource type="Texture2D" uid="uid://b0e1pbxdomc7r" path="res://Assets/Level 1/Lvl 1 Foreground/Foreground 1.png" id="3_vrv1m"]
+[ext_resource type="Texture2D" uid="uid://bbp10etrfyifj" path="res://Assets/Level 1/Lvl 1 Foreground/Foreground 2.png" id="4_bo0qi"]
 [ext_resource type="Script" path="res://Levels/TestLevel/camera_2d.gd" id="4_owrym"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_kke6x"]
 [ext_resource type="Texture2D" uid="uid://d1kkwrpiw011v" path="res://Assets/MiniWorldSprites/Health Bar Asset Pack 2 by Adwit Rahman/04.png" id="6_n60hd"]
@@ -12,6 +15,12 @@
 [ext_resource type="PackedScene" uid="uid://dtiteo58pkawc" path="res://NPCs/npcs/primoz/primoz.tscn" id="10_e14a0"]
 [ext_resource type="FontFile" uid="uid://phqgh6w0aycf" path="res://Assets/MiniWorldSprites/AldotheApache.ttf" id="11_jaxdv"]
 [ext_resource type="PackedScene" uid="uid://byh4q2fmblsxp" path="res://Levels/Gmayna/test_background.tscn" id="12_fy56i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bphhn"]
+size = Vector2(7.41449, 6.26043)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hkwar"]
+size = Vector2(11.9022, 10)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4srb8"]
 shader = ExtResource("3_2hent")
@@ -64,15 +73,54 @@ atlas = ExtResource("6_n60hd")
 region = Rect2(57.946, 133.961, 30.0777, 3.06021)
 
 [node name="gmayna" type="Node2D"]
+position = Vector2(1, -8)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(141, -200)
+scale = Vector2(0.135556, 0.227121)
+texture = ExtResource("4_bo0qi")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.92, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(149, -199)
+scale = Vector2(0.135556, 0.227121)
+texture = ExtResource("3_vrv1m")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_yqg73")]
-position = Vector2(408, -6)
+position = Vector2(-35, -16)
 speed = 120
 jump_speed = 300
 gravity = 1200
 
-[node name="StaticBody2D" parent="." instance=ExtResource("2_7bxsv")]
-position = Vector2(-5, 23)
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(-89, -91)
+scale = Vector2(7.455, 29.355)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(-1.29276, 1.86978)
+shape = SubResource("RectangleShape2D_bphhn")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+position = Vector2(31.7907, 1.80548)
+scale = Vector2(0.0162652, 0.00305368)
+texture = ExtResource("2_1dryh")
+
+[node name="StaticBody2D26" type="StaticBody2D" parent="."]
+position = Vector2(158, 25)
+scale = Vector2(41.925, 5.79)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D26"]
+position = Vector2(-1.04949, 1.20898)
+shape = SubResource("RectangleShape2D_hkwar")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(158, 25)
 scale = Vector2(41.925, 5.79)
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -80,7 +128,7 @@ unique_name_in_owner = true
 physics_interpolation_mode = 1
 z_index = 1
 material = SubResource("ShaderMaterial_4srb8")
-position = Vector2(408, -46)
+position = Vector2(-35, -56)
 zoom = Vector2(5, 5)
 script = ExtResource("4_owrym")
 
@@ -124,7 +172,7 @@ texture_progress_offset = Vector2(1.08, 1.34)
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 z_index = 1
-position = Vector2(408, -46)
+position = Vector2(-35, -56)
 script = ExtResource("7_b400l")
 priority = 2
 follow_mode = 2
@@ -152,12 +200,8 @@ offset_right = 407.0
 offset_bottom = 164.0
 scale = Vector2(0.4, 0.4)
 
-[node name="StaticBody2D2" parent="." instance=ExtResource("2_7bxsv")]
-position = Vector2(-252, -93)
-scale = Vector2(7.455, 29.355)
-
 [node name="Primoz" parent="." instance=ExtResource("10_e14a0")]
-position = Vector2(50, -14)
+position = Vector2(213, -12)
 
 [node name="BossCam" type="Node2D" parent="."]
 unique_name_in_owner = true

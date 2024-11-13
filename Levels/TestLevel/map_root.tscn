@@ -1179,7 +1179,7 @@ texture = ExtResource("5_wynfn")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 unique_name_in_owner = true
-physics_interpolation_mode = 2
+physics_interpolation_mode = 1
 z_index = 1
 material = SubResource("ShaderMaterial_xqjah")
 position = Vector2(224, 310)
@@ -1351,7 +1351,7 @@ position = Vector2(21, 345)
 script = ExtResource("28_207mk")
 
 [node name="Node2D" parent="." instance=ExtResource("29_ltuyd")]
-position = Vector2(421, 342)
+position = Vector2(55, 343)
 collision_mask = 4
 script = ExtResource("30_pvwk3")
 
