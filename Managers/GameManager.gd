@@ -38,3 +38,8 @@ func initialise_player():
 	
 func _on_player_inventory_changed(inventory):
 	ResourceSaver.save(player.inventory, "user://inventory.tres")
+
+func hit_stop(time:float):
+	Engine.time_scale = 0
+	await get_tree().create_timer(time, true, false, true).timeout
+	Engine.time_scale = 1

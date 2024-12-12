@@ -12,4 +12,4 @@ func _ready():
 func _process(delta: float):
 	time += delta
 	var value = (sin(time - PI / 2) + 1.0) / 2.0
-	self.color = gradient.gradient.sample(value)
+	#self.color = gradient.gradient.sample(value)

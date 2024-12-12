@@ -1,0 +1,6 @@
+[gd_resource type="CanvasTexture" load_steps=2 format=3 uid="uid://tqqd32xp4ctr"]
+
+[ext_resource type="Texture2D" uid="uid://bgiqcnbhb53w6" path="res://Assets/Baumi_custom/ballguy_n.png" id="1_ll7f7"]
+
+[resource]
+normal_texture = ExtResource("1_ll7f7")
