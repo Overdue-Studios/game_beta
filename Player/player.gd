@@ -10,6 +10,7 @@ extends CharacterBody2D
 @export var fp : int = 100
 @export var max_fp : int = 100
 @export var max_stam : int = 300
+@export var fast_drop_multiplier : float = 5.0
 
 @onready var knocked = false
 @onready var animation_player = $AnimatedSprite2D
@@ -55,6 +56,8 @@ func _physics_process(_delta):
 		transition_to(State.KNOCKBACK)
 		
 	velocity.y += gravity * _delta
+	if Input.is_action_pressed("ui_down"):
+		velocity.y += speed * _delta * fast_drop_multiplier
 	if stam_cd > 0:
 		stam_cd -= _delta
 	elif stam_cd <= 0:
