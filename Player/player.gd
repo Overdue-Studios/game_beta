@@ -34,6 +34,7 @@ var inventory = inventory_resource.new()
 var weapon_damage = 1
 var tab_inventory = load("res://Player/Inventory/TabInventory.tscn")
 var inventory_open = false
+var can_double_jump = false
 
 func _ready():
 	hp_bar.max_value = max_hp
@@ -46,6 +47,7 @@ func _ready():
 	secondary_hitbox.position.x = 10.5
 	
 func _physics_process(_delta):
+	# Knockback logic
 	if knocked == true:
 		if self.global_position.direction_to(get_parent().get_node("Dragon").global_position).x < 0:
 			velocity.x += 200
@@ -54,23 +56,30 @@ func _physics_process(_delta):
 		knocked = false
 		transition_to(State.KNOCKBACK)
 		
+	# Gravity
 	velocity.y += gravity * _delta
+	
+	# Stamina cooldown
 	if stam_cd > 0:
 		stam_cd -= _delta
 	elif stam_cd <= 0:
 		stam_bar.value += stamina_regen_speed
 		
+	# Dying
 	if hp <= 0:
 		transition_to(State.DIE)
+	
+	# Horizontal movement if not knocked
 	if GameManager.nomove == false:
 		if state != State.KNOCKBACK:
 			velocity.x = Input.get_axis("ui_left", "ui_right") * speed
+			
+		# --- State Machine ---
 		match state:
 			State.KNOCKBACK:
 				if animation_player.frame == 3:
 					velocity.x = 0
 					transition_to(State.IDLE)
-					
 			State.DIE:
 				if animation_player.frame == 2:
 					animation_player.pause()
@@ -135,6 +144,8 @@ func _physics_process(_delta):
 					primary_hitbox.position.x = -13.5
 					secondary_hitbox.position.x = -10.5
 				if is_on_floor():
+					can_double_jump = false
+					print("floor")
 					transition_to(State.IDLE)
 				elif Input.is_action_just_pressed("primary_action") and stam_bar.value >= 25:
 					transition_to(State.ATTACKING_1)
@@ -179,6 +190,8 @@ func _physics_process(_delta):
 					transition_to(State.IDLE)
 					
 	move_and_slide()
+	
+	# Interact group toggle
 	if Input.is_action_just_pressed("interact"):
 		var dream = get_tree().get_nodes_in_group("dream")
 		for i in dream:
@@ -189,9 +202,19 @@ func _physics_process(_delta):
 				i.process_mode = Node.PROCESS_MODE_DISABLED
 				i.visible = false
 		
-	if Input.is_action_just_pressed("ui_up") and GameManager.nomove == false and is_on_floor() == true:
-		velocity.y = -jump_speed
-		transition_to(State.JUMPING)
+	# Double jump logic
+	if Input.is_action_just_pressed("ui_up") and GameManager.nomove == false:
+		print(can_double_jump)
+		# First jump (on floor)
+		if is_on_floor():
+			velocity.y = -jump_speed
+			can_double_jump = true
+			transition_to(State.JUMPING)
+		# Second jump (in air)
+		elif can_double_jump:
+			velocity.y = -jump_speed
+			can_double_jump = false
+			transition_to(State.JUMPING)
 
 	
 func _process(_delta):
