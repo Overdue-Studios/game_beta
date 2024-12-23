@@ -10,6 +10,7 @@ extends CharacterBody2D
 @export var fp : int = 100
 @export var max_fp : int = 100
 @export var max_stam : int = 300
+@export var climbing = false
 
 @onready var knocked = false
 @onready var animation_player = $AnimatedSprite2D
@@ -28,6 +29,7 @@ enum State { IDLE, RUNNING, JUMPING, FALLING, ATTACKING_1, ATTACKING_2, ROLL, DI
 signal primary_action
 signal secondary_action
 signal damage_dealt
+
 
 var inventory_resource = load("res://Player/Inventory/inventory.gd")
 var inventory = inventory_resource.new()
@@ -54,12 +56,19 @@ func _physics_process(_delta):
 		knocked = false
 		transition_to(State.KNOCKBACK)
 		
-	velocity.y += gravity * _delta
+	
 	if stam_cd > 0:
 		stam_cd -= _delta
 	elif stam_cd <= 0:
 		stam_bar.value += stamina_regen_speed
 		
+	# Climbing code, if bool is true then only check Y coord movement, else run the normal state machine
+	if climbing:
+		velocity.y = Input.get_axis("ui_up", "ui_down") * speed
+	else:
+		velocity.y += gravity * _delta
+		
+
 	if hp <= 0:
 		transition_to(State.DIE)
 	if GameManager.nomove == false:
