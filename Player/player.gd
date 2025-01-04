@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var stamina_regen_speed :float = 1
 @export var speed = 70
 @export var jump_speed = 1800
-@export var gravity = 4000
+@export var gravity = 3000
 @export var hp : int = 200
 @export var max_hp : int = 200
 @export var fp : int = 100
@@ -25,7 +25,7 @@ extends CharacterBody2D
 @onready var stam_used = false
 @onready var door = $"../StaticBody2D/AnimationPlayer"
 
-enum State { IDLE, RUNNING, JUMPING, FALLING, ATTACKING_1, ATTACKING_2, ROLL, DIE, KNOCKBACK }
+enum State { IDLE, RUNNING, JUMPING, FALLING, ATTACKING_1, ATTACKING_2, ATTACK_FALLING, ROLL, DIE, KNOCKBACK }
 
 signal primary_action
 signal secondary_action
@@ -60,12 +60,12 @@ func _physics_process(_delta):
 		transition_to(State.KNOCKBACK)
 
 	# Gravity
-	velocity.y += gravity * _delta
+	#velocity.y += gravity * _delta
 	
 	# Stamina cooldown
 	if Input.is_action_pressed("ui_down"):
 		velocity.y += speed * _delta * fast_drop_multiplier
-    
+	
 	if stam_cd > 0:
 		stam_cd -= _delta
 	elif stam_cd <= 0:
@@ -146,6 +146,8 @@ func _physics_process(_delta):
 					transition_to(State.ATTACKING_2)
 				elif Input.is_action_just_pressed("roll") and stam_bar.value >= 15:
 					transition_to(State.ROLL)
+				else:
+					transition_to(State.FALLING)
 			State.FALLING:
 				if velocity.x > 0:
 					animation_player.flip_h = false
@@ -160,7 +162,7 @@ func _physics_process(_delta):
 					print("floor")
 					transition_to(State.IDLE)
 				elif Input.is_action_just_pressed("primary_action") and stam_bar.value >= 25:
-					transition_to(State.ATTACKING_1)
+					transition_to(State.ATTACK_FALLING)
 				elif Input.is_action_just_pressed("secondary_action") and stam_bar.value >= 45:
 					transition_to(State.ATTACKING_2)
 				elif Input.is_action_just_pressed("roll") and stam_bar.value >= 15:
@@ -189,6 +191,11 @@ func _physics_process(_delta):
 					secondary_hitbox.monitoring = false
 				if animation_player.frame == 11:
 					transition_to(State.IDLE)
+			State.ATTACK_FALLING:
+				if is_on_floor():
+					transition_to(State.IDLE)
+				velocity.x = 0
+				velocity.y += speed * _delta * fast_drop_multiplier
 			State.ROLL:
 				if stam_used == false:
 						use_stamina(15)
@@ -216,7 +223,6 @@ func _physics_process(_delta):
 		
 	# Double jump logic
 	if Input.is_action_just_pressed("ui_up") and GameManager.nomove == false:
-		print(can_double_jump)
 		# First jump (on floor)
 		if is_on_floor():
 			velocity.y = -jump_speed
@@ -262,6 +268,8 @@ func transition_to(new_state):
 			animation_player.play("primary_attack")
 		State.ATTACKING_2:
 			animation_player.play("secondary_attack")
+		State.ATTACK_FALLING:
+			animation_player.play("attack_fall")
 		State.ROLL:
 			animation_player.play("roll")
 		State.KNOCKBACK:
@@ -270,7 +278,6 @@ func transition_to(new_state):
 func _on_primary_attack_body_entered(body: Node2D) -> void:
 	if body != self:
 		GameManager.hit_stop(0.12)
-		print("hit with primary:", body)
 		emit_signal("damage_dealt", 15, body)
 		
 func _on_secondary_attack_body_entered(body: Node2D) -> void:
