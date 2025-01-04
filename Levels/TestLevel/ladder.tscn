@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwh8ws2yhr1hx"]
+
+[ext_resource type="Script" path="res://Levels/TestLevel/ladder.gd" id="1_j44w4"]
+[ext_resource type="Texture2D" uid="uid://vkk5oyei1crg" path="res://Assets/MiniWorldSprites/Buildings/Wood/Workshops.png" id="2_5cikg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vmt4e"]
+
+[node name="Ladder" type="Area2D"]
+script = ExtResource("1_j44w4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_vmt4e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-5.56303e-07, 2.78159e-07)
+scale = Vector2(0.416667, 0.416667)
+texture = ExtResource("2_5cikg")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

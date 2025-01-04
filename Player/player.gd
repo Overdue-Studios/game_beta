@@ -10,6 +10,7 @@ extends CharacterBody2D
 @export var fp : int = 100
 @export var max_fp : int = 100
 @export var max_stam : int = 300
+@export var climbing = false
 @export var fast_drop_multiplier : float = 5.0
 
 @onready var knocked = false
@@ -29,6 +30,7 @@ enum State { IDLE, RUNNING, JUMPING, FALLING, ATTACKING_1, ATTACKING_2, ROLL, DI
 signal primary_action
 signal secondary_action
 signal damage_dealt
+
 
 var inventory_resource = load("res://Player/Inventory/inventory.gd")
 var inventory = inventory_resource.new()
@@ -56,17 +58,24 @@ func _physics_process(_delta):
 			velocity.x -= 200
 		knocked = false
 		transition_to(State.KNOCKBACK)
-		
+
 	# Gravity
 	velocity.y += gravity * _delta
 	
 	# Stamina cooldown
 	if Input.is_action_pressed("ui_down"):
 		velocity.y += speed * _delta * fast_drop_multiplier
+    
 	if stam_cd > 0:
 		stam_cd -= _delta
 	elif stam_cd <= 0:
 		stam_bar.value += stamina_regen_speed
+		
+	# Climbing code, if bool is true then only check Y coord movement, else run the normal state machine
+	if climbing:
+		velocity.y = Input.get_axis("ui_up", "ui_down") * speed
+	else:
+		velocity.y += gravity * _delta
 		
 	# Dying
 	if hp <= 0:
