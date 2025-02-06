@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="game_beta"
-run/main_scene="res://Levels/ui.tscn"
+run/main_scene="res://Levels/TestLevel/map_root.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
@@ -20,7 +20,6 @@ config/icon="res://icon.svg"
 ItemDatabase="*res://Managers/item_database.gd"
 GameManager="*res://Managers/GameManager.gd"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
-SceneSwap="*res://Managers/scene_swap.tscn"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [dialogic]
@@ -71,11 +70,7 @@ movie_writer/movie_file="C:/Users/baumg/Documents/GodotVids/GodotVid.avi"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
-
-[global_group]
-
-Dream=""
+enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
 
 [input]
 

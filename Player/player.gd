@@ -21,7 +21,6 @@ extends CharacterBody2D
 @onready var stam_bar = %PlayerSTAM
 @onready var stam_cd = 0
 @onready var stam_used = false
-@onready var door = $"../StaticBody2D/AnimationPlayer"
 
 enum State { IDLE, RUNNING, JUMPING, FALLING, ATTACKING_1, ATTACKING_2, ROLL, DIE, KNOCKBACK }
 

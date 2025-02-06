@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=4 uid="uid://csauhih1fd2bm"]
+[gd_scene load_steps=50 format=4 uid="uid://csauhih1fd2bm"]
 
 [ext_resource type="Texture2D" uid="uid://bsnh8whuc1w6h" path="res://Assets/Texture/TX Tileset Grass.png" id="1_c4815"]
 [ext_resource type="Shader" path="res://Assets/ShadersThemesFonts/dreamworld.gdshader" id="1_knfq7"]
@@ -28,9 +28,6 @@
 [ext_resource type="PackedScene" uid="uid://cvpfrlcwsk360" path="res://Levels/TestLevel/HedgehogMob.tscn" id="27_jts7y"]
 [ext_resource type="PackedScene" uid="uid://dtiteo58pkawc" path="res://NPCs/npcs/primoz/primoz.tscn" id="27_o3k3i"]
 [ext_resource type="Script" path="res://NPCs/npcs/primoz/primoz2.gd" id="28_207mk"]
-[ext_resource type="PackedScene" uid="uid://byptqpd3h6nor" path="res://Levels/level_swapper.tscn" id="29_ltuyd"]
-[ext_resource type="Script" path="res://Levels/level_swapper.gd" id="30_pvwk3"]
-[ext_resource type="PackedScene" uid="uid://cqmu44dlvn45g" path="res://Managers/scene_swap.tscn" id="31_60o2l"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xqjah"]
 shader = ExtResource("1_knfq7")
@@ -1179,10 +1176,10 @@ texture = ExtResource("5_wynfn")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 unique_name_in_owner = true
-physics_interpolation_mode = 1
+physics_interpolation_mode = 2
 z_index = 1
 material = SubResource("ShaderMaterial_xqjah")
-position = Vector2(224, 310)
+position = Vector2(229, 310)
 zoom = Vector2(5, 5)
 script = ExtResource("8_8u0k2")
 
@@ -1267,7 +1264,7 @@ text = "Demon King"
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 z_index = 1
-position = Vector2(224, 310)
+position = Vector2(229, 310)
 script = ExtResource("6_ljt7u")
 priority = 2
 follow_mode = 2
@@ -1303,7 +1300,7 @@ texture_scale = 50.0
 
 [node name="Player" parent="." instance=ExtResource("4_jt5aw")]
 unique_name_in_owner = true
-position = Vector2(224, 350)
+position = Vector2(229, 350)
 collision_layer = 4
 collision_mask = 1
 slide_on_ceiling = false
@@ -1350,13 +1347,5 @@ position = Vector2(352, 345)
 position = Vector2(21, 345)
 script = ExtResource("28_207mk")
 
-[node name="Node2D" parent="." instance=ExtResource("29_ltuyd")]
-position = Vector2(55, 343)
-collision_mask = 4
-script = ExtResource("30_pvwk3")
-
-[node name="CanvasLayer" parent="." instance=ExtResource("31_60o2l")]
-
 [connection signal="body_entered" from="door_left" to="door_right" method="_on_area_2d_2_body_entered"]
 [connection signal="body_entered" from="door_right" to="door_right" method="_on_body_entered"]
-[connection signal="body_entered" from="Node2D" to="Node2D" method="_on_body_entered"]
