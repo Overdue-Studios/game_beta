@@ -368,7 +368,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"roll",
-"speed": 16.0
+"speed": 32.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -458,15 +458,15 @@ script = ExtResource("1_jmvu1")
 stamina_regen_time = 1.5
 stamina_regen_speed = 1.5
 speed = 50
-jump_speed = 1500
-gravity = 3000
+jump_speed = 1000
+gravity = 1500
 max_stam = 100
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
 scale = Vector2(0.439, 0.423)
 sprite_frames = SubResource("SpriteFrames_lvf4y")
-animation = &"die"
+animation = &"roll"
 
 [node name="PrimaryAttack" type="Area2D" parent="."]
 collision_layer = 8

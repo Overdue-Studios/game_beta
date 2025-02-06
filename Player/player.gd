@@ -10,6 +10,7 @@ extends CharacterBody2D
 @export var fp : int = 100
 @export var max_fp : int = 100
 @export var max_stam : int = 300
+@export var dash_speed : float = 2.5
 
 @onready var knocked = false
 @onready var animation_player = $AnimatedSprite2D
@@ -87,8 +88,6 @@ func _physics_process(_delta):
 					transition_to(State.ATTACKING_1)
 				elif Input.is_action_just_pressed("secondary_action") and stam_bar.value >= 45:
 					transition_to(State.ATTACKING_2)
-				elif Input.is_action_just_pressed("roll") and stam_bar.value >= 15:
-					transition_to(State.ROLL)
 			State.RUNNING:
 				if velocity.x > 0:
 					animation_player.flip_h = false
@@ -170,12 +169,9 @@ func _physics_process(_delta):
 				if stam_used == false:
 						use_stamina(15)
 						stam_used = true
-				velocity.y = 0
-				if animation_player.flip_h == true:
-					velocity.x = -200
-				else:
-					velocity.x = 200
-				if animation_player.frame == 5:
+				#velocity.y = 0
+				velocity.x = velocity.x*dash_speed
+				if animation_player.frame == 7:
 					transition_to(State.IDLE)
 					
 	move_and_slide()
