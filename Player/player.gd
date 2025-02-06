@@ -76,8 +76,9 @@ func _physics_process(_delta):
 					animation_player.pause()
 					await get_tree().create_timer(1).timeout
 					self.visible = false
-					self.process_mode = Node.PROCESS_MODE_DISABLED
-					get_tree().paused = true
+					get_tree().change_scene_to_file("res://Levels/death_screen.tscn")
+					#self.process_mode = Node.PROCESS_MODE_DISABLED
+					#get_tree().paused = true
 			State.IDLE:
 				if velocity.x != 0:
 					transition_to(State.RUNNING)
