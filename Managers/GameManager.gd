@@ -10,32 +10,29 @@ func _process(_delta):
 		initialise_player()
 		return
 		
-	if Input.is_action_just_pressed("console") and console_open == false:
-		console = get_tree().get_root().get_node("/root/map_root/PhantomCamera2D/UI/Panel")
-		console.visible = true
-		#console_open = true
-		get_tree().paused = true
+	if Input.is_action_just_pressed("save"):
+		save()
 	
-	if Input.is_action_just_pressed("console") and console_open == true:
-		#console_open = false
-		console.visible = false
-		get_tree().paused = false
+	if Input.is_action_just_pressed("load_save"):
+		load_save()
+	
 
 func initialise_player():
 	player = get_tree().get_root().get_node("/root/map_root/Player")
 	if not player:
 		return
-		
-	emit_signal("player_initialised", player)
 	
+	
+	emit_signal("player_initialised", player)
+
 	player.inventory.connect("inventory_changed", Callable(self, "_on_player_inventory_changed"))
 	
 	var existing_inventory = load("user://inventory.tres")
 	if existing_inventory:
 		player.inventory.set_items(existing_inventory.get_items())
 		player.inventory.add_item("Sheckel", 3)
-	
-	
+
+
 func _on_player_inventory_changed(inventory):
 	ResourceSaver.save(player.inventory, "user://inventory.tres")
 
@@ -43,3 +40,26 @@ func hit_stop(time:float):
 	Engine.time_scale = 0
 	await get_tree().create_timer(time, true, false, true).timeout
 	Engine.time_scale = 1
+
+
+func save():
+	var config = ConfigFile.new()
+	config.set_value("Player", "position", player.position)
+	config.set_value("Player", "hp", player.hp)
+	config.save("user://save1.cfg")
+	
+func load_save():
+	# Load data from a file.
+	var config = ConfigFile.new()
+	var err = config.load("user://save1.cfg")
+
+	# If the file didn't load, ignore it.
+	if err != OK:
+		return
+	
+	player.hp = config.get_value("Player", "hp")
+	player.position = config.get_value("Player", "position")
+	get_tree().get_root().get_node("/root/map_root/BossCam").priority = 1
+	player.hp_bar.value = config.get_value("Player", "hp")
+	
+	

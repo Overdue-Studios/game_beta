@@ -65,7 +65,7 @@ func _physics_process(_delta):
 	# Stamina cooldown
 	if Input.is_action_pressed("ui_down"):
 		velocity.y += speed * _delta * fast_drop_multiplier
-    
+	
 	if stam_cd > 0:
 		stam_cd -= _delta
 	elif stam_cd <= 0:

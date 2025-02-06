@@ -1313,7 +1313,7 @@ position = Vector2(224, 350)
 collision_layer = 4
 collision_mask = 1
 slide_on_ceiling = false
-speed = 120
+speed = 100
 jump_speed = 300
 gravity = 1200
 
