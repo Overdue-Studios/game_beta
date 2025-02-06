@@ -17,11 +17,11 @@ signal dead
 
 enum State { IDLE, ATTACK_MELEE, ATTACK_RANGED, AGGRO, HIT, DEATH, FLEE }
 
-func _ready():#
+func _ready():
+	player.connect("damage_dealt", Callable(self, "_took_damage"))
 	animation_player.play("idle")
 	hp_bar.max_value = health
 	hp_bar.value = health
-	player.connect("damage_dealt", Callable(self, "_took_damage"))
 
 func _physics_process(_delta):
 	velocity.y += gravity * _delta
@@ -91,8 +91,6 @@ func _physics_process(_delta):
 	if is_on_floor():
 		velocity = Vector2(0,0)
 
-					
-				
 func connect_to_signal_in_tree(tree: String, signal_name: String, method_name: String):
 	var nodes = get_tree().get_nodes_in_group(tree)
 	for node in nodes:
