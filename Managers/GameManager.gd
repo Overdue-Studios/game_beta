@@ -11,10 +11,10 @@ func _process(_delta):
 		return
 		
 	if Input.is_action_just_pressed("save"):
-		save()
+		save("save1")
 	
 	if Input.is_action_just_pressed("load_save"):
-		load_save()
+		load_save("save1")
 	
 
 func initialise_player():
@@ -42,16 +42,16 @@ func hit_stop(time:float):
 	Engine.time_scale = 1
 
 
-func save():
+func save(save_name):
 	var config = ConfigFile.new()
 	config.set_value("Player", "position", player.position)
 	config.set_value("Player", "hp", player.hp)
-	config.save("user://save1.cfg")
+	config.save("user://%s.cfg" % str(save_name))
 	
-func load_save():
+func load_save(save_name):
 	# Load data from a file.
 	var config = ConfigFile.new()
-	var err = config.load("user://save1.cfg")
+	var err = config.load("user://%s.cfg" % str(save_name))
 
 	# If the file didn't load, ignore it.
 	if err != OK:
