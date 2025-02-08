@@ -1185,7 +1185,7 @@ texture = ExtResource("5_wynfn")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 unique_name_in_owner = true
-physics_interpolation_mode = 1
+physics_interpolation_mode = 2
 z_index = 1
 material = SubResource("ShaderMaterial_xqjah")
 position = Vector2(224, 310)

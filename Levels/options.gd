@@ -11,14 +11,5 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _on_button_button_down() -> void:
-	SceneSwap.change_scene("res://Levels/TestLevel/map_root.tscn")
-
-func _on_options_button_button_down() -> void:
-	SceneSwap.change_scene("res://Levels/options.tscn")
-
 func _on_exit_button_button_down() -> void:
-	get_tree().quit()
-
-
-
+	SceneSwap.change_scene("res://Levels/ui.tscn")
