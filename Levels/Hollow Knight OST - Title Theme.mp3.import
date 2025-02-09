@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cv6vb07w2dww5"
+path="res://.godot/imported/Hollow Knight OST - Title Theme.mp3-dda414db2faeb740a8cf268e649f99da.mp3str"
+
+[deps]
+
+source_file="res://Levels/Hollow Knight OST - Title Theme.mp3"
+dest_files=["res://.godot/imported/Hollow Knight OST - Title Theme.mp3-dda414db2faeb740a8cf268e649f99da.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

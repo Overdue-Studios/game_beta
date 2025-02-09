@@ -51,7 +51,7 @@ func save(save_name):
 func load_save(save_name):
 	# Load data from a file.
 	var config = ConfigFile.new()
-	var err = config.load("user://%s.cfg" % str(save_name))
+	var err = config.load("user://%s.cfg" % str(save_name))	
 
 	# If the file didn't load, ignore it.
 	if err != OK:
