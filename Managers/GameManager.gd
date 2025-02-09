@@ -46,6 +46,7 @@ func save(save_name):
 	var config = ConfigFile.new()
 	config.set_value("Player", "position", player.position)
 	config.set_value("Player", "hp", player.hp)
+	config.set_value("Player", "level", get_tree().get_current_scene().get_scene_file_path())
 	config.save("user://%s.cfg" % str(save_name))
 	
 func load_save(save_name):
@@ -56,7 +57,10 @@ func load_save(save_name):
 	# If the file didn't load, ignore it.
 	if err != OK:
 		return
-	
+	await get_tree().change_scene_to_file(config.get_value("Player", "level"))
+	await get_tree().process_frame  # Wait for one frame to ensure scene is loaded
+	await get_tree().create_timer(0.1).timeout  # Add small delay to ensure everything is initialized
+	initialise_player()
 	player.hp = config.get_value("Player", "hp")
 	player.position = config.get_value("Player", "position")
 	get_tree().get_root().get_node("/root/map_root/BossCam").priority = 1
