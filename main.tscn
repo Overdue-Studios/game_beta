@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://caofrkqbfk5tu"]
+[gd_scene load_steps=19 format=3 uid="uid://uol387rl447s"]
 
 [ext_resource type="PackedScene" uid="uid://vioeqkx1g7ux" path="res://Levels/ui.tscn" id="1_04wxr"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="1_7x1gv"]
@@ -77,6 +77,7 @@ tween_resource = SubResource("Resource_vsvws")
 draw_limits = true
 
 [node name="Player_Camera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
+z_index = 5
 position = Vector2(265, 351)
 script = ExtResource("1_7x1gv")
 priority = 1
