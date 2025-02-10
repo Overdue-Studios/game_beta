@@ -1,6 +1,6 @@
 extends Area2D
 
-@onready var player = get_tree().get_root().get_node("/root/map_root/Player")
+@onready var player = GameManager.player
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.

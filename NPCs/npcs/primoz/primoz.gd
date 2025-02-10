@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-@onready var player = get_parent().get_node("Player")
+@onready var player = GameManager.player
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
