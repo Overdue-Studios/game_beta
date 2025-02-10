@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://vioeqkx1g7ux"]
+[gd_scene load_steps=10 format=3 uid="uid://vioeqkx1g7ux"]
 
 [ext_resource type="Script" path="res://Levels/ui.gd" id="1_h2r4i"]
 [ext_resource type="Texture2D" uid="uid://c00sc4kvchvgd" path="res://Assets/MiniWorldSprites/UI assets pack 2/UI cooking.png" id="1_wr6wy"]
 [ext_resource type="FontFile" uid="uid://diblivvfehs6f" path="res://Fonts/OptimusPrincepsSemiBold.ttf" id="3_gxh02"]
 [ext_resource type="Theme" uid="uid://dnxc73b3bnqg4" path="res://Fonts/MainTheme.tres" id="3_p32s6"]
 [ext_resource type="AudioStream" uid="uid://cv6vb07w2dww5" path="res://Levels/Hollow Knight OST - Title Theme.mp3" id="5_jokh6"]
+[ext_resource type="PackedScene" uid="uid://c74x6inhs3g5q" path="res://Levels/save_select.tscn" id="6_1qedw"]
 [ext_resource type="PackedScene" uid="uid://nxljhk8avdjl" path="res://Levels/options.tscn" id="6_l5s1m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hnbc8"]
@@ -95,12 +96,16 @@ flat = true
 visible = false
 layout_mode = 1
 
+[node name="Save_Select" parent="." instance=ExtResource("6_1qedw")]
+visible = false
+layout_mode = 1
+
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_jokh6")
 volume_db = -9.455
 autoplay = true
 bus = &"Music"
 
-[connection signal="button_down" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Play_Button" to="." method="_on_button_button_down"]
+[connection signal="button_down" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Play_Button" to="." method="_on_play_button_button_down"]
 [connection signal="button_down" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Options_Button" to="." method="_on_options_button_button_down"]
 [connection signal="button_down" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Exit_Button" to="." method="_on_exit_button_button_down"]

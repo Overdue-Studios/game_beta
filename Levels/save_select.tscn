@@ -52,23 +52,27 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_constants/separation = 30
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Button_S1" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(200, 120)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_c12dy")
 theme_override_font_sizes/font_size = 50
 text = "SAVE 1"
 
-[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Button_S2" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_c12dy")
 theme_override_font_sizes/font_size = 50
 text = "SAVE 2"
 
-[node name="Button3" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Button_S3" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_c12dy")
 theme_override_font_sizes/font_size = 50
 text = "SAVE 3"
+
+[connection signal="button_down" from="MarginContainer/VBoxContainer/HBoxContainer/Button_S1" to="." method="_on_button_s_1_button_down"]
+[connection signal="button_down" from="MarginContainer/VBoxContainer/HBoxContainer/Button_S2" to="." method="_on_button_s_2_button_down"]
+[connection signal="button_down" from="MarginContainer/VBoxContainer/HBoxContainer/Button_S3" to="." method="_on_button_s_3_button_down"]

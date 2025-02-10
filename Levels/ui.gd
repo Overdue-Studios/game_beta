@@ -1,6 +1,7 @@
 extends Control
 
 @onready var options = $Options
+@onready var save_select = $Save_Select
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,7 +14,7 @@ func _process(delta: float) -> void:
 
 
 func _on_button_button_down() -> void:
-	SceneSwap.change_scene("res://Levels/TestLevel/map_root.tscn")
+	pass
 
 func _on_options_button_button_down() -> void:
 	options.visible = true
@@ -29,4 +30,7 @@ func _on_exit_options() -> void:
 	$MarginContainer.visible = true
 
 
-
+func _on_play_button_button_down() -> void:
+	save_select.visible = true
+	save_select.grab_focus()
+	$MarginContainer.visible = false

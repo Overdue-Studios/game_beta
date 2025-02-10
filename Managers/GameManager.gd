@@ -2,6 +2,7 @@ extends Node
 
 signal player_initialised
 var player
+var camera
 var nomove = false
 var console_open = false
 @onready var console
@@ -18,10 +19,12 @@ func _process(_delta):
 	
 
 func initialise_player():
-	player = get_tree().get_root().get_node("/root/map_root/Player")
+	player = get_tree().get_root().get_node("/root/Main/Player")
+	camera = get_tree().get_root().get_node("/root/Main/Player_Camera")
+	print(player)
 	if not player:
 		return
-	
+	print("player initialised")
 	
 	emit_signal("player_initialised", player)
 
@@ -57,13 +60,9 @@ func load_save(save_name):
 	# If the file didn't load, ignore it.
 	if err != OK:
 		return
-	await get_tree().change_scene_to_file(config.get_value("Player", "level"))
 	await get_tree().process_frame  # Wait for one frame to ensure scene is loaded
 	await get_tree().create_timer(0.1).timeout  # Add small delay to ensure everything is initialized
-	initialise_player()
 	player.hp = config.get_value("Player", "hp")
 	player.position = config.get_value("Player", "position")
-	get_tree().get_root().get_node("/root/map_root/BossCam").priority = 1
 	player.hp_bar.value = config.get_value("Player", "hp")
-	
 	

@@ -19,6 +19,6 @@ func _on_body_entered(body: Node2D) -> void:
 
 #leva vrata
 func _on_area_2d_2_body_entered(body: Node2D) -> void:
-	print("body")
+	print("door entered")
 	if body == player:
 		camera_control.priority = 1
