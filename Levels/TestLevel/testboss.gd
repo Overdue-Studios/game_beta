@@ -8,12 +8,9 @@ extends CharacterBody2D
 @onready var ray = $RayCast2D
 @onready var camera = %Camera2D
 @onready var state = State.IDLE
-@onready var player = get_parent().get_node("Player")
+@onready var player = GameManager.player
 @onready var fireball = preload("res://Levels/TestLevel/fireball.tscn")
 @onready var stagger_count = 0
-
-signal aggro
-signal dead
 
 enum State { IDLE, ATTACK_MELEE, ATTACK_RANGED, AGGRO, HIT, DEATH, FLEE }
 
@@ -27,20 +24,20 @@ func _physics_process(_delta):
 	velocity.y += gravity * _delta
 		
 	if Engine.get_frames_drawn() % 1 == 0:
-		ray.target_position = get_parent().get_node("Player").global_position - self.global_position
+		ray.target_position = player.global_position - self.global_position
 		
 		match state:
 			State.IDLE:
-				if ray.get_collider() == get_parent().get_node("Player") and ray.target_position.length() < 160:
+				if ray.get_collider() == player and ray.target_position.length() < 160:
 					emit_signal("aggro")
 					transition_to(State.AGGRO)
 			State.AGGRO:
 				hp_bar.visible = true
 				nametxt.visible = true
-				if ray.get_collider() == get_parent().get_node("Player") and ray.target_position.length() > 100:
+				if ray.get_collider() == player and ray.target_position.length() > 100:
 					transition_to(State.ATTACK_RANGED)
-				elif ray.get_collider() == get_parent().get_node("Player") and ray.target_position.length() > 50:
-					if self.global_position.direction_to(get_parent().get_node("Player").global_position).x < 0:
+				elif ray.get_collider() == player and ray.target_position.length() > 50:
+					if self.global_position.direction_to(player.global_position).x < 0:
 						velocity.x = -speed
 						animation_player.flip_h = false
 						$Area2D.scale = Vector2(1,1)
@@ -75,8 +72,8 @@ func _physics_process(_delta):
 				if animation_player.frame == 4:
 					transition_to(State.AGGRO)
 			State.FLEE:
-				if ray.get_collider() == get_parent().get_node("Player") and ray.target_position.length() < 60:
-					if self.global_position.direction_to(get_parent().get_node("Player").global_position).x < 0:
+				if ray.get_collider() == player and ray.target_position.length() < 60:
+					if self.global_position.direction_to(player.global_position).x < 0:
 						velocity.x = speed *3
 						animation_player.flip_h = false
 					else: 

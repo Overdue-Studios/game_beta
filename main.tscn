@@ -10,15 +10,15 @@
 [ext_resource type="Texture2D" uid="uid://d1kkwrpiw011v" path="res://Assets/MiniWorldSprites/Health Bar Asset Pack 2 by Adwit Rahman/04.png" id="6_2q102"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="6_bh2v3"]
 
-[sub_resource type="Resource" id="Resource_om425"]
+[sub_resource type="Resource" id="Resource_vsvws"]
 script = ExtResource("2_ievyo")
 duration = 1.0
 transition = 0
 ease = 2
 
-[sub_resource type="Resource" id="Resource_m1yqq"]
+[sub_resource type="Resource" id="Resource_svfu3"]
 script = ExtResource("2_ievyo")
-duration = 1.0
+duration = 0.0
 transition = 0
 ease = 2
 
@@ -73,7 +73,7 @@ offset_bottom = -1141.0
 position = Vector2(-1037, -816)
 script = ExtResource("1_7x1gv")
 priority = 2
-tween_resource = SubResource("Resource_om425")
+tween_resource = SubResource("Resource_vsvws")
 draw_limits = true
 
 [node name="Player_Camera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
@@ -83,7 +83,7 @@ priority = 1
 follow_mode = 1
 follow_target = NodePath("../Player")
 zoom = Vector2(3, 3)
-tween_resource = SubResource("Resource_m1yqq")
+tween_resource = SubResource("Resource_svfu3")
 draw_limits = true
 
 [node name="PlayerHP" type="TextureProgressBar" parent="Player_Camera"]

@@ -65,7 +65,7 @@ size_flags_stretch_ratio = 8.57
 theme_override_fonts/font = ExtResource("1_4srqt")
 theme_override_font_sizes/font_size = 50
 tab_alignment = 1
-current_tab = 2
+current_tab = 1
 
 [node name="Graphics" type="TabBar" parent="MarginContainer/VBoxContainer/TabContainer"]
 visible = false
@@ -104,7 +104,6 @@ size_flags_vertical = 4
 layout_mode = 2
 
 [node name="Sound" type="TabBar" parent="MarginContainer/VBoxContainer/TabContainer"]
-visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_4srqt")
 theme_override_font_sizes/font_size = 20
@@ -129,7 +128,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/separation = 80
+theme_override_constants/separation = 57
 
 [node name="Audio_Slider" parent="MarginContainer/VBoxContainer/TabContainer/Sound/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("5_qfn8u")]
 layout_mode = 2
@@ -143,6 +142,7 @@ layout_mode = 2
 bus_name = "SFX"
 
 [node name="Controls" type="TabBar" parent="MarginContainer/VBoxContainer/TabContainer"]
+visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_4srqt")
 theme_override_font_sizes/font_size = 20
