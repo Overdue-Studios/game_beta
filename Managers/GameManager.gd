@@ -30,17 +30,6 @@ func initialise_player():
 	
 	emit_signal("player_initialised", player)
 
-	player.inventory.connect("inventory_changed", Callable(self, "_on_player_inventory_changed"))
-	
-	var existing_inventory = load("user://inventory.tres")
-	if existing_inventory:
-		player.inventory.set_items(existing_inventory.get_items())
-		player.inventory.add_item("Sheckel", 3)
-
-
-func _on_player_inventory_changed(inventory):
-	ResourceSaver.save(player.inventory, "user://inventory.tres")
-
 func hit_stop(time:float):
 	Engine.time_scale = 0
 	await get_tree().create_timer(time, true, false, true).timeout

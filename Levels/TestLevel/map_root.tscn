@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://csauhih1fd2bm"]
+[gd_scene load_steps=40 format=4 uid="uid://csauhih1fd2bm"]
 
 [ext_resource type="Texture2D" uid="uid://bsnh8whuc1w6h" path="res://Assets/Texture/TX Tileset Grass.png" id="1_c4815"]
 [ext_resource type="Shader" path="res://Assets/ShadersThemesFonts/dreamworld.gdshader" id="1_knfq7"]
@@ -17,7 +17,6 @@
 [ext_resource type="FontFile" uid="uid://phqgh6w0aycf" path="res://Assets/MiniWorldSprites/AldotheApache.ttf" id="11_85sy3"]
 [ext_resource type="Script" path="res://Levels/TestLevel/DayNight.gd" id="14_s86km"]
 [ext_resource type="Texture2D" uid="uid://cke4soyv244p8" path="res://Levels/TestLevel/daynightcycle.tres" id="15_lxnud"]
-[ext_resource type="PackedScene" uid="uid://c455gilqpf84o" path="res://Levels/TestLevel/item_drop.tscn" id="16_hh4ov"]
 [ext_resource type="PackedScene" uid="uid://crewj4mxpwxtr" path="res://Levels/TestLevel/dragon.tscn" id="17_aud3f"]
 [ext_resource type="Texture2D" uid="uid://be370dy3eejgy" path="res://Assets/Baumi_custom/light.png" id="19_6j2ki"]
 [ext_resource type="Script" path="res://Levels/TestLevel/cameracontrol.gd" id="19_cddin"]
@@ -1187,9 +1186,6 @@ gradient = ExtResource("15_lxnud")
 
 [node name="Dragon" parent="." instance=ExtResource("17_aud3f")]
 position = Vector2(725, 340)
-
-[node name="ItemDrop" parent="." instance=ExtResource("16_hh4ov")]
-position = Vector2(267, 247)
 
 [node name="door_left" type="Area2D" parent="."]
 position = Vector2(483, 344)

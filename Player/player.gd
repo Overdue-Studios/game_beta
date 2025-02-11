@@ -31,12 +31,7 @@ signal primary_action
 signal secondary_action
 signal damage_dealt
 
-
-var inventory_resource = load("res://Player/Inventory/inventory.gd")
-var inventory = inventory_resource.new()
 var weapon_damage = 1
-var tab_inventory = load("res://Player/Inventory/TabInventory.tscn")
-var inventory_open = false
 var can_double_jump = false
 
 func _ready():
@@ -241,14 +236,6 @@ func _process(_delta):
 
 	if Input.is_action_pressed("secondary_action") and stam_bar.value >= 45:
 		secondary_action.emit()
-	
-	#Inventory opener, spawna novga otroka UI scene
-	if Input.is_action_just_pressed("inventory"):
-		get_tree().paused = true
-		inventory_open = true
-		var tab_inventory_ui = tab_inventory.instantiate()
-		add_child(tab_inventory_ui)
-		GameManager.nomove = true
 		
 func transition_to(new_state):
 	state = new_state
