@@ -1,13 +1,13 @@
 [gd_scene load_steps=12 format=3 uid="uid://nxljhk8avdjl"]
 
-[ext_resource type="FontFile" uid="uid://diblivvfehs6f" path="res://Fonts/OptimusPrincepsSemiBold.ttf" id="1_4srqt"]
-[ext_resource type="Script" path="res://Levels/options.gd" id="1_j523t"]
+[ext_resource type="FontFile" path="res://Resources/Fonts/OptimusPrincepsSemiBold.ttf" id="1_4srqt"]
+[ext_resource type="Script" path="res://UI/options.gd" id="1_j523t"]
 [ext_resource type="Texture2D" uid="uid://c00sc4kvchvgd" path="res://Assets/MiniWorldSprites/UI assets pack 2/UI cooking.png" id="2_bk5ug"]
-[ext_resource type="PackedScene" uid="uid://cgkvvox3p8rsw" path="res://Levels/window_mode_button.tscn" id="3_c0od8"]
-[ext_resource type="PackedScene" uid="uid://dapgp3a0v18hl" path="res://Levels/rebind_button.tscn" id="3_ox16j"]
-[ext_resource type="PackedScene" uid="uid://1qx8u5fxo5uw" path="res://Levels/resolution_mode_button.tscn" id="4_ggpdr"]
-[ext_resource type="PackedScene" uid="uid://cpp8vwnve2tv5" path="res://Levels/audio_slider.tscn" id="5_qfn8u"]
-[ext_resource type="AudioStream" uid="uid://cv6vb07w2dww5" path="res://Levels/Hollow Knight OST - Title Theme.mp3" id="7_s2ikg"]
+[ext_resource type="PackedScene" uid="uid://cgkvvox3p8rsw" path="res://UI/window_mode_button.tscn" id="3_c0od8"]
+[ext_resource type="PackedScene" uid="uid://dapgp3a0v18hl" path="res://UI/rebind_button.tscn" id="3_ox16j"]
+[ext_resource type="PackedScene" uid="uid://1qx8u5fxo5uw" path="res://UI/resolution_mode_button.tscn" id="4_ggpdr"]
+[ext_resource type="PackedScene" uid="uid://cpp8vwnve2tv5" path="res://UI/audio_slider.tscn" id="5_qfn8u"]
+[ext_resource type="AudioStream" uid="uid://cv6vb07w2dww5" path="res://Audio/Hollow Knight OST - Title Theme.mp3" id="7_s2ikg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5d0rt"]
 atlas = ExtResource("2_bk5ug")

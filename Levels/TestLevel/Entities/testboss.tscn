@@ -1,6 +1,6 @@
 [gd_scene load_steps=80 format=3 uid="uid://crewj4mxpwxtr"]
 
-[ext_resource type="Script" path="res://Levels/TestLevel/testboss.gd" id="1_3dxp0"]
+[ext_resource type="Script" path="res://Levels/TestLevel/Entities/testboss.gd" id="1_3dxp0"]
 [ext_resource type="Texture2D" uid="uid://bb4b7jp50fw2d" path="res://Assets/Baumi_custom/demon_slime_FREE_v1.0_288x160_spritesheet.png" id="2_claq5"]
 [ext_resource type="Texture2D" uid="uid://be370dy3eejgy" path="res://Assets/Baumi_custom/light.png" id="3_mf3u8"]
 

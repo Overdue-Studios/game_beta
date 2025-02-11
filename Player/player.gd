@@ -44,8 +44,13 @@ func _ready():
 	primary_hitbox.position.x = 13.5
 	secondary_hitbox.position.x = 10.5
 	
-func _physics_process(_delta):
+func _process(_delta):
 	# Knockback logic
+	if Input.is_action_pressed("primary_action") and stam_bar.value >= 25:
+		primary_action.emit()
+
+	if Input.is_action_pressed("secondary_action") and stam_bar.value >= 45:
+		secondary_action.emit()
 	if knocked == true:
 		if self.global_position.direction_to(get_parent().get_node("Dragon").global_position).x < 0:
 			velocity.x += 200
@@ -228,15 +233,7 @@ func _physics_process(_delta):
 			velocity.y = -jump_speed
 			can_double_jump = false
 			transition_to(State.JUMPING)
-
-	
-func _process(_delta):
-	if Input.is_action_pressed("primary_action") and stam_bar.value >= 25:
-		primary_action.emit()
-
-	if Input.is_action_pressed("secondary_action") and stam_bar.value >= 45:
-		secondary_action.emit()
-		
+			
 func transition_to(new_state):
 	state = new_state
 	match new_state:

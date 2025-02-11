@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://1qx8u5fxo5uw"]
 
-[ext_resource type="PackedScene" uid="uid://cxfn5eiumi766" path="res://Levels/display_button.tscn" id="1_bm10p"]
-[ext_resource type="Script" path="res://Levels/resolution_mode_button.gd" id="2_7ixq3"]
+[ext_resource type="PackedScene" uid="uid://cxfn5eiumi766" path="res://UI/display_button.tscn" id="1_bm10p"]
+[ext_resource type="Script" path="res://UI/resolution_mode_button.gd" id="2_7ixq3"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mw2mn"]
 

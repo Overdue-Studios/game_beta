@@ -1,6 +1,6 @@
 extends Control
 
-@export var level = preload("res://Levels/TestLevel/map_root.tscn")
+@export var level: PackedScene = preload("res://Levels/TestLevel/map_root.tscn")
 var level_instance
 
 # Called when the node enters the scene tree for the first time.
@@ -9,7 +9,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("LoadLevel"):
 		load_level()
 

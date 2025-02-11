@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dapgp3a0v18hl"]
 
-[ext_resource type="Script" path="res://Levels/rebind_button.gd" id="1_ksthl"]
+[ext_resource type="Script" path="res://UI/rebind_button.gd" id="1_ksthl"]
 [ext_resource type="FontFile" uid="uid://diblivvfehs6f" path="res://Fonts/OptimusPrincepsSemiBold.ttf" id="2_ff5f2"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xwi3a"]

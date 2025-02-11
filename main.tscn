@@ -1,12 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://uol387rl447s"]
+[gd_scene load_steps=18 format=3 uid="uid://uol387rl447s"]
 
-[ext_resource type="PackedScene" uid="uid://vioeqkx1g7ux" path="res://Levels/ui.tscn" id="1_04wxr"]
+[ext_resource type="PackedScene" uid="uid://vioeqkx1g7ux" path="res://UI/ui.tscn" id="1_04wxr"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="1_7x1gv"]
 [ext_resource type="Script" path="res://main.gd" id="1_wgiwl"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="2_ievyo"]
 [ext_resource type="PackedScene" uid="uid://cktfdk2f1lwm4" path="res://Player/player.tscn" id="3_iwxex"]
 [ext_resource type="Shader" path="res://Assets/ShadersThemesFonts/dreamworld.gdshader" id="4_xfd8t"]
-[ext_resource type="Script" path="res://Levels/TestLevel/camera_2d.gd" id="5_aioc7"]
 [ext_resource type="Texture2D" uid="uid://d1kkwrpiw011v" path="res://Assets/MiniWorldSprites/Health Bar Asset Pack 2 by Adwit Rahman/04.png" id="6_2q102"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="6_bh2v3"]
 
@@ -19,7 +18,7 @@ ease = 2
 [sub_resource type="Resource" id="Resource_svfu3"]
 script = ExtResource("2_ievyo")
 duration = 0.0
-transition = 0
+transition = 1
 ease = 2
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r6mmd"]
@@ -78,13 +77,18 @@ draw_limits = true
 
 [node name="Player_Camera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 z_index = 5
-position = Vector2(265, 351)
+position = Vector2(265, 341)
 script = ExtResource("1_7x1gv")
 priority = 1
-follow_mode = 1
+follow_mode = 2
 follow_target = NodePath("../Player")
-zoom = Vector2(3, 3)
+zoom = Vector2(4, 4)
 tween_resource = SubResource("Resource_svfu3")
+follow_offset = Vector2(0, -10)
+follow_damping = true
+dead_zone_width = 0.879
+dead_zone_height = 0.803
+show_viewfinder_in_play = true
 draw_limits = true
 
 [node name="PlayerHP" type="TextureProgressBar" parent="Player_Camera"]
@@ -130,6 +134,10 @@ position = Vector2(265, 351)
 speed = 100
 jump_speed = 150
 gravity = 500
+hp = null
+max_hp = null
+fp = null
+max_fp = null
 
 [node name="Camera2D" type="Camera2D" parent="."]
 unique_name_in_owner = true
@@ -137,7 +145,7 @@ physics_interpolation_mode = 2
 z_index = 1
 material = SubResource("ShaderMaterial_uyrdh")
 position = Vector2(-1037, -816)
-script = ExtResource("5_aioc7")
+editor_draw_limits = true
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 script = ExtResource("6_bh2v3")

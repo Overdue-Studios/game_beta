@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cgkvvox3p8rsw"]
 
-[ext_resource type="PackedScene" uid="uid://cxfn5eiumi766" path="res://Levels/display_button.tscn" id="1_jtf0o"]
-[ext_resource type="Script" path="res://Levels/window_mode_button.gd" id="2_m6scr"]
+[ext_resource type="PackedScene" uid="uid://cxfn5eiumi766" path="res://UI/display_button.tscn" id="1_jtf0o"]
+[ext_resource type="Script" path="res://UI/window_mode_button.gd" id="2_m6scr"]
 [ext_resource type="FontFile" uid="uid://diblivvfehs6f" path="res://Fonts/OptimusPrincepsSemiBold.ttf" id="3_lq4lo"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t7yq8"]

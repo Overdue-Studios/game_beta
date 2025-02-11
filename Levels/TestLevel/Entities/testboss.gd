@@ -1,7 +1,7 @@
 extends CharacterBody2D
-@export var gravity = 2500
-@export var health = 100
-@export var speed = 50
+@export var gravity : int = 2500
+@export var health : int = 200
+@export var speed = 500
 @onready var hp_bar = get_parent().get_node("BossCam/BossHP")
 @onready var nametxt = get_parent().get_node("BossCam/Label")
 @onready var animation_player = $AnimatedSprite2D
@@ -9,7 +9,7 @@ extends CharacterBody2D
 @onready var camera = %Camera2D
 @onready var state = State.IDLE
 @onready var player = GameManager.player
-@onready var fireball = preload("res://Levels/TestLevel/fireball.tscn")
+@onready var fireball = preload("res://Levels/TestLevel/Entities/fireball.tscn")
 @onready var stagger_count = 0
 
 enum State { IDLE, ATTACK_MELEE, ATTACK_RANGED, AGGRO, HIT, DEATH, FLEE }
@@ -20,7 +20,7 @@ func _ready():
 	hp_bar.max_value = health
 	hp_bar.value = health
 
-func _physics_process(_delta):
+func _process(_delta : float) -> void:
 	velocity.y += gravity * _delta
 		
 	if Engine.get_frames_drawn() % 1 == 0:
