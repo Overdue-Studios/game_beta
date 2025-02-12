@@ -269,6 +269,7 @@ func _on_secondary_attack_body_entered(body: Node2D) -> void:
 		emit_signal("damage_dealt", 30, body)
 
 func damage(amount):
+	print("damage: " + str(amount))
 	hp -= amount
 	hp_bar.value = hp
 
