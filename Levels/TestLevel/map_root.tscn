@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=4 uid="uid://csauhih1fd2bm"]
+[gd_scene load_steps=41 format=4 uid="uid://csauhih1fd2bm"]
 
 [ext_resource type="Texture2D" uid="uid://bsnh8whuc1w6h" path="res://Assets/Texture/TX Tileset Grass.png" id="1_c4815"]
 [ext_resource type="Shader" path="res://Assets/ShadersThemesFonts/dreamworld.gdshader" id="1_knfq7"]
@@ -8,60 +8,25 @@
 [ext_resource type="Texture2D" uid="uid://bh85jc2cfggu5" path="res://Assets/MiniWorldSprites/Backgrounds/layers/parallax-demon-woods-mid-trees.png" id="3_aps46"]
 [ext_resource type="Texture2D" uid="uid://bhytcrguflrfu" path="res://Assets/MiniWorldSprites/Ground/Water+.png" id="3_lfio6"]
 [ext_resource type="Texture2D" uid="uid://bvjwxmwws0plr" path="res://Assets/MiniWorldSprites/Miscellaneous/Portal.png" id="4_87x1k"]
-[ext_resource type="PackedScene" uid="uid://cktfdk2f1lwm4" path="res://Player/player.tscn" id="4_jt5aw"]
 [ext_resource type="Texture2D" uid="uid://cylg4ebqp1f76" path="res://Assets/MiniWorldSprites/Backgrounds/layers/parallax-demon-woods-close-trees.png" id="4_y4jpn"]
-[ext_resource type="PackedScene" uid="uid://dql0vmiwur6sn" path="res://Player/GameConsole.tscn" id="5_nq8nm"]
 [ext_resource type="Texture2D" uid="uid://baqyl53hohpwr" path="res://icon.svg" id="5_wynfn"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="6_ljt7u"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="6_xkpbe"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_dvhkl"]
-[ext_resource type="Script" path="res://Levels/TestLevel/camera_2d.gd" id="8_8u0k2"]
 [ext_resource type="Texture2D" uid="uid://d1kkwrpiw011v" path="res://Assets/MiniWorldSprites/Health Bar Asset Pack 2 by Adwit Rahman/04.png" id="10_3wrah"]
 [ext_resource type="Texture2D" uid="uid://c2a6rcjg74d36" path="res://Assets/Texture/TX Struct.png" id="11_6tmit"]
 [ext_resource type="FontFile" uid="uid://phqgh6w0aycf" path="res://Assets/MiniWorldSprites/AldotheApache.ttf" id="11_85sy3"]
 [ext_resource type="Script" path="res://Levels/TestLevel/DayNight.gd" id="14_s86km"]
 [ext_resource type="Texture2D" uid="uid://cke4soyv244p8" path="res://Levels/TestLevel/daynightcycle.tres" id="15_lxnud"]
-[ext_resource type="PackedScene" uid="uid://c455gilqpf84o" path="res://Levels/TestLevel/item_drop.tscn" id="16_hh4ov"]
-[ext_resource type="PackedScene" uid="uid://crewj4mxpwxtr" path="res://Levels/TestLevel/dragon.tscn" id="17_aud3f"]
+[ext_resource type="PackedScene" uid="uid://crewj4mxpwxtr" path="res://Levels/TestLevel/Entities/testboss.tscn" id="17_aud3f"]
 [ext_resource type="Texture2D" uid="uid://be370dy3eejgy" path="res://Assets/Baumi_custom/light.png" id="19_6j2ki"]
-[ext_resource type="Script" path="res://Levels/TestLevel/cameracontrol.gd" id="19_cddin"]
-[ext_resource type="PackedScene" uid="uid://cvpfrlcwsk360" path="res://Levels/TestLevel/HedgehogMob.tscn" id="27_jts7y"]
+[ext_resource type="Texture2D" uid="uid://dk5v863h7hwwa" path="res://Assets/Level 1/Lvl 1 Foreground/Door .png" id="21_makdi"]
+[ext_resource type="PackedScene" uid="uid://cvpfrlcwsk360" path="res://Levels/TestLevel/Entities/HedgehogMob.tscn" id="27_jts7y"]
 [ext_resource type="PackedScene" uid="uid://dtiteo58pkawc" path="res://NPCs/npcs/primoz/primoz.tscn" id="27_o3k3i"]
 [ext_resource type="Script" path="res://NPCs/npcs/primoz/primoz2.gd" id="28_207mk"]
 [ext_resource type="PackedScene" uid="uid://byptqpd3h6nor" path="res://Levels/level_swapper.tscn" id="29_ltuyd"]
 [ext_resource type="Script" path="res://Levels/level_swapper.gd" id="30_pvwk3"]
 [ext_resource type="PackedScene" uid="uid://cqmu44dlvn45g" path="res://Managers/scene_swap.tscn" id="31_60o2l"]
 [ext_resource type="PackedScene" uid="uid://cwh8ws2yhr1hx" path="res://Levels/TestLevel/ladder.tscn" id="32_0d4vx"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xqjah"]
-shader = ExtResource("1_knfq7")
-shader_parameter/corrupt_strength = 0.5
-shader_parameter/darken_amount = 0.5
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kqv7e"]
-atlas = ExtResource("10_3wrah")
-region = Rect2(296.955, 133.149, 32.0851, 4.98328)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vwxc4"]
-atlas = ExtResource("10_3wrah")
-region = Rect2(58.001, 134.005, 29.9876, 2.99651)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_85fey"]
-atlas = ExtResource("10_3wrah")
-region = Rect2(296.955, 133.149, 32.0851, 4.98328)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1mnw4"]
-atlas = ExtResource("10_3wrah")
-region = Rect2(57.9892, 150.075, 30.0525, 2.97043)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ejisk"]
-atlas = ExtResource("10_3wrah")
-region = Rect2(296.955, 133.149, 32.0851, 4.98328)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j4qop"]
-atlas = ExtResource("10_3wrah")
-region = Rect2(58.0048, 182.012, 30.0223, 3.01398)
-margin = Rect2(0, 0, 0, -0.105)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vyqtq"]
 texture = ExtResource("1_c4815")
@@ -1092,15 +1057,6 @@ sources/2 = SubResource("TileSetAtlasSource_2p11y")
 sources/3 = SubResource("TileSetAtlasSource_657j4")
 sources/4 = SubResource("TileSetAtlasSource_yke4p")
 
-[sub_resource type="Environment" id="Environment_6x7x4"]
-background_mode = 1
-ambient_light_source = 1
-ambient_light_sky_contribution = 0.0
-ambient_light_energy = 10.61
-reflected_light_source = 1
-glow_normalized = true
-glow_intensity = 8.0
-
 [sub_resource type="Resource" id="Resource_q4vc0"]
 script = ExtResource("7_dvhkl")
 duration = 0.5
@@ -1115,12 +1071,6 @@ region = Rect2(297.679, 133.672, 30.7269, 3.83597)
 atlas = ExtResource("10_3wrah")
 region = Rect2(57.946, 133.961, 30.0777, 3.06021)
 
-[sub_resource type="Resource" id="Resource_auf8n"]
-script = ExtResource("7_dvhkl")
-duration = 1.0
-transition = 0
-ease = 2
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_paxrj"]
 shader = ExtResource("1_knfq7")
 shader_parameter/corrupt_strength = 0.4
@@ -1128,6 +1078,33 @@ shader_parameter/darken_amount = 0.2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqrlj"]
 size = Vector2(2, 16)
+
+[sub_resource type="GDScript" id="GDScript_oksea"]
+script/source = "extends Area2D
+
+@onready var camera_control = get_tree().get_root().get_node(\"/root/map_root/BossCam\")
+@onready var player = get_tree().get_root().get_node(\"/root/map_root/Player\")
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+#desna vrata
+func _on_body_entered(body: Node2D) -> void:
+	print(body)
+	if body == player:
+		camera_control.priority = 3
+
+#leva vrata
+func _on_area_2d_2_body_entered(body: Node2D) -> void:
+	print(\"door entered\")
+	if body == player:
+		camera_control.priority = 1
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_at2fs"]
 size = Vector2(2, 16)
@@ -1183,60 +1160,10 @@ position = Vector2(209, 238)
 scale = Vector2(3.92188, 1.79687)
 texture = ExtResource("5_wynfn")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-unique_name_in_owner = true
-physics_interpolation_mode = 1
-z_index = 1
-material = SubResource("ShaderMaterial_xqjah")
-position = Vector2(224, 310)
-zoom = Vector2(5, 5)
-script = ExtResource("8_8u0k2")
-
-[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
-script = ExtResource("6_xkpbe")
-
-[node name="PlayerHP" type="TextureProgressBar" parent="Camera2D"]
-unique_name_in_owner = true
-offset_left = -149.0
-offset_top = -82.0
-offset_right = -109.0
-offset_bottom = -42.0
-scale = Vector2(2.03, 1)
-value = 50.0
-texture_under = SubResource("AtlasTexture_kqv7e")
-texture_progress = SubResource("AtlasTexture_vwxc4")
-texture_progress_offset = Vector2(1.08, 1.34)
-
-[node name="PlayerFP" type="TextureProgressBar" parent="Camera2D"]
-unique_name_in_owner = true
-offset_left = -149.0
-offset_top = -76.0
-offset_right = -109.0
-offset_bottom = -36.0
-value = 50.0
-texture_under = SubResource("AtlasTexture_85fey")
-texture_progress = SubResource("AtlasTexture_1mnw4")
-texture_progress_offset = Vector2(1.08, 1.34)
-
-[node name="PlayerSTAM" type="TextureProgressBar" parent="Camera2D"]
-unique_name_in_owner = true
-offset_left = -149.0
-offset_top = -70.0
-offset_right = -109.0
-offset_bottom = -30.0
-scale = Vector2(1.345, 1)
-value = 50.0
-texture_under = SubResource("AtlasTexture_ejisk")
-texture_progress = SubResource("AtlasTexture_j4qop")
-texture_progress_offset = Vector2(1.08, 1.34)
-
 [node name="foreground" type="TileMapLayer" parent="."]
 use_parent_material = true
 tile_map_data = PackedByteArray("AAD9/xYAAQACAAwAAAD9/xcAAQACAA0AAAD9/xgAAQACAA4AAAD9/xkAAQACAA8AAAD+/xYAAQADAAwAAAD+/xcAAQADAA0AAAD+/xgAAQADAA4AAAD+/xkAAQADAA8AAAD//xYAAQAEAAwAAAD//xcAAQAEAA0AAAD//xgAAQAEAA4AAAD//xkAAQAEAA8AAAAAABYAAQAFAAwAAAAAABcAAQAFAA0AAAAAABgAAQAFAA4AAAAAABkAAQAFAA8AAAABABYAAQAGAAwAAAABABcAAQAGAA0AAAABABgAAQAGAA4AAAABABkAAQAGAA8AAAACABYAAQAHAAwAAAACABcAAQAHAA0AAAACABgAAQAHAA4AAAACABkAAQAHAA8AAAADABYAAQAIAAwAAAADABcAAQAIAA0AAAADABgAAQAIAA4AAAADABkAAQAIAA8AAAAEABYAAQAJAAwAAAAEABcAAQAJAA0AAAAEABgAAQAJAA4AAAAEABkAAQAJAA8AAAAFABYAAQACAAwAAAAFABcAAQACAA0AAAAFABgAAQACAA4AAAAFABkAAQACAA8AAAAGABYAAQADAAwAAAAGABcAAQADAA0AAAAGABgAAQADAA4AAAAGABkAAQADAA8AAAAHABYAAQAEAAwAAAAHABcAAQAEAA0AAAAHABgAAQAEAA4AAAAHABkAAQAEAA8AAAAIABYAAQAFAAwAAAAIABcAAQAFAA0AAAAIABgAAQAFAA4AAAAIABkAAQAFAA8AAAAJABYAAQAGAAwAAAAJABcAAQAGAA0AAAAJABgAAQAGAA4AAAAJABkAAQAGAA8AAAAKABYAAQAHAAwAAAAKABcAAQAHAA0AAAAKABgAAQAHAA4AAAAKABkAAQAHAA8AAAALABYAAQAIAAwAAAALABcAAQAIAA0AAAALABgAAQAIAA4AAAALABkAAQAIAA8AAAAMABYAAQAJAAwAAAAMABcAAQAJAA0AAAAMABgAAQAJAA4AAAAMABkAAQAJAA8AAAANABYAAQACAAwAAAANABcAAQACAA0AAAANABgAAQACAA4AAAANABkAAQACAA8AAAAOABYAAQADAAwAAAAOABcAAQADAA0AAAAOABgAAQADAA4AAAAOABkAAQADAA8AAAAPABYAAQAEAAwAAAAPABcAAQAEAA0AAAAPABgAAQAEAA4AAAAPABkAAQAEAA8AAAAQABYAAQAFAAwAAAAQABcAAQAFAA0AAAAQABgAAQAFAA4AAAAQABkAAQAFAA8AAAARABYAAQAGAAwAAAARABcAAQAGAA0AAAARABgAAQAGAA4AAAARABkAAQAGAA8AAAASABYAAQAHAAwAAAASABcAAQAHAA0AAAASABgAAQAHAA4AAAASABkAAQAHAA8AAAATABYAAQAIAAwAAAATABcAAQAIAA0AAAATABgAAQAIAA4AAAATABkAAQAIAA8AAAAUABYAAQAJAAwAAAAUABcAAQAJAA0AAAAUABgAAQAJAA4AAAAUABkAAQAJAA8AAAAVABYAAQACAAwAAAAVABcAAQACAA0AAAAVABgAAQACAA4AAAAVABkAAQACAA8AAAAWABYAAQADAAwAAAAWABcAAQADAA0AAAAWABgAAQADAA4AAAAWABkAAQADAA8AAAAXABYAAQAEAAwAAAAXABcAAQAEAA0AAAAXABgAAQAEAA4AAAAXABkAAQAEAA8AAAAYABYAAQAFAAwAAAAYABcAAQAFAA0AAAAYABgAAQAFAA4AAAAYABkAAQAFAA8AAAAZABYAAQAGAAwAAAAZABcAAQAGAA0AAAAZABgAAQAGAA4AAAAZABkAAQAGAA8AAAAaABYAAQAHAAwAAAAaABcAAQAHAA0AAAAaABgAAQAHAA4AAAAaABkAAQAHAA8AAAAbABYAAQAIAAwAAAAbABcAAQAIAA0AAAAbABgAAQAIAA4AAAAbABkAAQAIAA8AAAAcABYAAQAJAAwAAAAcABcAAQAJAA0AAAAcABgAAQAJAA4AAAAcABkAAQAJAA8AAAAdABYAAQACAAwAAAAdABcAAQACAA0AAAAdABgAAQACAA4AAAAdABkAAQACAA8AAAAeABYAAQADAAwAAAAeABcAAQADAA0AAAAeABgAAQADAA4AAAAeABkAAQADAA8AAAAfABYAAQAEAAwAAAAfABcAAQAEAA0AAAAfABgAAQAEAA4AAAAfABkAAQAEAA8AAAAgABYAAQAFAAwAAAAgABcAAQAFAA0AAAAgABgAAQAFAA4AAAAgABkAAQAFAA8AAAAhABYAAQAGAAwAAAAhABcAAQAGAA0AAAAhABgAAQAGAA4AAAAhABkAAQAGAA8AAAAiABYAAQAHAAwAAAAiABcAAQAHAA0AAAAiABgAAQAHAA4AAAAiABkAAQAHAA8AAAAjABYAAQAIAAwAAAAjABcAAQAIAA0AAAAjABgAAQAIAA4AAAAjABkAAQAIAA8AAAAkABYAAQAJAAwAAAAkABcAAQAJAA0AAAAkABgAAQAJAA4AAAAkABkAAQAJAA8AAAAlABYAAQACAAwAAAAlABcAAQACAA0AAAAlABgAAQACAA4AAAAlABkAAQACAA8AAAAmABYAAQADAAwAAAAmABcAAQADAA0AAAAmABgAAQADAA4AAAAmABkAAQADAA8AAAAnABYAAQAEAAwAAAAnABcAAQAEAA0AAAAnABgAAQAEAA4AAAAnABkAAQAEAA8AAAAoABYAAQAFAAwAAAAoABcAAQAFAA0AAAAoABgAAQAFAA4AAAAoABkAAQAFAA8AAAApABYAAQAGAAwAAAApABcAAQAGAA0AAAApABgAAQAGAA4AAAApABkAAQAGAA8AAAAqABYAAQAHAAwAAAAqABcAAQAHAA0AAAAqABgAAQAHAA4AAAAqABkAAQAHAA8AAAArABYAAQAIAAwAAAArABcAAQAIAA0AAAArABgAAQAIAA4AAAArABkAAQAIAA8AAAAsABYAAQAJAAwAAAAsABcAAQAJAA0AAAAsABgAAQAJAA4AAAAsABkAAQAJAA8AAAAtABYAAQACAAwAAAAtABcAAQACAA0AAAAtABgAAQACAA4AAAAtABkAAQACAA8AAAAuABYAAQADAAwAAAAuABcAAQADAA0AAAAuABgAAQADAA4AAAAuABkAAQADAA8AAAAvABYAAQAEAAwAAAAvABcAAQAEAA0AAAAvABgAAQAEAA4AAAAvABkAAQAEAA8AAAAwABYAAQAFAAwAAAAwABcAAQAFAA0AAAAwABgAAQAFAA4AAAAwABkAAQAFAA8AAAAxABYAAQAGAAwAAAAxABcAAQAGAA0AAAAxABgAAQAGAA4AAAAxABkAAQAGAA8AAAAyABYAAQAHAAwAAAAyABcAAQAHAA0AAAAyABgAAQAHAA4AAAAyABkAAQAHAA8AAAAzABYAAQAIAAwAAAAzABcAAQAIAA0AAAAzABgAAQAIAA4AAAAzABkAAQAIAA8AAAA0ABYAAQAJAAwAAAA0ABcAAQAJAA0AAAA0ABgAAQAJAA4AAAA0ABkAAQAJAA8AAAA1ABYAAQACAAwAAAA1ABcAAQACAA0AAAA1ABgAAQACAA4AAAA1ABkAAQACAA8AAAA2ABYAAQADAAwAAAA2ABcAAQADAA0AAAA2ABgAAQADAA4AAAA2ABkAAQADAA8AAAA3ABYAAQAEAAwAAAA3ABcAAQAEAA0AAAA3ABgAAQAEAA4AAAA3ABkAAQAEAA8AAAA4ABYAAQAFAAwAAAA4ABcAAQAFAA0AAAA4ABgAAQAFAA4AAAA4ABkAAQAFAA8AAAA5ABYAAQAGAAwAAAA5ABcAAQAGAA0AAAA5ABgAAQAGAA4AAAA5ABkAAQAGAA8AAAA6ABYAAQAHAAwAAAA6ABcAAQAHAA0AAAA6ABgAAQAHAA4AAAA6ABkAAQAHAA8AAAA7ABYAAQAIAAwAAAA7ABcAAQAIAA0AAAA7ABgAAQAIAA4AAAA7ABkAAQAIAA8AAAA8ABYAAQAJAAwAAAA8ABcAAQAJAA0AAAA8ABgAAQAJAA4AAAA8ABkAAQAJAA8AAAA9ABYAAQACAAwAAAA9ABcAAQACAA0AAAA9ABgAAQACAA4AAAA9ABkAAQACAA8AAAA+ABYAAQADAAwAAAA+ABcAAQADAA0AAAA+ABgAAQADAA4AAAA+ABkAAQADAA8AAAALABIAAQACAAwAAAAMABIAAQADAAwAAAANABIAAQAEAAwAAAAPABAAAQACAAwAAAAQABAAAQADAAwAAAARABAAAQAEAAwAAAAeABMAAQACAAcAAAAeABEAAQACAAcAAAAeABIAAQACAAgAAAAeAA8AAQACAAcAAAAeABAAAQACAAgAAAAvABQAAQAHAAcAAAAvABUAAQAHAAgAAAAvABIAAQAHAAcAAAAvABMAAQAHAAgAAAAvABAAAQAHAAgAAAAvABEAAQAHAAgAAAAvAA8AAQAHAAcAAAAeAA4AAQACAAYAAAAfAA4AAQAEAAYAAAAgAA4AAQAFAAYAAAAhAA4AAQAGAAYAAAAiAA4AAQAEAAYAAAAjAA4AAQAFAAYAAAAqAA4AAQAGAAYAAAArAA4AAQAEAAYAAAAsAA4AAQAFAAYAAAAtAA4AAQAGAAYAAAAuAA4AAQAGAAYAAAAvAA4AAQAHAAYAAAAmAA4AAQAFAAYAAAAnAA4AAQAGAAYAAAAoAA4AAQAEAAYAAAApAA4AAQAFAAYAAAAkAA4AAQAGAAYAAAAlAA4AAQAEAAYA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")
 tile_set = SubResource("TileSet_c8fid")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_6x7x4")
 
 [node name="BossCam" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -1271,64 +1198,21 @@ theme_override_fonts/font = ExtResource("11_85sy3")
 theme_override_font_sizes/font_size = 40
 text = "Demon King"
 
-[node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
-z_index = 1
-position = Vector2(224, 310)
-script = ExtResource("6_ljt7u")
-priority = 2
-follow_mode = 2
-follow_target = NodePath("../Player")
-zoom = Vector2(5, 5)
-tween_resource = SubResource("Resource_auf8n")
-follow_offset = Vector2(0, -40)
-follow_damping = true
-draw_limits = true
-
-[node name="UI" type="Control" parent="PhantomCamera2D"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -191.0
-offset_top = 78.0
-offset_right = -146.0
-offset_bottom = 107.0
-
-[node name="Panel" parent="PhantomCamera2D/UI" instance=ExtResource("5_nq8nm")]
-visible = false
-layout_mode = 0
-offset_left = 2.0
-offset_top = -64.0
-offset_right = 407.0
-offset_bottom = 164.0
-scale = Vector2(0.4, 0.4)
-
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(839, 254)
 energy = 0.79
 texture = ExtResource("19_6j2ki")
 texture_scale = 50.0
 
-[node name="Player" parent="." instance=ExtResource("4_jt5aw")]
-unique_name_in_owner = true
-position = Vector2(224, 350)
-collision_layer = 4
-collision_mask = 1
-slide_on_ceiling = false
-speed = 120
-jump_speed = 300
-gravity = 1200
-
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 material = SubResource("ShaderMaterial_paxrj")
 position = Vector2(3.05176e-05, 6.10352e-05)
-color = Color(0.176419, 0.176419, 0.176419, 1)
+color = Color(0.194349, 0.194349, 0.194349, 1)
 script = ExtResource("14_s86km")
 gradient = ExtResource("15_lxnud")
 
 [node name="Dragon" parent="." instance=ExtResource("17_aud3f")]
 position = Vector2(725, 340)
-
-[node name="ItemDrop" parent="." instance=ExtResource("16_hh4ov")]
-position = Vector2(267, 247)
 
 [node name="door_left" type="Area2D" parent="."]
 position = Vector2(483, 344)
@@ -1337,10 +1221,16 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="door_left"]
 shape = SubResource("RectangleShape2D_aqrlj")
 
+[node name="Sprite2D" type="Sprite2D" parent="door_left"]
+z_index = -1
+position = Vector2(190, -59)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("21_makdi")
+
 [node name="door_right" type="Area2D" parent="."]
 position = Vector2(495, 344)
 collision_mask = 4
-script = ExtResource("19_cddin")
+script = SubResource("GDScript_oksea")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="door_right"]
 shape = SubResource("RectangleShape2D_at2fs")

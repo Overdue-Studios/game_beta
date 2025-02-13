@@ -2,6 +2,8 @@ extends Node
 
 signal player_initialised
 var player
+var camera
+var main
 var nomove = false
 var console_open = false
 @onready var console
@@ -18,23 +20,15 @@ func _process(_delta):
 	
 
 func initialise_player():
-	player = get_tree().get_root().get_node("/root/map_root/Player")
+	player = get_tree().get_root().get_node("/root/Main/Player")
+	camera = get_tree().get_root().get_node("/root/Main/Player_Camera")
+	main = get_tree().get_root().get_node("/root/Main")
+	print(player)
 	if not player:
 		return
-	
+	print("player initialised")
 	
 	emit_signal("player_initialised", player)
-
-	player.inventory.connect("inventory_changed", Callable(self, "_on_player_inventory_changed"))
-	
-	var existing_inventory = load("user://inventory.tres")
-	if existing_inventory:
-		player.inventory.set_items(existing_inventory.get_items())
-		player.inventory.add_item("Sheckel", 3)
-
-
-func _on_player_inventory_changed(inventory):
-	ResourceSaver.save(player.inventory, "user://inventory.tres")
 
 func hit_stop(time:float):
 	Engine.time_scale = 0
@@ -46,20 +40,23 @@ func save(save_name):
 	var config = ConfigFile.new()
 	config.set_value("Player", "position", player.position)
 	config.set_value("Player", "hp", player.hp)
+	config.set_value("Player", "level", main.level)
 	config.save("user://%s.cfg" % str(save_name))
 	
 func load_save(save_name):
 	# Load data from a file.
 	var config = ConfigFile.new()
-	var err = config.load("user://%s.cfg" % str(save_name))
+	var err = config.load("user://%s.cfg" % str(save_name))	
 
-	# If the file didn't load, ignore it.
+	# If the file didn't load, create a new save
 	if err != OK:
+		save(save_name)
 		return
-	
+		
+	main.load_level()
+	await get_tree().process_frame  # Wait for one frame to ensure scene is loaded
+	await get_tree().create_timer(0.1).timeout  # Add small delay to ensure everything is initialized
 	player.hp = config.get_value("Player", "hp")
 	player.position = config.get_value("Player", "position")
-	get_tree().get_root().get_node("/root/map_root/BossCam").priority = 1
 	player.hp_bar.value = config.get_value("Player", "hp")
-	
 	
