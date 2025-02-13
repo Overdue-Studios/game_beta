@@ -21,13 +21,20 @@ extends CharacterBody2D
 @onready var stam_bar = %PlayerSTAM
 @onready var stam_cd = 0
 @onready var stam_used = false
-@onready var door = $"../StaticBody2D/AnimationPlayer"
 
 enum State { IDLE, RUNNING, JUMPING, FALLING, ATTACKING_1, ATTACKING_2, ROLL, DIE, KNOCKBACK }
 
 signal primary_action
 signal secondary_action
+signal __heal__
 signal damage_dealt
+
+# Healing Flask - Variables
+var flask_level = 1
+var max_heal = 50
+var heal = 50
+var max_quantity = 5
+var quantity = 5
 
 var inventory_resource = load("res://Player/Inventory/inventory.gd")
 var inventory = inventory_resource.new()
@@ -200,6 +207,11 @@ func _process(_delta):
 
 	if Input.is_action_pressed("secondary_action") and stam_bar.value >= 45:
 		secondary_action.emit()
+		
+	if Input.is_action_pressed("heal") and hp < max_hp:
+		use_flask()
+		print(str(self.hp) + " " + str(self.quantity))
+
 	
 	#Inventory opener, spawna novga otroka UI scene
 	if Input.is_action_just_pressed("inventory"):
@@ -250,3 +262,28 @@ func damage(amount):
 func use_stamina(stamina: float):
 	stam_bar.value -= stamina
 	stam_cd = stamina_regen_time
+	
+
+# Healing Flask - Functions
+func level_flask():
+	self.max_heal += self.flask_level * 5
+	if self.heal != self.max_heal:
+		self.heal = self.max_heal
+		
+	self.max_quantity += 1
+	if self.quantity != self.max_quantity:
+		self.quantity = self.max_quantity
+		
+		
+func use_flask():
+	if self.quantity == 0:
+		return
+		
+	if self.hp != self.max_hp:
+		if self.hp + self.heal > self.max_hp:
+			self.hp += self.max_hp - self.hp
+		else:
+			self.hp += self.heal
+		hp_bar.value = self.hp
+	self.quantity -= 1
+		
