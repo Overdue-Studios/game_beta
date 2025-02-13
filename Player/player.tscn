@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://iin0rk6hc8qo"]
+[gd_scene load_steps=66 format=3 uid="uid://cktfdk2f1lwm4"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_jmvu1"]
 [ext_resource type="Texture2D" uid="uid://bjj2k4ncdisgg" path="res://Assets/MiniWorldSprites/Characters/knight/Run.png" id="2_1jnj7"]
@@ -451,7 +451,7 @@ size = Vector2(16, 19)
 radius = 3.06
 height = 11.56
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
+[node name="CharacterBody2D" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_jmvu1")
@@ -463,7 +463,7 @@ gravity = 3000
 max_stam = 100
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -4)
+position = Vector2(0, -12)
 scale = Vector2(0.439, 0.423)
 sprite_frames = SubResource("SpriteFrames_lvf4y")
 animation = &"die"
@@ -474,6 +474,7 @@ collision_mask = 12
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PrimaryAttack"]
+position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_7aubk")
 
 [node name="SecondaryAttack" type="Area2D" parent="."]
@@ -482,10 +483,11 @@ collision_mask = 12
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SecondaryAttack"]
+position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_4oxkd")
 
 [node name="PlayerModelCollision" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4)
+position = Vector2(0, -4.405)
 shape = SubResource("CapsuleShape2D_4ovj6")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
