@@ -1112,9 +1112,9 @@ size = Vector2(2, 16)
 [node name="map_root" type="Node2D"]
 
 [node name="Ladder" parent="." instance=ExtResource("32_0d4vx")]
-position = Vector2(296, 303)
+position = Vector2(296, 304)
 scale = Vector2(0.75, 5.09)
-collision_mask = 4
+collision_mask = 6
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -1240,7 +1240,7 @@ position = Vector2(182, 273)
 scale = Vector2(0.225, 0.225)
 
 [node name="Primoz" parent="." instance=ExtResource("27_o3k3i")]
-position = Vector2(352, 345)
+position = Vector2(338, 346)
 
 [node name="Primoz2" parent="." instance=ExtResource("27_o3k3i")]
 position = Vector2(21, 345)
