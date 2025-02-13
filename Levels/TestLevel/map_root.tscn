@@ -26,7 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://byptqpd3h6nor" path="res://Levels/level_swapper.tscn" id="29_ltuyd"]
 [ext_resource type="Script" path="res://Levels/level_swapper.gd" id="30_pvwk3"]
 [ext_resource type="PackedScene" uid="uid://cqmu44dlvn45g" path="res://Managers/scene_swap.tscn" id="31_60o2l"]
-[ext_resource type="PackedScene" uid="uid://cwh8ws2yhr1hx" path="res://Levels/TestLevel/ladder.tscn" id="32_0d4vx"]
+[ext_resource type="PackedScene" path="res://Levels/TestLevel/ladder.tscn" id="32_0d4vx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vyqtq"]
 texture = ExtResource("1_c4815")

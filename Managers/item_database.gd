@@ -3,13 +3,13 @@ extends Node
 var items = Array()
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var directory = DirAccess.open("res://Items")
+	var directory = DirAccess.open("res://Assets/Items")
 	directory.list_dir_begin()
 	
 	var filename = directory.get_next()
 	while(filename):
 		if not directory.current_is_dir():
-			items.append(load("res://Items/%s" % filename))
+			items.append(load("res://Assets/Items/%s" % filename))
 			
 		
 		filename = directory.get_next()

@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+var healingFlask = HealingFlask.new()
+
 @export var stamina_regen_time : float = 2
 @export var stamina_regen_speed :float = 1
 @export var speed = 70
@@ -48,6 +50,10 @@ func _process(_delta):
 	# Knockback logic
 	if Input.is_action_pressed("primary_action") and stam_bar.value >= 25:
 		primary_action.emit()
+		
+	if Input.is_action_pressed("heal"):
+		print("Healing: " + str(self.hp) + " " + str(healingFlask.quantity))
+		healingFlask.use_flask()
 
 	if Input.is_action_pressed("secondary_action") and stam_bar.value >= 45:
 		secondary_action.emit()
