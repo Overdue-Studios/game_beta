@@ -7,7 +7,7 @@ const JUMP_VELOCITY = -400.0
 var direction := -1
 var turning = false
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	
 	$RayCast2D.force_raycast_update()
 	$RayCast2D2.force_raycast_update()

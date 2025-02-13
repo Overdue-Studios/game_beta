@@ -6,11 +6,12 @@ extends CharacterBody2D
 @onready var nametxt = get_parent().get_node("BossCam/Label")
 @onready var animation_player = $AnimatedSprite2D
 @onready var ray = $RayCast2D
-@onready var camera = %Camera2D
 @onready var state = State.IDLE
 @onready var player = GameManager.player
 @onready var fireball = preload("res://Levels/TestLevel/Entities/fireball.tscn")
 @onready var stagger_count = 0
+
+signal dead
 
 enum State { IDLE, ATTACK_MELEE, ATTACK_RANGED, AGGRO, HIT, DEATH, FLEE }
 
@@ -55,7 +56,6 @@ func _process(_delta : float) -> void:
 			State.ATTACK_MELEE:
 				if animation_player.frame == 9:
 					GameManager.hit_stop(0.18)
-					camera.shake(1, 0.1)
 				if animation_player.frame == 9:
 					$Area2D.monitoring = true
 				if animation_player.frame == 10:

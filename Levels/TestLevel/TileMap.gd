@@ -6,14 +6,3 @@ extends TileMap
 func _ready():
 	shader_material.shader = shader
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if Input.is_action_just_pressed("world_switch") and !dreaming:
-		self.material = shader_material
-		dreaming = true
-		print("dreaming")
-	elif Input.is_action_just_pressed("world_switch") and dreaming:
-		self.material = null
-		print("not dreaming")
-		dreaming = false

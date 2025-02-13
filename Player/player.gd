@@ -24,7 +24,6 @@ extends CharacterBody2D
 @onready var stam_bar = %PlayerSTAM
 @onready var stam_cd = 0
 @onready var stam_used = false
-@onready var door = $"../StaticBody2D/AnimationPlayer"
 
 enum State { IDLE, RUNNING, JUMPING, FALLING, ATTACKING_1, ATTACKING_2, ATTACK_FALLING, ROLL, DIE, KNOCKBACK }
 
@@ -47,6 +46,16 @@ func _ready():
 	
 func _process(_delta):
 	# Knockback logic
+	if Input.is_action_just_pressed("world_switch"):
+		for node in get_tree().get_nodes_in_group("Dream"):
+			if node.visible == false:
+				node.visible = true
+				node.process_mode = Node.PROCESS_MODE_INHERIT
+			else:
+				node.visible = false
+				node.process_mode = Node.PROCESS_MODE_DISABLED
+		
+	
 	if Input.is_action_pressed("primary_action") and stam_bar.value >= 25:
 		primary_action.emit()
 
@@ -160,7 +169,6 @@ func _process(_delta):
 					secondary_hitbox.position.x = -10.5
 				if is_on_floor():
 					can_double_jump = false
-					print("floor")
 					transition_to(State.IDLE)
 				elif Input.is_action_just_pressed("primary_action") and stam_bar.value >= 25:
 					transition_to(State.ATTACK_FALLING)

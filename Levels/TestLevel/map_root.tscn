@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://csauhih1fd2bm"]
+[gd_scene load_steps=43 format=4 uid="uid://csauhih1fd2bm"]
 
 [ext_resource type="Texture2D" uid="uid://bsnh8whuc1w6h" path="res://Assets/Texture/TX Tileset Grass.png" id="1_c4815"]
 [ext_resource type="Shader" path="res://Assets/ShadersThemesFonts/dreamworld.gdshader" id="1_knfq7"]
@@ -17,6 +17,7 @@
 [ext_resource type="FontFile" uid="uid://phqgh6w0aycf" path="res://Assets/MiniWorldSprites/AldotheApache.ttf" id="11_85sy3"]
 [ext_resource type="Script" path="res://Levels/TestLevel/DayNight.gd" id="14_s86km"]
 [ext_resource type="Texture2D" uid="uid://cke4soyv244p8" path="res://Levels/TestLevel/daynightcycle.tres" id="15_lxnud"]
+[ext_resource type="PackedScene" uid="uid://diwwdbxwtmdvs" path="res://Levels/Gmayna/test_platform.tscn" id="16_f1bsf"]
 [ext_resource type="PackedScene" uid="uid://crewj4mxpwxtr" path="res://Levels/TestLevel/Entities/testboss.tscn" id="17_aud3f"]
 [ext_resource type="Texture2D" uid="uid://be370dy3eejgy" path="res://Assets/Baumi_custom/light.png" id="19_6j2ki"]
 [ext_resource type="Texture2D" uid="uid://dk5v863h7hwwa" path="res://Assets/Level 1/Lvl 1 Foreground/Door .png" id="21_makdi"]
@@ -27,6 +28,9 @@
 [ext_resource type="Script" path="res://Levels/level_swapper.gd" id="30_pvwk3"]
 [ext_resource type="PackedScene" uid="uid://cqmu44dlvn45g" path="res://Managers/scene_swap.tscn" id="31_60o2l"]
 [ext_resource type="PackedScene" uid="uid://cwh8ws2yhr1hx" path="res://Levels/TestLevel/ladder.tscn" id="32_0d4vx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dasn2"]
+shader = ExtResource("1_knfq7")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vyqtq"]
 texture = ExtResource("1_c4815")
@@ -1073,8 +1077,6 @@ region = Rect2(57.946, 133.961, 30.0777, 3.06021)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_paxrj"]
 shader = ExtResource("1_knfq7")
-shader_parameter/corrupt_strength = 0.4
-shader_parameter/darken_amount = 0.2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqrlj"]
 size = Vector2(2, 16)
@@ -1082,34 +1084,21 @@ size = Vector2(2, 16)
 [sub_resource type="GDScript" id="GDScript_oksea"]
 script/source = "extends Area2D
 
-@onready var camera_control = get_tree().get_root().get_node(\"/root/map_root/BossCam\")
-@onready var player = get_tree().get_root().get_node(\"/root/map_root/Player\")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
-
-#desna vrata
-func _on_body_entered(body: Node2D) -> void:
-	print(body)
-	if body == player:
-		camera_control.priority = 3
-
-#leva vrata
-func _on_area_2d_2_body_entered(body: Node2D) -> void:
-	print(\"door entered\")
-	if body == player:
-		camera_control.priority = 1
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_at2fs"]
 size = Vector2(2, 16)
 
 [node name="map_root" type="Node2D"]
+material = SubResource("ShaderMaterial_dasn2")
 
 [node name="Ladder" parent="." instance=ExtResource("32_0d4vx")]
 position = Vector2(296, 304)
@@ -1198,6 +1187,11 @@ theme_override_fonts/font = ExtResource("11_85sy3")
 theme_override_font_sizes/font_size = 40
 text = "Demon King"
 
+[node name="StaticBody2D" parent="BossCam" groups=["Dream"] instance=ExtResource("16_f1bsf")]
+visible = false
+position = Vector2(-399, 38)
+scale = Vector2(4.695, 1.16)
+
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(839, 254)
 energy = 0.79
@@ -1236,7 +1230,7 @@ script = SubResource("GDScript_oksea")
 shape = SubResource("RectangleShape2D_at2fs")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("27_jts7y")]
-position = Vector2(182, 273)
+position = Vector2(179, 271)
 scale = Vector2(0.225, 0.225)
 
 [node name="Primoz" parent="." instance=ExtResource("27_o3k3i")]

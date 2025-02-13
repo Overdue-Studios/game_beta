@@ -16,7 +16,7 @@ func _ready() -> void:
 	$AnimatedSprite2D.play("default")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	self.position.x += horizontal_speed * player_direction.x
 	self.position.y += vertical_speed * player_direction.y
 

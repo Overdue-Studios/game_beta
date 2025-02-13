@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://nxljhk8avdjl"]
 
-[ext_resource type="FontFile" path="res://Resources/Fonts/OptimusPrincepsSemiBold.ttf" id="1_4srqt"]
+[ext_resource type="FontFile" uid="uid://diblivvfehs6f" path="res://Fonts/OptimusPrincepsSemiBold.ttf" id="1_4srqt"]
 [ext_resource type="Script" path="res://UI/options.gd" id="1_j523t"]
 [ext_resource type="Texture2D" uid="uid://c00sc4kvchvgd" path="res://Assets/MiniWorldSprites/UI assets pack 2/UI cooking.png" id="2_bk5ug"]
 [ext_resource type="PackedScene" uid="uid://cgkvvox3p8rsw" path="res://UI/window_mode_button.tscn" id="3_c0od8"]

@@ -12,7 +12,7 @@ func _ready() -> void:
 	button.toggle_mode = true  # Enable toggle mode
 	button.toggled.connect(_on_button_toggled) # Connect the signal in code
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func set_action_name() -> void:
