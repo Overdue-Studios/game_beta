@@ -2,9 +2,9 @@ extends CharacterBody2D
 
 @export var stamina_regen_time : float = 2
 @export var stamina_regen_speed :float = 1
-@export var speed = 70
-@export var jump_speed = 1800
-@export var gravity = 3000
+@export var speed = 100
+@export var jump_speed = 320
+@export var gravity = 1500
 @export var hp : int = 200
 @export var max_hp : int = 200
 @export var fp : int = 100
@@ -12,6 +12,7 @@ extends CharacterBody2D
 @export var max_stam : int = 300
 @export var climbing = false
 @export var fast_drop_multiplier : float = 5.0
+@export var roll_speed : float = 5.0
 
 @onready var knocked = false
 @onready var animation_player = $AnimatedSprite2D
@@ -200,11 +201,9 @@ func _process(_delta):
 				if stam_used == false:
 						use_stamina(15)
 						stam_used = true
-				velocity.y = 0
-				if animation_player.flip_h == true:
-					velocity.x = -200
-				else:
-					velocity.x = 200
+				for i in range(1,4):
+					if animation_player.frame == i:
+						velocity.x *= roll_speed - i
 				if animation_player.frame == 5:
 					transition_to(State.IDLE)
 					
