@@ -50,11 +50,11 @@ sprite_frames = SubResource("SpriteFrames_bbr3b")
 
 [node name="FloorCheckRight" type="RayCast2D" parent="."]
 position = Vector2(48.8889, 31.1111)
-target_position = Vector2(0, 8.88889)
+target_position = Vector2(0, 5)
 
 [node name="FloorCheckLeft" type="RayCast2D" parent="."]
 position = Vector2(-48.889, 31.111)
-target_position = Vector2(0, 8.88889)
+target_position = Vector2(0, 5)
 
 [node name="LineOfSight" type="RayCast2D" parent="."]
 position = Vector2(0, -5)
