@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6nocg4c6sjxk"]
+
+[ext_resource type="Script" path="res://Levels/TestLevel/minimap.gd" id="1_ch25b"]
+[ext_resource type="Texture2D" uid="uid://j64qfgucmnga" path="res://Assets/Minimaps/TestMap.png" id="2_ommxm"]
+
+[node name="Minimap" type="Node2D"]
+position = Vector2(72, 162)
+script = ExtResource("1_ch25b")
+
+[node name="PlayerPosition" type="Sprite2D" parent="."]
+
+[node name="Map" type="Sprite2D" parent="."]
+texture = ExtResource("2_ommxm")
