@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://beohr0pgjo3ih"]
+
+[sub_resource type="GDScript" id="GDScript_njod8"]
+script/source = "extends Node2D
+
+@onready var player = GameManager.player
+@onready var payer_position = $PlayerPosition
+
+func _process(delta):
+	# Convert player's global position to map coordinates
+	# Adjust scaling_factor based on your map's size and world scale
+	var scaling_factor = Vector2(0.1, 0.1) # Example: scale down by 10%
+	payer_position.position = player.global_position * scaling_factor
+"
+
+[node name="Map" type="Node2D"]
+script = SubResource("GDScript_njod8")
+
+[node name="PlayerPosition" type="Sprite2D" parent="."]

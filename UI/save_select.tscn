@@ -1,0 +1,78 @@
+[gd_scene load_steps=5 format=3 uid="uid://c74x6inhs3g5q"]
+
+[ext_resource type="Script" path="res://UI/save_select.gd" id="1_qljel"]
+[ext_resource type="Texture2D" uid="uid://c00sc4kvchvgd" path="res://Assets/MiniWorldSprites/UI assets pack 2/UI cooking.png" id="1_svb60"]
+[ext_resource type="FontFile" uid="uid://diblivvfehs6f" path="res://Fonts/OptimusPrincepsSemiBold.ttf" id="2_c12dy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbx5l"]
+atlas = ExtResource("1_svb60")
+region = Rect2(384.044, 240.201, 48.4763, 39.517)
+
+[node name="Save_Select" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qljel")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_bbx5l")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 250
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_c12dy")
+theme_override_font_sizes/font_size = 100
+text = "SELECT SAVE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Button_S1" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 120)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_c12dy")
+theme_override_font_sizes/font_size = 50
+text = "SAVE 1"
+
+[node name="Button_S2" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_c12dy")
+theme_override_font_sizes/font_size = 50
+text = "SAVE 2"
+
+[node name="Button_S3" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_c12dy")
+theme_override_font_sizes/font_size = 50
+text = "SAVE 3"
+
+[connection signal="button_down" from="MarginContainer/VBoxContainer/HBoxContainer/Button_S1" to="." method="_on_button_s_1_button_down"]
+[connection signal="button_down" from="MarginContainer/VBoxContainer/HBoxContainer/Button_S2" to="." method="_on_button_s_2_button_down"]
+[connection signal="button_down" from="MarginContainer/VBoxContainer/HBoxContainer/Button_S3" to="." method="_on_button_s_3_button_down"]

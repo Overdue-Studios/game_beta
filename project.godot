@@ -11,13 +11,12 @@ config_version=5
 [application]
 
 config/name="game_beta"
-run/main_scene="res://Levels/ui.tscn"
+run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
 
-ItemDatabase="*res://Managers/item_database.gd"
 GameManager="*res://Managers/GameManager.gd"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 SceneSwap="*res://Managers/scene_swap.tscn"
@@ -58,11 +57,10 @@ text/autopauses={}
 
 [display]
 
-window/size/viewport_width=1536
-window/size/viewport_height=864
-window/size/initial_position_type=2
-window/stretch/mode="viewport"
-window/stretch/aspect="expand"
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep_height"
 
 [editor]
 
@@ -71,11 +69,12 @@ movie_writer/movie_file="C:/Users/baumg/Documents/GodotVids/GodotVid.avi"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
 
 [global_group]
 
 Dream=""
+Control_Buttons=""
 
 [input]
 
@@ -145,9 +144,9 @@ interact2={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":70,"key_label":0,"unicode":102,"location":0,"echo":false,"script":null)
 ]
 }
-console={
+save={
 "deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":96,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194444,"key_label":0,"unicode":54,"location":0,"echo":false,"script":null)
 ]
 }
 world_switch={
@@ -157,7 +156,22 @@ world_switch={
 }
 roll={
 "deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"location":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194325,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+load_save={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194445,"key_label":0,"unicode":55,"location":0,"echo":false,"script":null)
+]
+}
+LoadLevel={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194440,"key_label":0,"unicode":50,"location":0,"echo":false,"script":null)
+]
+}
+OpenMap={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":77,"key_label":0,"unicode":109,"location":0,"echo":false,"script":null)
 ]
 }
 
@@ -168,11 +182,19 @@ roll={
 2d_physics/layer_3="npcs"
 2d_physics/layer_4="weapons"
 
+[physics]
+
+common/physics_ticks_per_second=144
+common/physics_jitter_fix=0.0
+common/physics_interpolation=true
+
 [rendering]
 
-textures/canvas_textures/default_texture_filter=3
+textures/canvas_textures/default_texture_filter=2
 renderer/rendering_method.mobile="forward_plus"
 renderer/rendering_method.web="forward_plus"
 lights_and_shadows/positional_shadow/soft_shadow_filter_quality=5
-anti_aliasing/quality/msaa_2d=2
+anti_aliasing/quality/msaa_2d=3
+anti_aliasing/quality/msaa_3d=3
 anti_aliasing/quality/screen_space_aa=1
+anti_aliasing/quality/use_taa=true
