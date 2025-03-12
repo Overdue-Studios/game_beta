@@ -8,8 +8,8 @@ const MAP_SCALE = Vector2(0.2, 0.2)
 const MAP_OFFSET = Vector2(0, 10.0)
 const PLAYER_POSITION_SCALE = Vector2(0.2, 0.5)
 
-const SHOW_PLAYER_POS = false
-const PAUSE_WHILE_OPEN = true
+const SHOW_PLAYER_POS = true
+const PAUSE_WHILE_OPEN = false
 
 @onready var player = GameManager.player
 @onready var player_position = $PlayerPosition
