@@ -13,6 +13,7 @@ extends CharacterBody2D
 @export var climbing = false
 @export var fast_drop_multiplier : float = 5.0
 @export var roll_speed : float = 5.0
+@export var fall_dmg_multiplier : float = 0.1
 
 @onready var knocked = false
 @onready var animation_player = $AnimatedSprite2D
@@ -34,6 +35,7 @@ signal damage_dealt
 
 var weapon_damage = 1
 var can_double_jump = false
+var last_speed = 0
 
 func _ready():
 	hp_bar.max_value = max_hp
@@ -160,7 +162,9 @@ func _process(_delta):
 					secondary_hitbox.position.x = -10.5
 				if is_on_floor():
 					can_double_jump = false
-					print("floor")
+					print("floor")	
+					if(last_speed > 450):
+						damage((last_speed - 450) * fall_dmg_multiplier)
 					transition_to(State.IDLE)
 				elif Input.is_action_just_pressed("primary_action") and stam_bar.value >= 25:
 					transition_to(State.ATTACK_FALLING)
@@ -208,7 +212,7 @@ func _process(_delta):
 					transition_to(State.IDLE)
 					
 	move_and_slide()
-	
+	if(velocity.y): last_speed = velocity.y
 	# Interact group toggle
 	if Input.is_action_just_pressed("interact"):
 		var dream = get_tree().get_nodes_in_group("dream")
@@ -275,3 +279,5 @@ func damage(amount):
 func use_stamina(stamina: float):
 	stam_bar.value -= stamina
 	stam_cd = stamina_regen_time
+
+	
