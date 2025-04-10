@@ -2,9 +2,9 @@ extends CharacterBody2D
 
 @export var stamina_regen_time : float = 2
 @export var stamina_regen_speed :float = 1
-@export var speed = 70
-@export var jump_speed = 1800
-@export var gravity = 3000
+@export var speed = 100
+@export var jump_speed = 320
+@export var gravity = 1500
 @export var hp : int = 200
 @export var max_hp : int = 200
 @export var fp : int = 100
@@ -12,6 +12,8 @@ extends CharacterBody2D
 @export var max_stam : int = 300
 @export var climbing = false
 @export var fast_drop_multiplier : float = 5.0
+@export var roll_speed : float = 5.0
+@export var fall_dmg_multiplier : float = 0.1
 
 @onready var knocked = false
 @onready var animation_player = $AnimatedSprite2D
@@ -35,6 +37,7 @@ var weapon_damage = 1
 var can_double_jump = false
 var healingFlask
 var manaFlask
+var last_speed = 0
 
 func _ready():
 	hp_bar.max_value = max_hp
@@ -171,7 +174,9 @@ func _process(_delta):
 					secondary_hitbox.position.x = -10.5
 				if is_on_floor():
 					can_double_jump = false
-					print("floor")
+					print("floor")	
+					if(last_speed > 450):
+						damage((last_speed - 450) * fall_dmg_multiplier)
 					transition_to(State.IDLE)
 				elif Input.is_action_just_pressed("primary_action") and stam_bar.value >= 25:
 					transition_to(State.ATTACK_FALLING)
@@ -212,16 +217,14 @@ func _process(_delta):
 				if stam_used == false:
 						use_stamina(15)
 						stam_used = true
-				velocity.y = 0
-				if animation_player.flip_h == true:
-					velocity.x = -200
-				else:
-					velocity.x = 200
+				for i in range(1,4):
+					if animation_player.frame == i:
+						velocity.x *= roll_speed - i
 				if animation_player.frame == 5:
 					transition_to(State.IDLE)
 					
 	move_and_slide()
-	
+	if(velocity.y): last_speed = velocity.y
 	# Interact group toggle
 	if Input.is_action_just_pressed("interact"):
 		var dream = get_tree().get_nodes_in_group("dream")
@@ -288,3 +291,5 @@ func damage(amount):
 func use_stamina(stamina: float):
 	stam_bar.value -= stamina
 	stam_cd = stamina_regen_time
+
+	
