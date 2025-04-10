@@ -26,7 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://byptqpd3h6nor" path="res://Levels/level_swapper.tscn" id="29_ltuyd"]
 [ext_resource type="Script" path="res://Levels/level_swapper.gd" id="30_pvwk3"]
 [ext_resource type="PackedScene" uid="uid://cqmu44dlvn45g" path="res://Managers/scene_swap.tscn" id="31_60o2l"]
-[ext_resource type="PackedScene" path="res://Levels/TestLevel/ladder.tscn" id="32_0d4vx"]
+[ext_resource type="PackedScene" uid="uid://cwh8ws2yhr1hx" path="res://Levels/TestLevel/ladder.tscn" id="32_0d4vx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vyqtq"]
 texture = ExtResource("1_c4815")
@@ -1199,7 +1199,7 @@ theme_override_font_sizes/font_size = 40
 text = "Demon King"
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(839, 254)
+position = Vector2(874, 298)
 energy = 0.79
 texture = ExtResource("19_6j2ki")
 texture_scale = 50.0

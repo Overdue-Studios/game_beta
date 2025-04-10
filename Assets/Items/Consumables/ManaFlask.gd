@@ -1,9 +1,4 @@
-class_name HealingFlask
-
-@export var heal: int = 75
-@export var max_heal: int = 75
-@export var flask_level: int = 1
-@export var quantity: int = 5
+class_name ManaFlask extends HealingFlask
 
 func __init__():
 	self.heal = 75
@@ -23,12 +18,13 @@ func level_flask():
 func use_flask(player):
 	if self.quantity == 0:
 		return
+		
 	if player.hp == player.max_hp:
 		return
 		
-	if player.hp + self.heal > player.max_hp:
-		player.hp += player.max_hp - player.hp
+	if player.fp + self.heal > player.max_fp:
+		player.fp += player.max_fp - player.fp
 	else:
-		player.hp += self.heal
-	player.hp_bar.value = player.hp
+		player.fp += self.heal
+	player.fp_bar.value = player.fp
 	self.quantity -= 1
