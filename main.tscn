@@ -11,16 +11,16 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="6_bh2v3"]
 [ext_resource type="Texture2D" uid="uid://bw70wjooacxfu" path="res://Assets/Baumi_custom/Paint Layer 2.PNG" id="6_xx3tt"]
 
-[sub_resource type="Resource" id="Resource_vsvws"]
+[sub_resource type="Resource" id="Resource_6wmld"]
 script = ExtResource("2_ievyo")
-duration = 1.0
+duration = 0.0
 transition = 0
 ease = 2
 
-[sub_resource type="Resource" id="Resource_svfu3"]
+[sub_resource type="Resource" id="Resource_j5nga"]
 script = ExtResource("2_ievyo")
 duration = 0.0
-transition = 1
+transition = 0
 ease = 2
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_up4te"]
@@ -59,7 +59,7 @@ script = ExtResource("1_wgiwl")
 position = Vector2(-2369, -1576)
 script = ExtResource("1_7x1gv")
 priority = 2
-tween_resource = SubResource("Resource_vsvws")
+tween_resource = SubResource("Resource_6wmld")
 draw_limits = true
 
 [node name="UI" parent="." instance=ExtResource("1_04wxr")]
@@ -71,13 +71,13 @@ offset_bottom = -2116.0
 
 [node name="Player_Camera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 z_index = 5
-position = Vector2(265, 341)
+position = Vector2(253, 147)
 script = ExtResource("1_7x1gv")
 priority = 1
 follow_mode = 2
 follow_target = NodePath("../Player")
 zoom = Vector2(5, 5)
-tween_resource = SubResource("Resource_svfu3")
+tween_resource = SubResource("Resource_j5nga")
 follow_offset = Vector2(0, -10)
 follow_damping = true
 dead_zone_width = 0.879
@@ -125,7 +125,7 @@ texture_progress_offset = Vector2(1.08, 1.34)
 metadata/_edit_use_anchors_ = true
 
 [node name="Player" parent="." instance=ExtResource("3_iwxex")]
-position = Vector2(265, 351)
+position = Vector2(253, 157)
 speed = 100
 jump_speed = 320
 hp = 100

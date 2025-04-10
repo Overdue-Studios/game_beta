@@ -1,6 +1,5 @@
-[gd_scene load_steps=12 format=3 uid="uid://nxljhk8avdjl"]
+[gd_scene load_steps=11 format=3 uid="uid://nxljhk8avdjl"]
 
-[ext_resource type="FontFile" path="res://Resources/Fonts/OptimusPrincepsSemiBold.ttf" id="1_4srqt"]
 [ext_resource type="Script" path="res://UI/options.gd" id="1_j523t"]
 [ext_resource type="Texture2D" uid="uid://c00sc4kvchvgd" path="res://Assets/MiniWorldSprites/UI assets pack 2/UI cooking.png" id="2_bk5ug"]
 [ext_resource type="PackedScene" uid="uid://cgkvvox3p8rsw" path="res://UI/window_mode_button.tscn" id="3_c0od8"]
@@ -52,7 +51,6 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_4srqt")
 theme_override_font_sizes/font_size = 86
 text = "Options"
 horizontal_alignment = 1
@@ -62,7 +60,6 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 8.57
-theme_override_fonts/font = ExtResource("1_4srqt")
 theme_override_font_sizes/font_size = 50
 tab_alignment = 1
 current_tab = 1
@@ -70,7 +67,6 @@ current_tab = 1
 [node name="Graphics" type="TabBar" parent="MarginContainer/VBoxContainer/TabContainer"]
 visible = false
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_4srqt")
 theme_override_font_sizes/font_size = 20
 metadata/_tab_index = 0
 
@@ -105,7 +101,6 @@ layout_mode = 2
 
 [node name="Sound" type="TabBar" parent="MarginContainer/VBoxContainer/TabContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_4srqt")
 theme_override_font_sizes/font_size = 20
 metadata/_tab_index = 1
 
@@ -144,7 +139,6 @@ bus_name = "SFX"
 [node name="Controls" type="TabBar" parent="MarginContainer/VBoxContainer/TabContainer"]
 visible = false
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_4srqt")
 theme_override_font_sizes/font_size = 20
 metadata/_tab_index = 2
 
@@ -204,7 +198,6 @@ custom_minimum_size = Vector2(150, 70)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 10
-theme_override_fonts/font = ExtResource("1_4srqt")
 theme_override_font_sizes/font_size = 40
 text = "Exit"
 

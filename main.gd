@@ -15,8 +15,6 @@ func _process(_delta: float) -> void:
 
 func load_level() -> void:
 	# Remove all children
-	if level_instance:
-		level_instance.queue_free()
-	
 	level_instance = level.instantiate()
 	add_child(level_instance)
+	level_instance.set_name("Level")
