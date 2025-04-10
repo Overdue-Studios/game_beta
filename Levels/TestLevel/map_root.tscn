@@ -1199,7 +1199,7 @@ theme_override_font_sizes/font_size = 40
 text = "Demon King"
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(839, 254)
+position = Vector2(874, 298)
 energy = 0.79
 texture = ExtResource("19_6j2ki")
 texture_scale = 50.0

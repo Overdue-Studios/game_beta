@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://uol387rl447s"]
+[gd_scene load_steps=18 format=3 uid="uid://ldn7chxh5r3t"]
 
 [ext_resource type="PackedScene" uid="uid://vioeqkx1g7ux" path="res://UI/ui.tscn" id="1_04wxr"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="1_7x1gv"]
@@ -127,6 +127,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Player" parent="." instance=ExtResource("3_iwxex")]
 position = Vector2(265, 351)
 speed = 100
+gravity = 500
 jump_speed = 320
 hp = 100
 max_hp = 100
