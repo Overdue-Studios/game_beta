@@ -44,8 +44,6 @@ func _ready():
 	stam_bar.value = max_stam
 	hp_bar.value = hp
 	fp_bar.value = fp
-	primary_hitbox.position.x = 13.5
-	secondary_hitbox.position.x = 10.5
 
 	
 func _process(_delta):
@@ -121,12 +119,12 @@ func _process(_delta):
 			State.RUNNING:
 				if velocity.x > 0:
 					animation_player.flip_h = false
-					primary_hitbox.position.x = 13.5
-					secondary_hitbox.position.x = 10.5
+					primary_hitbox.position.x = 0
+					secondary_hitbox.position.x = 0
 				elif velocity.x < 0:
 					animation_player.flip_h = true
-					primary_hitbox.position.x = -13.5
-					secondary_hitbox.position.x = -10.5
+					primary_hitbox.position.x = -36
+					secondary_hitbox.position.x = -46
 				if velocity.x == 0:
 					transition_to(State.IDLE)
 				if !is_on_floor():
@@ -140,12 +138,12 @@ func _process(_delta):
 			State.JUMPING:
 				if velocity.x > 0:
 					animation_player.flip_h = false
-					primary_hitbox.position.x = 13.5
-					secondary_hitbox.position.x = 10.5
+					primary_hitbox.position.x = 0
+					secondary_hitbox.position.x = 0
 				elif velocity.x < 0:
 					animation_player.flip_h = true
-					primary_hitbox.position.x = -13.5
-					secondary_hitbox.position.x = -10.5
+					primary_hitbox.position.x = -36
+					secondary_hitbox.position.x = -46
 				if is_on_floor():
 					transition_to(State.IDLE)
 				elif Input.is_action_just_pressed("primary_action") and stam_bar.value >= 25:
@@ -159,12 +157,12 @@ func _process(_delta):
 			State.FALLING:
 				if velocity.x > 0:
 					animation_player.flip_h = false
-					primary_hitbox.position.x = 13.5
-					secondary_hitbox.position.x = 10.5
+					primary_hitbox.position.x = 0
+					secondary_hitbox.position.x = 0
 				elif velocity.x < 0:
 					animation_player.flip_h = true
-					primary_hitbox.position.x = -13.5
-					secondary_hitbox.position.x = -10.5
+					primary_hitbox.position.x = -36
+					secondary_hitbox.position.x = -46
 				if is_on_floor():
 					can_double_jump = false
 					print("floor")

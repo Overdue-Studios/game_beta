@@ -10,16 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://d1kkwrpiw011v" path="res://Assets/MiniWorldSprites/Health Bar Asset Pack 2 by Adwit Rahman/04.png" id="6_2q102"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="6_bh2v3"]
 [ext_resource type="Texture2D" uid="uid://bw70wjooacxfu" path="res://Assets/Baumi_custom/Paint Layer 2.PNG" id="6_xx3tt"]
-
-[sub_resource type="Resource" id="Resource_6wmld"]
-script = ExtResource("2_ievyo")
-duration = 0.0
-transition = 0
-ease = 2
+[ext_resource type="PackedScene" uid="uid://ohimo8xxgrx1" path="res://UI/esc_menu.tscn" id="8_gs10h"]
 
 [sub_resource type="Resource" id="Resource_j5nga"]
 script = ExtResource("2_ievyo")
-duration = 0.0
+duration = 1.0
 transition = 0
 ease = 2
 
@@ -55,20 +50,6 @@ grow_vertical = 2
 size_flags_horizontal = 4
 script = ExtResource("1_wgiwl")
 
-[node name="UI_Camera" type="Node2D" parent="."]
-position = Vector2(-2369, -1576)
-script = ExtResource("1_7x1gv")
-priority = 2
-tween_resource = SubResource("Resource_6wmld")
-draw_limits = true
-
-[node name="UI" parent="." instance=ExtResource("1_04wxr")]
-layout_mode = 1
-offset_left = -3329.0
-offset_top = -2116.0
-offset_right = -3329.0
-offset_bottom = -2116.0
-
 [node name="Player_Camera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 z_index = 5
 position = Vector2(253, 147)
@@ -76,14 +57,27 @@ script = ExtResource("1_7x1gv")
 priority = 1
 follow_mode = 2
 follow_target = NodePath("../Player")
-zoom = Vector2(5, 5)
 tween_resource = SubResource("Resource_j5nga")
+tween_on_load = false
 follow_offset = Vector2(0, -10)
 follow_damping = true
 dead_zone_width = 0.879
 dead_zone_height = 0.803
 show_viewfinder_in_play = true
 draw_limits = true
+
+[node name="UILayer" type="CanvasLayer" parent="Player_Camera"]
+
+[node name="MainMenu" parent="Player_Camera/UILayer" instance=ExtResource("1_04wxr")]
+
+[node name="EscMenu" parent="Player_Camera/UILayer" instance=ExtResource("8_gs10h")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 0.0
+offset_bottom = 0.0
 
 [node name="PlayerHP" type="TextureProgressBar" parent="Player_Camera"]
 unique_name_in_owner = true
@@ -126,17 +120,17 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Player" parent="." instance=ExtResource("3_iwxex")]
 position = Vector2(253, 157)
-speed = 100
 jump_speed = 320
+gravity = 0
 hp = 100
 max_hp = 100
 
 [node name="Camera2D" type="Camera2D" parent="."]
 unique_name_in_owner = true
-physics_interpolation_mode = 2
+physics_interpolation_mode = 1
 z_index = 1
 material = SubResource("ShaderMaterial_uyrdh")
-position = Vector2(-2369, -1576)
+position = Vector2(253, 147)
 editor_draw_limits = true
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]

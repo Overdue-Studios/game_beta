@@ -450,14 +450,14 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7aubk"]
-size = Vector2(11, 14)
+size = Vector2(35.5, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4oxkd"]
-size = Vector2(16, 19)
+size = Vector2(46, 44)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ovj6"]
-radius = 3.06
-height = 11.56
+radius = 8.0
+height = 46.0
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 collision_layer = 2
@@ -465,15 +465,14 @@ collision_mask = 13
 script = ExtResource("1_jmvu1")
 stamina_regen_time = 1.5
 stamina_regen_speed = 1.5
-speed = 50
 jump_speed = 1500
 max_stam = 100
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -12)
-scale = Vector2(0.439, 0.423)
+position = Vector2(-1, -32)
 sprite_frames = SubResource("SpriteFrames_lvf4y")
-animation = &"attack_fall"
+animation = &"primary_attack"
+frame = 3
 
 [node name="PrimaryAttack" type="Area2D" parent="."]
 collision_layer = 8
@@ -481,7 +480,7 @@ collision_mask = 12
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PrimaryAttack"]
-position = Vector2(0, -8)
+position = Vector2(18, -24)
 shape = SubResource("RectangleShape2D_7aubk")
 
 [node name="SecondaryAttack" type="Area2D" parent="."]
@@ -490,11 +489,11 @@ collision_mask = 12
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SecondaryAttack"]
-position = Vector2(0, -8)
+position = Vector2(23, -22)
 shape = SubResource("RectangleShape2D_4oxkd")
 
 [node name="PlayerModelCollision" type="CollisionShape2D" parent="."]
-position = Vector2(0, -4.405)
+position = Vector2(0, -23)
 shape = SubResource("CapsuleShape2D_4ovj6")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
