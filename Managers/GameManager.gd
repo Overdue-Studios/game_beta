@@ -6,6 +6,7 @@ var camera
 var main
 var nomove = false
 var console_open = false
+var dreaming = false
 @onready var console
 func _process(_delta):
 	if not player:
@@ -17,7 +18,15 @@ func _process(_delta):
 	
 	if Input.is_action_just_pressed("load_save"):
 		load_save("save1")
-	
+		
+	if Input.is_action_just_pressed("world_switch") and !dreaming:
+		dreaming = true
+		print("dreaming")
+		GameManager.hit_stop(0.25)
+	elif Input.is_action_just_pressed("world_switch") and dreaming:
+		dreaming = false
+		print("not dreaming")
+		GameManager.hit_stop(0.25)
 
 func initialise_player():
 	player = get_tree().get_root().get_node("/root/Main/Player")
@@ -31,7 +40,7 @@ func initialise_player():
 	emit_signal("player_initialised", player)
 
 func hit_stop(time:float):
-	Engine.time_scale = 0
+	Engine.time_scale = 0.25
 	await get_tree().create_timer(time, true, false, true).timeout
 	Engine.time_scale = 1
 

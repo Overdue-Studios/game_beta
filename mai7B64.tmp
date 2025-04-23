@@ -29,16 +29,12 @@ noise = SubResource("FastNoiseLite_nwbtb")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q8fdv"]
 shader = ExtResource("3_falk4")
 shader_parameter/spread_speed = 1.3
+shader_parameter/invert = true
 shader_parameter/start_time = 0.0
 shader_parameter/scene_time = null
 shader_parameter/player_position = null
-shader_parameter/dreaming = false
-shader_parameter/shader_radius_minimum = 1.5
-shader_parameter/vignette_radius_minimum = 1.2
-shader_parameter/dream_in_speed = 0.9
-shader_parameter/dream_out_speed = -0.1
-shader_parameter/vignette_intensity = 1.0
-shader_parameter/noise_intensity = 6.0
+shader_parameter/radius = null
+shader_parameter/radius2 = null
 shader_parameter/gradient = SubResource("GradientTexture2D_vfw0a")
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_rn8h4")
 
@@ -90,6 +86,7 @@ script = ExtResource("1_wgiwl")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 0
+visible = false
 script = ExtResource("2_lgcd3")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]

@@ -163,6 +163,7 @@ func _process(_delta):
 				if is_on_floor():
 					can_double_jump = false
 					print("floor")	
+					#Fall Damage calc
 					if(last_speed > 450):
 						damage((last_speed - 450) * fall_dmg_multiplier)
 					transition_to(State.IDLE)
