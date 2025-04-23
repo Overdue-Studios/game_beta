@@ -1,6 +1,5 @@
 extends Control
 
-signal exit_options
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -8,8 +7,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
-
+	if Input.is_action_just_pressed("esc_menu") and self.visible == true:
+		self.visible = false
 
 func _on_exit_button_button_down() -> void:
-	exit_options.emit()
+	self.visible = false

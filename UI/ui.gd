@@ -5,7 +5,6 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	options.exit_options.connect(_on_exit_options)
 	save_select.exit_save.connect(_on_exit_save)
 
 
@@ -18,24 +17,18 @@ func _on_button_button_down() -> void:
 	pass
 
 func _on_options_button_button_down() -> void:
-	options.visible = true
-	options.grab_focus()
-	$MarginContainer.visible = false
+	get_parent().get_node("Options").visible = true
 
 
 func _on_exit_button_button_down() -> void:
 	get_tree().quit()
 
-func _on_exit_options() -> void:
-	options.visible = false
-	$MarginContainer.visible = true
-
 
 func _on_play_button_button_down() -> void:
 	save_select.visible = true
 	save_select.grab_focus()
-	$MarginContainer.visible = false
 	
 func _on_exit_save() -> void:
 	save_select.visible = false
 	$MarginContainer.visible = true
+	self.visible = false

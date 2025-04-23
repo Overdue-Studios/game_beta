@@ -34,6 +34,15 @@ func hit_stop(time:float):
 	Engine.time_scale = 0
 	await get_tree().create_timer(time, true, false, true).timeout
 	Engine.time_scale = 1
+	
+	
+func pause(bool):
+	if bool:
+		nomove = true
+		get_tree().get_root().get_node("/root/Main/Level").process_mode = Node.PROCESS_MODE_DISABLED
+	else:
+		nomove = false
+		get_tree().get_root().get_node("/root/Main/Level").process_mode = Node.PROCESS_MODE_INHERIT
 
 
 func save(save_name):
