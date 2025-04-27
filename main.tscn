@@ -1,0 +1,143 @@
+[gd_scene load_steps=18 format=3 uid="uid://uol387rl447s"]
+
+[ext_resource type="PackedScene" uid="uid://vioeqkx1g7ux" path="res://UI/ui.tscn" id="1_04wxr"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="1_7x1gv"]
+[ext_resource type="Script" path="res://main.gd" id="1_wgiwl"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="2_ievyo"]
+[ext_resource type="PackedScene" uid="uid://cktfdk2f1lwm4" path="res://Player/player.tscn" id="3_iwxex"]
+[ext_resource type="Shader" path="res://Assets/ShadersThemesFonts/dreamworld.gdshader" id="4_xfd8t"]
+[ext_resource type="Texture2D" uid="uid://d24d00d1yft1d" path="res://Assets/Baumi_custom/Paint Layer 1.PNG" id="5_p2fuh"]
+[ext_resource type="Texture2D" uid="uid://d1kkwrpiw011v" path="res://Assets/MiniWorldSprites/Health Bar Asset Pack 2 by Adwit Rahman/04.png" id="6_2q102"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="6_bh2v3"]
+[ext_resource type="Texture2D" uid="uid://bw70wjooacxfu" path="res://Assets/Baumi_custom/Paint Layer 2.PNG" id="6_xx3tt"]
+
+[sub_resource type="Resource" id="Resource_vsvws"]
+script = ExtResource("2_ievyo")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_svfu3"]
+script = ExtResource("2_ievyo")
+duration = 0.0
+transition = 1
+ease = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_up4te"]
+atlas = ExtResource("6_2q102")
+region = Rect2(296.955, 133.149, 32.0851, 4.98328)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwcfa"]
+atlas = ExtResource("6_2q102")
+region = Rect2(57.9892, 150.075, 30.0525, 2.97043)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjvpp"]
+atlas = ExtResource("6_2q102")
+region = Rect2(296.955, 133.149, 32.0851, 4.98328)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfje8"]
+atlas = ExtResource("6_2q102")
+region = Rect2(58.0048, 182.012, 30.0223, 3.01398)
+margin = Rect2(0, 0, 0, -0.105)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uyrdh"]
+shader = ExtResource("4_xfd8t")
+shader_parameter/corrupt_strength = 0.5
+shader_parameter/darken_amount = 0.5
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_wgiwl")
+
+[node name="UI_Camera" type="Node2D" parent="."]
+position = Vector2(-2369, -1576)
+script = ExtResource("1_7x1gv")
+priority = 2
+tween_resource = SubResource("Resource_vsvws")
+draw_limits = true
+
+[node name="UI" parent="." instance=ExtResource("1_04wxr")]
+layout_mode = 1
+offset_left = -3329.0
+offset_top = -2116.0
+offset_right = -3329.0
+offset_bottom = -2116.0
+
+[node name="Player_Camera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
+z_index = 5
+position = Vector2(265, 341)
+script = ExtResource("1_7x1gv")
+priority = 1
+follow_mode = 2
+follow_target = NodePath("../Player")
+zoom = Vector2(5, 5)
+tween_resource = SubResource("Resource_svfu3")
+follow_offset = Vector2(0, -10)
+follow_damping = true
+dead_zone_width = 0.879
+dead_zone_height = 0.803
+show_viewfinder_in_play = true
+draw_limits = true
+
+[node name="PlayerHP" type="TextureProgressBar" parent="Player_Camera"]
+unique_name_in_owner = true
+modulate = Color(0.733005, 0.733005, 0.733005, 1)
+offset_left = -204.0
+offset_top = -121.0
+offset_right = 308.0
+offset_bottom = 391.0
+scale = Vector2(0.16, 0.16)
+value = 100.0
+rounded = true
+texture_over = ExtResource("5_p2fuh")
+texture_progress = ExtResource("6_xx3tt")
+texture_progress_offset = Vector2(2.615, 0.65)
+
+[node name="PlayerFP" type="TextureProgressBar" parent="Player_Camera"]
+unique_name_in_owner = true
+offset_left = -184.0
+offset_top = -85.0
+offset_right = -144.0
+offset_bottom = -45.0
+value = 50.0
+texture_under = SubResource("AtlasTexture_up4te")
+texture_progress = SubResource("AtlasTexture_xwcfa")
+texture_progress_offset = Vector2(1.08, 1.34)
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayerSTAM" type="TextureProgressBar" parent="Player_Camera"]
+unique_name_in_owner = true
+offset_left = -184.0
+offset_top = -79.0
+offset_right = -144.0
+offset_bottom = -39.0
+scale = Vector2(1.345, 1)
+value = 50.0
+texture_under = SubResource("AtlasTexture_yjvpp")
+texture_progress = SubResource("AtlasTexture_kfje8")
+texture_progress_offset = Vector2(1.08, 1.34)
+metadata/_edit_use_anchors_ = true
+
+[node name="Player" parent="." instance=ExtResource("3_iwxex")]
+position = Vector2(265, 351)
+speed = 100
+jump_speed = 320
+hp = 100
+max_hp = 100
+
+[node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
+physics_interpolation_mode = 2
+z_index = 1
+material = SubResource("ShaderMaterial_uyrdh")
+position = Vector2(-2369, -1576)
+editor_draw_limits = true
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+script = ExtResource("6_bh2v3")

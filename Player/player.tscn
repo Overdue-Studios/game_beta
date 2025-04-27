@@ -8,6 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://b8ttrka8as603" path="res://Assets/MiniWorldSprites/Characters/knight/Jump.png" id="4_jecpc"]
 [ext_resource type="Texture2D" uid="uid://di17ebky67oqh" path="res://Assets/MiniWorldSprites/Characters/knight/Roll.png" id="6_7aoml"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0tbt"]
+atlas = ExtResource("6_7aoml")
+region = Rect2(128, 0, 128, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_mg2ox"]
 atlas = ExtResource("2_5rplv")
 region = Rect2(0, 0, 128, 64)
@@ -132,10 +136,6 @@ region = Rect2(128, 64, 128, 64)
 atlas = ExtResource("6_7aoml")
 region = Rect2(0, 0, 128, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_d0tbt"]
-atlas = ExtResource("6_7aoml")
-region = Rect2(128, 0, 128, 64)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_mxi1y"]
 atlas = ExtResource("6_7aoml")
 region = Rect2(0, 64, 128, 64)
@@ -226,6 +226,14 @@ region = Rect2(384, 128, 128, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lvf4y"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d0tbt")
+}],
+"loop": true,
+"name": &"attack_fall",
+"speed": 13.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mg2ox")
@@ -451,7 +459,7 @@ size = Vector2(16, 19)
 radius = 3.06
 height = 11.56
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_jmvu1")
@@ -459,14 +467,13 @@ stamina_regen_time = 1.5
 stamina_regen_speed = 1.5
 speed = 50
 jump_speed = 1500
-gravity = 3000
 max_stam = 100
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
 scale = Vector2(0.439, 0.423)
 sprite_frames = SubResource("SpriteFrames_lvf4y")
-animation = &"die"
+animation = &"attack_fall"
 
 [node name="PrimaryAttack" type="Area2D" parent="."]
 collision_layer = 8
