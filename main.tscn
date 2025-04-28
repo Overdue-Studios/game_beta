@@ -175,6 +175,7 @@ metadata/_edit_use_anchors_ = true
 material = SubResource("ShaderMaterial_hm4sm")
 position = Vector2(265, 351)
 speed = 100
+gravity = 500
 jump_speed = 320
 hp = 100
 max_hp = 100
