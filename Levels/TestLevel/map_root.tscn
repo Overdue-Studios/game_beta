@@ -1216,7 +1216,7 @@ position = Vector2(725, 340)
 
 [node name="door_left" type="Area2D" parent="."]
 position = Vector2(483, 344)
-collision_mask = 4
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="door_left"]
 shape = SubResource("RectangleShape2D_aqrlj")
@@ -1229,11 +1229,15 @@ texture = ExtResource("21_makdi")
 
 [node name="door_right" type="Area2D" parent="."]
 position = Vector2(495, 344)
-collision_mask = 4
+collision_mask = 2
 script = SubResource("GDScript_oksea")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="door_right"]
 shape = SubResource("RectangleShape2D_at2fs")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("27_jts7y")]
+position = Vector2(182, 273)
+scale = Vector2(0.225, 0.225)
 
 [node name="Primoz" parent="." instance=ExtResource("27_o3k3i")]
 position = Vector2(338, 346)
@@ -1249,10 +1253,6 @@ script = ExtResource("30_pvwk3")
 
 [node name="CanvasLayer" parent="." instance=ExtResource("31_60o2l")]
 
-[node name="HedgehogMob" parent="." instance=ExtResource("27_jts7y")]
-position = Vector2(146, 272)
-gravity = 2000
-
-[connection signal="body_entered" from="door_left" to="door_right" method="_on_area_2d_2_body_entered"]
+[connection signal="body_entered" from="door_right" to="Dragon" method="_on_door_right_body_entered"]
 [connection signal="body_entered" from="door_right" to="door_right" method="_on_body_entered"]
 [connection signal="body_entered" from="Node2D" to="Node2D" method="_on_body_entered"]
