@@ -1,5 +1,6 @@
 extends Area2D
 
+@onready var camera_control = get_tree().get_root().get_node("/root/map_root/BossCam")
 @onready var player = get_tree().get_root().get_node("/root/map_root/Player")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -10,9 +11,14 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
+#desna vrata
 func _on_body_entered(body: Node2D) -> void:
-	print(player)
 	print(body)
 	if body == player:
-		SceneSwap.change_scene("res://Levels/Gmayna/gmayna.tscn")
+		camera_control.priority = 3
+
+#leva vrata
+func _on_area_2d_2_body_entered(body: Node2D) -> void:
+	print("body")
+	if body == player:
+		camera_control.priority = 1
