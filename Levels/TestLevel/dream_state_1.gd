@@ -8,7 +8,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_just_pressed("interact") && $Popup.visible == true:
-		Dialogic.start("timeline")
+		$DreamState1.visible = true
 
 
 func _on_body_entered(body: Node2D) -> void:
