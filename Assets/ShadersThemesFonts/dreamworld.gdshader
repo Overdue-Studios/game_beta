@@ -16,7 +16,7 @@ uniform float shader_radius_minimum : hint_range(1.0, 2.0, 0.01) = 1.5;
 uniform float vignette_radius_minimum : hint_range(0.8, 1.8, 0.01) = 1.2;
 
 //Bigger == faster
-uniform float dream_in_speed : hint_range(0.0, 2.0, 0.1) = 0.9;	
+uniform float dream_in_speed : hint_range(0.0, 2.0, 0.1) = 0.9;
 uniform float dream_out_speed : hint_range(0.0, 1.0, 0.1) = 0.0;
 
 uniform float vignette_intensity = 1.0;

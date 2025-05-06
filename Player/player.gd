@@ -286,6 +286,18 @@ func _on_secondary_attack_body_entered(body: Node2D) -> void:
 		emit_signal("damage_dealt", 30, body)
 
 func damage(amount):
+	$AnimatedSprite2D/BloodParticles.emitting = true
+	var mat = $AnimatedSprite2D.material as ShaderMaterial
+	mat.set_shader_parameter("whiteout", 1.0)
+	var fade_time := 1.0
+	await get_tree().create_timer(fade_time/2).timeout
+	var timer := 0.0
+	while timer < fade_time:
+		await get_tree().process_frame
+		timer += get_process_delta_time()*3
+		#var size = 1.0 if timer <= fade_time/2 else 1.0 - (timer / fade_time)
+		var size = 1.0 - (timer / fade_time)
+		mat.set_shader_parameter("whiteout", size)
 	hp -= amount
 	hp_bar.value = hp
 

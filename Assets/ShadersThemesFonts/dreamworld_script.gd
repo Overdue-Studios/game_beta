@@ -14,9 +14,7 @@ func _process(delta):
 		dreaming = true
 		shader_material.set_shader_parameter("dreaming", true)
 		shader_material.set_shader_parameter("start_time", Time.get_ticks_msec() / 1000.0)
-		print(shader_material.get_shader_parameter("dreaming"))
 	elif Input.is_action_just_pressed("world_switch") and dreaming:
 		dreaming = false
 		shader_material.set_shader_parameter("dreaming", false)
 		shader_material.set_shader_parameter("start_time", Time.get_ticks_msec() / 1000.0)
-		print(shader_material.get_shader_parameter("dreaming"))
