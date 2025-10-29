@@ -8,7 +8,7 @@ A sidescrolling, story-driven adventure that blends souls-like combat with metro
 
 **Genre:** Souls-like Metroidvania  
 **Platform:** PC  
-**Target Length:** 30-40 hours  
+**Target Length:** 10-20 hours  
 **Status:** In Development
 
 ## ✨ Core Features
